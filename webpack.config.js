@@ -2,9 +2,6 @@ const path = require("path");
 // html5 file generator webpack bundle in the body using script tags
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const React = require("react");
-const ReactDOM = require("react-dom");
-
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
@@ -36,8 +33,4 @@ module.exports = {
     compress: true,
     port: 9000
   }
-  // externals: {
-  //   react: React,
-  //   "react-dom": ReactDOM
-  // }
 };
