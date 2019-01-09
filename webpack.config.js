@@ -32,7 +32,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: "./dist/",
+    contentBase: "./public/",
     compress: true,
     port: 9000
   }
