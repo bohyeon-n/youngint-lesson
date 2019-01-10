@@ -33,7 +33,3 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
     );
   }
 }
-
-export interface StarProps {
-  n: number;
-}
