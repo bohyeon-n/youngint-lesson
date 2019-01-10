@@ -22,7 +22,7 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
       }
       return array;
     }
-    let arr: Array<any> = createArray(this.props.number);
+    const arr: Array<any> = createArray(this.props.number);
 
     return (
       <div>
