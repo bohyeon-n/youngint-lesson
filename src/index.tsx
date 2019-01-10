@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import MainPage from "./pages/MainPage";
 
-import { Hello } from "./components/Hello";
-
-ReactDOM.render(<Hello name="World" />, document.getElementById("root"));
+ReactDOM.render(<MainPage />, document.getElementById("root"));
