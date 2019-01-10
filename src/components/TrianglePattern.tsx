@@ -2,14 +2,14 @@ import * as React from "react";
 
 export interface TrianglePatternProps {
   number: number;
-  string: string;
+  pattern: string;
 }
 
 export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
-  stampStar = (n: number, str: string) => {
+  drawPatternLine = (n: number, pattern: string) => {
     let string: string = "";
     for (let i: number = 0; i < n; i++) {
-      string += str;
+      string += pattern;
     }
     return string;
   };
@@ -27,7 +27,7 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
     return (
       <div>
         {arr.map(n => (
-          <div key={n}>{this.stampStar(n + 1, this.props.string)}</div>
+          <div key={n}>{this.drawPatternLine(n + 1, this.props.pattern)}</div>
         ))}
       </div>
     );

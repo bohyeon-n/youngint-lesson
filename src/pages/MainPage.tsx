@@ -6,8 +6,8 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <Hello name="world" />
-        <TrianglePattern number={5} string={"*"} />
-        <TrianglePattern number={10} string={"😻"} />
+        <TrianglePattern number={5} pattern={"*"} />
+        <TrianglePattern number={10} pattern={"😻"} />
       </div>
     );
   }
