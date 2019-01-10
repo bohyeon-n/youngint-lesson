@@ -10,7 +10,7 @@ module.exports = {
     path: __dirname + "/dist"
   },
   //   웹팩 아웃풋의 디버깅을 위해 소스맵 활성화
-  devtool: "source-map",
+  devtool: "hidden-source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
