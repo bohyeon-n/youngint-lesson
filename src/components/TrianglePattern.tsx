@@ -1,11 +1,11 @@
 import * as React from "react";
 
-export interface StarsProps {
+export interface TrianglePatternProps {
   number: number;
   string: string;
 }
 
-export class Stars extends React.Component<StarsProps, {}> {
+export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
   stampStar = (n: number, str: string) => {
     let string: string = "";
     for (let i: number = 0; i < n; i++) {
