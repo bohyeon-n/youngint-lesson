@@ -11,7 +11,8 @@ module.exports = (env, argv) => {
       path: __dirname + "/dist"
     },
     //   웹팩 아웃풋의 디버깅을 위해 소스맵 활성화
-    devtool: argv.mode === "production" ? "hidden-source-map" : "eval",
+    devtool:
+      argv.mode === "production" ? "hidden-source-map" : "eval-source-map",
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
