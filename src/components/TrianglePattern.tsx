@@ -15,6 +15,7 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
   };
 
   render() {
+    const { number, pattern } = this.props;
     function createArray(n: number) {
       const array: Array<any> = [];
       for (let i = 0; i < n; i++) {
@@ -22,12 +23,12 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
       }
       return array;
     }
-    const arr: Array<any> = createArray(this.props.number);
+    const arr: Array<any> = createArray(number);
 
     return (
       <div>
         {arr.map(n => (
-          <div key={n}>{this.drawPatternLine(n + 1, this.props.pattern)}</div>
+          <div key={n}>{this.drawPatternLine(n + 1, pattern)}</div>
         ))}
       </div>
     );
