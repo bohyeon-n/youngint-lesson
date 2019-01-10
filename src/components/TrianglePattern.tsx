@@ -13,17 +13,17 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
     }
     return string;
   };
+  createArray = (n: number) => {
+    const array: Array<any> = [];
+    for (let i = 0; i < n; i++) {
+      array.push(i);
+    }
+    return array;
+  };
 
   render() {
     const { number, pattern } = this.props;
-    function createArray(n: number) {
-      const array: Array<any> = [];
-      for (let i = 0; i < n; i++) {
-        array.push(i);
-      }
-      return array;
-    }
-    const arr: Array<any> = createArray(number);
+    const arr: Array<any> = this.createArray(number);
 
     return (
       <div>
