@@ -7,7 +7,8 @@ export interface FormCCProps {
 }
 export class FormCC extends React.Component<FormCCProps, {}> {
   state = {
-    value: "",
+    number: "",
+    pattern: "",
     validate: false,
     message: ""
   };
@@ -50,33 +51,42 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     }
   };
 
-  onChange = (value: string) => {
+  onNumberChange = (value: string) => {
     this.setState({
-      value
+      number: value
     });
     this.isValidate(value);
   };
-  onSubmit = () => {
-    const { value, validate, message } = this.state;
+  onPatternChange = (value: string) => {
     this.setState({
-      value: "",
-      message: ""
+      pattern: value
+    });
+  };
+  onSubmit = () => {
+    const { number, validate, message, pattern } = this.state;
+    this.setState({
+      number: "",
+      message: "",
+      pattern: ""
     });
     validate
-      ? this.props.drawPattern(parseFloat(value))
+      ? this.props.drawPattern(parseFloat(number), pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
   };
   render() {
-    const { value, message } = this.state;
+    const { number, message, pattern } = this.state;
     return (
       <React.Fragment>
         <Form
-          value={value}
-          handleChange={this.onChange}
+          number={number}
+          pattern={pattern}
+          handleNumberChange={this.onNumberChange}
+          handlePatternChange={this.onPatternChange}
           handleSubmit={this.onSubmit}
         />
+
         <Message message={message} />
       </React.Fragment>
     );

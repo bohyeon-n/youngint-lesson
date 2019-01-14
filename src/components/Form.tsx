@@ -1,13 +1,21 @@
 import * as React from "react";
 
 export interface FormProps {
-  value: string;
-  handleChange: any;
+  number: string;
+  handleNumberChange: any;
+  handlePatternChange: any;
   handleSubmit: any;
+  pattern: string;
 }
 export class Form extends React.Component<FormProps, {}> {
   render() {
-    const { value, handleChange, handleSubmit } = this.props;
+    const {
+      number,
+      pattern,
+      handleNumberChange,
+      handlePatternChange,
+      handleSubmit
+    } = this.props;
     return (
       <React.Fragment>
         <form
@@ -21,9 +29,20 @@ export class Form extends React.Component<FormProps, {}> {
             <input
               type="text"
               name="number"
-              value={value}
+              value={number}
               onChange={e => {
-                handleChange(e.target.value);
+                handleNumberChange(e.target.value);
+              }}
+            />
+          </label>
+          <label>
+            Pattern:
+            <input
+              type="text"
+              name="pattern"
+              value={pattern}
+              onChange={e => {
+                handlePatternChange(e.target.value);
               }}
             />
           </label>

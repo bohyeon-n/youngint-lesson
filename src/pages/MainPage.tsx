@@ -7,22 +7,25 @@ import { TrianglePattern } from "../components/TrianglePattern";
 export default class MainPage extends React.Component {
   state = {
     submitSuccess: false,
-    value: ""
+    number: "",
+    pattern: ""
   };
-  drawPattern = (n: number) => {
+  drawPattern = (n: number, pattern: string) => {
     this.setState({
-      submitted: true,
-      value: n
+      submitSuccess: true,
+      number: n,
+      pattern
     });
   };
   render() {
-    const { value, submitSuccess } = this.state;
+    const { pattern, number, submitSuccess } = this.state;
     return (
       <div>
         <Hello name="world" />
         <FormCC drawPattern={this.drawPattern} />
+
         {submitSuccess ? (
-          <TrianglePattern number={parseFloat(value)} pattern={"*"} />
+          <TrianglePattern number={parseFloat(number)} pattern={pattern} />
         ) : null}
       </div>
     );
