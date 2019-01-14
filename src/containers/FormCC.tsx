@@ -67,7 +67,7 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     this.setState({
       number: "",
       message: "",
-      pattern: ""
+      pattern: pattern
     });
     validate
       ? this.props.drawPattern(parseFloat(number), pattern)
