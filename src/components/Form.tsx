@@ -25,17 +25,6 @@ export class Form extends React.Component<FormProps, {}> {
           }}
         >
           <label>
-            Number:
-            <input
-              type="text"
-              name="number"
-              value={number}
-              onChange={e => {
-                handleNumberChange(e.target.value);
-              }}
-            />
-          </label>
-          <label>
             Pattern:
             <input
               type="text"
@@ -43,6 +32,17 @@ export class Form extends React.Component<FormProps, {}> {
               value={pattern}
               onChange={e => {
                 handlePatternChange(e.target.value);
+              }}
+            />
+          </label>
+          <label>
+            Number:
+            <input
+              type="text"
+              name="number"
+              value={number}
+              onChange={e => {
+                handleNumberChange(e.target.value);
               }}
             />
           </label>
