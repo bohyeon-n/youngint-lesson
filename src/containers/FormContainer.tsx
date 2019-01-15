@@ -2,11 +2,11 @@ import * as React from "react";
 import { Form } from "../components/Form";
 import { Message } from "../components/Message";
 
-export interface FormCCProps {
+export interface FormContainerProps {
   drawPattern: any;
 }
 
-export class FormContainer extends React.Component<FormCCProps, {}> {
+export class FormContainer extends React.Component<FormContainerProps, {}> {
   state = {
     number: "",
     pattern: "",
