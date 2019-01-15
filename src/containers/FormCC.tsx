@@ -14,8 +14,11 @@ export class FormCC extends React.Component<FormCCProps, {}> {
   };
 
   getValidateMessage = (n: number) => {
+    console.log(n);
     const message =
-      n < 0
+      n % 1 !== 0
+        ? "양의 정수만 입력할 수 있습니다."
+        : n < 0
         ? "0보다 큰 숫자를 입력해주세요."
         : n > 100
         ? "100보다 큰 숫자는 입력할 수 없습니다."
@@ -25,7 +28,8 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     return message;
   };
   isValidate = (value: string) => {
-    const number = parseFloat(value);
+    const number = Number(value);
+    console.log(number);
     if (isNaN(number)) {
       value === ""
         ? this.setState({
@@ -36,11 +40,13 @@ export class FormCC extends React.Component<FormCCProps, {}> {
             message: "숫자를 입력해주세요.",
             validate: false
           });
+      return false;
     } else {
-      if (number > 0 && number <= 100) {
+      if (number > 0 && number <= 100 && number % 1 === 0) {
         this.setState({
           validate: true
         });
+        return true;
       } else {
         this.setState({
           message: this.getValidateMessage(number),
@@ -70,7 +76,7 @@ export class FormCC extends React.Component<FormCCProps, {}> {
       pattern: pattern
     });
     validate
-      ? this.props.drawPattern(parseFloat(number), pattern)
+      ? this.props.drawPattern(Number(number), pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
