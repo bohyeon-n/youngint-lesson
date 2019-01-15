@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Input } from "../components/Input";
 
 export interface FormProps {
   number: string;
@@ -27,24 +28,18 @@ export class Form extends React.Component<FormProps, {}> {
         >
           <label>
             Pattern:
-            <input
-              type="text"
-              name="pattern"
+            <Input
               value={pattern}
-              onChange={e => {
-                handlePatternChange(e.target.value);
-              }}
+              handleChange={handlePatternChange}
+              name={"pattern"}
             />
           </label>
           <label>
             Number:
-            <input
-              type="text"
-              name="number"
+            <Input
+              name={"number"}
               value={number}
-              onChange={e => {
-                handleNumberChange(e.target.value);
-              }}
+              handleChange={handleNumberChange}
             />
           </label>
           <button>Submit</button>
