@@ -6,7 +6,7 @@ export interface TrianglePatternProps {
 }
 
 export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
-  drawPatternLine = (n: number, pattern: string) => {
+  drawPatternLine = (n: number, pattern: string): string => {
     let string: string = "";
     for (let i: number = 0; i < n; i++) {
       string += pattern;
@@ -14,7 +14,7 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
     return string;
   };
 
-  createArray = (n: number) => {
+  createArray = (n: number): string[] => {
     const array: Array<any> = [];
     for (let i = 0; i < n; i++) {
       array.push(i);

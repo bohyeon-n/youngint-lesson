@@ -10,7 +10,7 @@ export default class MainPage extends React.Component {
     pattern: ""
   };
 
-  drawPattern = (n: number, pattern: string) => {
+  drawPattern = (n: number, pattern: string): void => {
     this.setState({
       submitSuccess: true,
       number: n,

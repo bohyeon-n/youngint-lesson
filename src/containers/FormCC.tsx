@@ -14,7 +14,7 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     message: ""
   };
 
-  getValidateMessage = (n: number) => {
+  getValidateMessage = (n: number): string => {
     const message =
       n % 1 !== 0
         ? "양의 정수만 입력할 수 있습니다."
@@ -28,9 +28,9 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     return message;
   };
 
-  isValidate = (value: string) => {
+  isValidate = (value: string): boolean => {
     const number = Number(value);
-    console.log(number);
+
     if (isNaN(number)) {
       value === ""
         ? this.setState({
@@ -58,20 +58,20 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     }
   };
 
-  onNumberChange = (value: string) => {
+  onNumberChange = (value: string): void => {
     this.setState({
       number: value
     });
     this.isValidate(value);
   };
 
-  onPatternChange = (value: string) => {
+  onPatternChange = (value: string): void => {
     this.setState({
       pattern: value
     });
   };
 
-  onSubmit = () => {
+  onSubmit = (): void => {
     const { number, validate, message, pattern } = this.state;
     this.setState({
       number: "",
