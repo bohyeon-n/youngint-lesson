@@ -1,9 +1,9 @@
 import * as React from "react";
 
 export interface InputProps {
-  value: any;
-  handleChange: Function;
-  name: string;
+  readonly value: any;
+  readonly handleChange: Function;
+  readonly name: string;
 }
 
 export class Input extends React.Component<InputProps, {}> {

@@ -1,8 +1,8 @@
 import * as React from "react";
 
 export interface TrianglePatternProps {
-  number: number;
-  pattern: string;
+  readonly number: number;
+  readonly pattern: string;
 }
 
 export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {

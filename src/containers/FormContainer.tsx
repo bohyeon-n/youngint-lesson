@@ -3,7 +3,7 @@ import { Form } from "../components/Form";
 import { Message } from "../components/Message";
 
 export interface FormContainerProps {
-  drawPattern: Function;
+  readonly drawPattern: Function;
 }
 
 export class FormContainer extends React.Component<FormContainerProps, {}> {
