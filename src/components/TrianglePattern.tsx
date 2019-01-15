@@ -1,20 +1,21 @@
 import * as React from "react";
 
 export interface TrianglePatternProps {
-  number: number;
-  pattern: string;
+  readonly number: number;
+  readonly pattern: string;
 }
 
 export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
-  drawPatternLine = (n: number, pattern: string) => {
+  drawPatternLine = (n: number, pattern: string): string => {
     let string: string = "";
     for (let i: number = 0; i < n; i++) {
       string += pattern;
     }
     return string;
   };
-  createArray = (n: number) => {
-    const array: Array<any> = [];
+
+  createArray = (n: number): number[] => {
+    const array: Array<number> = [];
     for (let i = 0; i < n; i++) {
       array.push(i);
     }
