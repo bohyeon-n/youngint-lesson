@@ -2,9 +2,9 @@ import * as React from "react";
 
 export interface FormProps {
   number: string;
-  handleNumberChange: any;
-  handlePatternChange: any;
-  handleSubmit: any;
+  handleNumberChange: Function;
+  handlePatternChange: Function;
+  handleSubmit: Function;
   pattern: string;
 }
 export class Form extends React.Component<FormProps, {}> {
