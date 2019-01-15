@@ -9,6 +9,7 @@ export default class MainPage extends React.Component {
     number: "",
     pattern: ""
   };
+
   drawPattern = (n: number, pattern: string) => {
     this.setState({
       submitSuccess: true,
@@ -16,6 +17,7 @@ export default class MainPage extends React.Component {
       pattern
     });
   };
+
   render() {
     const { pattern, number, submitSuccess } = this.state;
     return (

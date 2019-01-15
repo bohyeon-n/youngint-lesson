@@ -26,6 +26,7 @@ export class FormCC extends React.Component<FormCCProps, {}> {
         : "";
     return message;
   };
+
   isValidate = (value: string) => {
     const number = Number(value);
     console.log(number);
@@ -62,11 +63,13 @@ export class FormCC extends React.Component<FormCCProps, {}> {
     });
     this.isValidate(value);
   };
+
   onPatternChange = (value: string) => {
     this.setState({
       pattern: value
     });
   };
+
   onSubmit = () => {
     const { number, validate, message, pattern } = this.state;
     this.setState({
@@ -80,6 +83,7 @@ export class FormCC extends React.Component<FormCCProps, {}> {
 다시 입력해주세요.
     `);
   };
+
   render() {
     const { number, message, pattern } = this.state;
     return (
