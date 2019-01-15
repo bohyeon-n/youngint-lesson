@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Form } from "../components/Form";
 import { Message } from "../components/Message";
+import { string } from "prop-types";
 
 export interface FormContainerProps {
   readonly drawPattern: Function;
@@ -16,9 +17,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
 
   getValidateMessage = (n: number): string => {
     const message =
-      n % 1 !== 0
-        ? "양의 정수만 입력할 수 있습니다."
-        : n < 0
+      n < 0
         ? "0보다 큰 숫자를 입력해주세요."
         : n > 100
         ? "100보다 큰 숫자는 입력할 수 없습니다."
@@ -42,6 +41,11 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
             validate: false
           });
       return false;
+    } else if (value.indexOf(".") !== -1) {
+      this.setState({
+        message: "정수만 입력할 수 있습니다.",
+        validate: false
+      });
     } else if (!isFinite(number)) {
       const message = value.slice(0, 1) === "-" ? "작은 수" : "큰 수";
       this.setState({
@@ -50,7 +54,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
       });
       return false;
     } else {
-      if (number > 0 && number <= 100 && number % 1 === 0) {
+      if (number > 0 && number <= 100) {
         this.setState({
           validate: true
         });
