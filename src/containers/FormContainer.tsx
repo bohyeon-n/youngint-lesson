@@ -42,6 +42,13 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
             validate: false
           });
       return false;
+    } else if (!isFinite(number)) {
+      this.setState({
+        message:
+          "너무 큰 숫자를 입력하셨네요🤮 100보다 작은 수로 입력해주세요.",
+        validate: false
+      });
+      return false;
     } else {
       if (number > 0 && number <= 100 && number % 1 === 0) {
         this.setState({
