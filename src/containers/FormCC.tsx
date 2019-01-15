@@ -14,7 +14,6 @@ export class FormCC extends React.Component<FormCCProps, {}> {
   };
 
   getValidateMessage = (n: number) => {
-    console.log(n);
     const message =
       n % 1 !== 0
         ? "양의 정수만 입력할 수 있습니다."
