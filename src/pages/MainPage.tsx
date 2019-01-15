@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Hello } from "../components/Hello";
-import { FormCC } from "../containers/FormCC";
+import { FormContainer } from "../containers/FormContainer";
 import { TrianglePattern } from "../components/TrianglePattern";
 
 export default class MainPage extends React.Component {
@@ -23,7 +23,7 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <Hello name="world" />
-        <FormCC drawPattern={this.drawPattern} />
+        <FormContainer drawPattern={this.drawPattern} />
 
         {submitSuccess ? (
           <TrianglePattern number={parseFloat(number)} pattern={pattern} />

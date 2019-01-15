@@ -6,7 +6,7 @@ export interface FormCCProps {
   drawPattern: any;
 }
 
-export class FormCC extends React.Component<FormCCProps, {}> {
+export class FormContainer extends React.Component<FormCCProps, {}> {
   state = {
     number: "",
     pattern: "",
