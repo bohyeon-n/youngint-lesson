@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Form } from "../components/Form";
 import { Message } from "../components/Message";
-import { string } from "prop-types";
 
 export interface FormContainerProps {
   readonly drawPattern: Function;
