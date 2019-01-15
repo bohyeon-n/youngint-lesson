@@ -5,6 +5,7 @@ export interface InputProps {
   handleChange: Function;
   name: string;
 }
+
 export class Input extends React.Component<InputProps, {}> {
   render() {
     const { value, handleChange, name } = this.props;
