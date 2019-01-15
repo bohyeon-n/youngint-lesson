@@ -14,8 +14,8 @@ export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
     return string;
   };
 
-  createArray = (n: number): string[] => {
-    const array: Array<any> = [];
+  createArray = (n: number): number[] => {
+    const array: Array<number> = [];
     for (let i = 0; i < n; i++) {
       array.push(i);
     }
