@@ -5,6 +5,7 @@ import { Message } from "../components/Message";
 export interface FormCCProps {
   drawPattern: any;
 }
+
 export class FormCC extends React.Component<FormCCProps, {}> {
   state = {
     number: "",

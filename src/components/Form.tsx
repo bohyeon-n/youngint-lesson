@@ -7,6 +7,7 @@ export interface FormProps {
   handleSubmit: Function;
   pattern: string;
 }
+
 export class Form extends React.Component<FormProps, {}> {
   render() {
     const {
