@@ -7,6 +7,7 @@ export interface FormContainerProps {
   readonly pattern: string;
   readonly step: number;
   readonly handleChangeStep: Function;
+  readonly getValidate: Function;
 }
 
 export class FormContainer extends React.Component<FormContainerProps, {}> {
@@ -84,10 +85,12 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
     this.setState({
       number: value
     });
-    this.isValidate(value);
+    const validate = this.isValidate(value);
+    this.props.getValidate(validate);
   };
 
-  onPatternChange = (value: string): void => {
+  onShapeChange = (value: string): void => {
+    console.log("hhh");
     this.setState({
       shape: value
     });
@@ -117,7 +120,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
           number={number}
           shape={shape}
           handleNumberChange={this.onNumberChange}
-          handlePatternChange={this.onPatternChange}
+          handlePatternChange={this.onShapeChange}
           handleSubmit={this.onSubmit}
           step={this.props.step}
           handleChangeStep={this.props.handleChangeStep}
