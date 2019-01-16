@@ -26,15 +26,37 @@ export class Pattern extends React.Component<PatternProps, {}> {
         string += shape;
       }
     } else {
-      // diamond
+      //diamond
+      let blank: string = "";
+      let pattern: string = "";
+      for (let i = 0; i < totalNumber - n; i++) {
+        blank += " ";
+      }
+      for (let i = 0; i < n; i++) {
+        pattern += shape;
+      }
+      string =
+        blank.slice(0, blank.length / 2) +
+        pattern +
+        blank.slice(blank.length / 2, blank.length);
     }
+    console.log(string);
     return string;
   };
 
   createArray = (n: number, pattern: string): number[] => {
     const array: Array<number> = [];
-    for (let i = 0; i < n; i++) {
-      array.push(i);
+    if (pattern === "diamond") {
+      let i: number = 0;
+      while (i < n) {
+        array.push(i);
+        i += 2;
+      }
+      return [...array, ...[...array.slice(0, -1)].reverse()];
+    } else {
+      for (let i = 0; i < n; i++) {
+        array.push(i);
+      }
     }
     return pattern === "reverseTriangle" ? array.reverse() : array;
   };
@@ -42,11 +64,11 @@ export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { number, shape, pattern } = this.props;
     const arr: Array<any> = this.createArray(number, pattern);
-
+    console.log(arr);
     return (
-      <div>
-        {arr.map(n => (
-          <div key={n}>
+      <div style={{ whiteSpace: "pre" }}>
+        {arr.map((n, index) => (
+          <div key={index}>
             {this.drawPatternLine(n + 1, shape, pattern, number)}
           </div>
         ))}
