@@ -6,7 +6,7 @@ export default class MainPage extends React.Component {
   state = {
     submitSuccess: false,
     number: "",
-    pattern: "triangle",
+    pattern: "reverseTriangle",
     step: 0,
     shape: ""
   };
