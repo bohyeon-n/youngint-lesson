@@ -6,14 +6,14 @@ export interface FormProps {
   readonly handleNumberChange: Function;
   readonly handlePatternChange: Function;
   readonly handleSubmit: Function;
-  readonly pattern: string;
+  readonly shape: string;
 }
 
 export class Form extends React.Component<FormProps, {}> {
   render() {
     const {
       number,
-      pattern,
+      shape,
       handleNumberChange,
       handlePatternChange,
       handleSubmit
@@ -27,11 +27,11 @@ export class Form extends React.Component<FormProps, {}> {
           }}
         >
           <label>
-            Pattern:
+            Shape:
             <Input
-              value={pattern}
+              value={shape}
               handleChange={handlePatternChange}
-              name={"pattern"}
+              name={"shape"}
             />
           </label>
           <label>

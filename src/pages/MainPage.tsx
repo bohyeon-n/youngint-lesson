@@ -19,7 +19,6 @@ export default class MainPage extends React.Component {
     });
   };
   onSelectPattern = (pattern: string): void => {
-    console.log(pattern);
     this.setState({
       pattern
     });
@@ -31,7 +30,7 @@ export default class MainPage extends React.Component {
       <div>
         <h1>Pattern Stamp</h1>
         <List list={patterns} handleItemClick={this.onSelectPattern} />
-        <FormContainer drawPattern={this.drawPattern} />
+        <FormContainer drawPattern={this.drawPattern} pattern={pattern} />
         {submitSuccess ? (
           <Pattern
             number={parseFloat(number)}
