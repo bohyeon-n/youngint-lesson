@@ -1,11 +1,11 @@
 import * as React from "react";
-import { TrianglePattern } from "../components/TrianglePattern";
+import { Pattern } from "../components/Pattern";
 
 export class PatternContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <TrianglePattern number={5} pattern={"*"} />
+        <Pattern number={5} pattern={"triangle"} shape={"*"} />
       </React.Fragment>
     );
   }

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FormContainer } from "../containers/FormContainer";
-import { TrianglePattern } from "../components/TrianglePattern";
+import { Pattern } from "../components/Pattern";
 
 export default class MainPage extends React.Component {
   state = {
@@ -26,7 +26,7 @@ export default class MainPage extends React.Component {
         <h1>Pattern Stamp</h1>
         <FormContainer drawPattern={this.drawPattern} />
         {submitSuccess ? (
-          <TrianglePattern
+          <Pattern
             number={parseFloat(number)}
             shape={shape}
             pattern={pattern}

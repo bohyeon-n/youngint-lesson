@@ -1,12 +1,12 @@
 import * as React from "react";
 
-export interface TrianglePatternProps {
+export interface PatternProps {
   readonly number: number;
   readonly shape: string;
   readonly pattern: string;
 }
 
-export class TrianglePattern extends React.Component<TrianglePatternProps, {}> {
+export class Pattern extends React.Component<PatternProps, {}> {
   drawPatternLine = (n: number, shape: string): string => {
     let string: string = "";
     for (let i: number = 0; i < n; i++) {
