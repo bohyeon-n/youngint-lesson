@@ -8,6 +8,7 @@ export interface FormProps {
   readonly handleSubmit: Function;
   readonly shape: string;
   readonly step: number;
+  readonly handleChangeStep: Function;
 }
 
 export class Form extends React.Component<FormProps, {}> {
@@ -18,6 +19,7 @@ export class Form extends React.Component<FormProps, {}> {
       handleNumberChange,
       handlePatternChange,
       handleSubmit,
+      handleChangeStep,
       step
     } = this.props;
     return (
@@ -34,7 +36,9 @@ export class Form extends React.Component<FormProps, {}> {
               value={shape}
               handleChange={handlePatternChange}
               name={"shape"}
-              active={step > 0}
+              active={step === 1}
+              handleChangeStep={handleChangeStep}
+              step={1}
             />
           </label>
           <label>
@@ -44,6 +48,8 @@ export class Form extends React.Component<FormProps, {}> {
               value={number}
               handleChange={handleNumberChange}
               active={false}
+              handleChangeStep={handleChangeStep}
+              step={2}
             />
           </label>
           <button>Submit</button>

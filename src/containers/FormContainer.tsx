@@ -6,6 +6,7 @@ export interface FormContainerProps {
   readonly drawPattern: Function;
   readonly pattern: string;
   readonly step: number;
+  readonly handleChangeStep: Function;
 }
 
 export class FormContainer extends React.Component<FormContainerProps, {}> {
@@ -119,6 +120,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
           handlePatternChange={this.onPatternChange}
           handleSubmit={this.onSubmit}
           step={this.props.step}
+          handleChangeStep={this.props.handleChangeStep}
         />
 
         <Message message={message} />

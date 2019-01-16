@@ -26,6 +26,11 @@ export default class MainPage extends React.Component {
       step: 1
     });
   };
+  onChangeStep = (step: number) => {
+    this.setState({
+      step: step
+    });
+  };
   render() {
     const { pattern, shape, number, submitSuccess, step } = this.state;
     const patterns = ["triangle", "reverseTriangle", "diamond"];
@@ -41,6 +46,7 @@ export default class MainPage extends React.Component {
           drawPattern={this.drawPattern}
           pattern={pattern}
           step={step}
+          handleChangeStep={this.onChangeStep}
         />
         {submitSuccess ? (
           <Pattern
