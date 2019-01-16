@@ -1,23 +1,29 @@
 import * as React from "react";
 import { Pattern } from "../components/Pattern";
+import classnames from "classnames";
 
 export interface ListProps {
   readonly list: string[];
   readonly handleItemClick: Function;
+  readonly activeItem: string;
 }
 
 export class List extends React.Component<ListProps, {}> {
   render() {
-    const { list, handleItemClick } = this.props;
+    const { list, handleItemClick, activeItem } = this.props;
     return (
-      <React.Fragment>
+      <div className="list">
         {list.map((item, index) => (
-          <div key={index} onClick={e => handleItemClick(item)}>
+          <div
+            className={classnames("item", { active: activeItem === item })}
+            key={index}
+            onClick={e => handleItemClick(item)}
+          >
             <div>{item}</div>
             <Pattern number={5} shape="*" pattern={item} />
           </div>
         ))}
-      </React.Fragment>
+      </div>
     );
   }
 }

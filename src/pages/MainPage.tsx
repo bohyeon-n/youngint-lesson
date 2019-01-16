@@ -31,7 +31,11 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <h1>Pattern Stamp</h1>
-        <List list={patterns} handleItemClick={this.onSelectPattern} />
+        <List
+          list={patterns}
+          handleItemClick={this.onSelectPattern}
+          activeItem={pattern}
+        />
         <FormContainer drawPattern={this.drawPattern} pattern={pattern} />
         {submitSuccess ? (
           <Pattern
