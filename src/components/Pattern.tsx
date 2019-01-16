@@ -40,7 +40,6 @@ export class Pattern extends React.Component<PatternProps, {}> {
         pattern +
         blank.slice(blank.length / 2, blank.length);
     }
-    console.log(string);
     return string;
   };
 
@@ -64,7 +63,6 @@ export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { number, shape, pattern } = this.props;
     const arr: Array<any> = this.createArray(number, pattern);
-    console.log(arr);
     return (
       <div style={{ whiteSpace: "pre" }}>
         {arr.map((n, index) => (
