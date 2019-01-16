@@ -5,6 +5,7 @@ import { Message } from "../components/Message";
 export interface FormContainerProps {
   readonly drawPattern: Function;
   readonly pattern: string;
+  readonly step: number;
 }
 
 export class FormContainer extends React.Component<FormContainerProps, {}> {
@@ -117,6 +118,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
           handleNumberChange={this.onNumberChange}
           handlePatternChange={this.onPatternChange}
           handleSubmit={this.onSubmit}
+          step={this.props.step}
         />
 
         <Message message={message} />

@@ -22,11 +22,12 @@ export default class MainPage extends React.Component {
 
   onSelectPattern = (pattern: string): void => {
     this.setState({
-      pattern
+      pattern,
+      step: 1
     });
   };
   render() {
-    const { pattern, shape, number, submitSuccess } = this.state;
+    const { pattern, shape, number, submitSuccess, step } = this.state;
     const patterns = ["triangle", "reverseTriangle", "diamond"];
     return (
       <div>
@@ -36,7 +37,11 @@ export default class MainPage extends React.Component {
           handleItemClick={this.onSelectPattern}
           activeItem={pattern}
         />
-        <FormContainer drawPattern={this.drawPattern} pattern={pattern} />
+        <FormContainer
+          drawPattern={this.drawPattern}
+          pattern={pattern}
+          step={step}
+        />
         {submitSuccess ? (
           <Pattern
             number={parseFloat(number)}

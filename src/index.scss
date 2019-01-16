@@ -17,3 +17,15 @@
     }
   }
 }
+.form {
+  form {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    button {
+      width: 100px;
+      height: 20px;
+    }
+  }
+}

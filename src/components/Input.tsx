@@ -4,11 +4,12 @@ export interface InputProps {
   readonly value: any;
   readonly handleChange: Function;
   readonly name: string;
+  readonly active: boolean;
 }
 
 export class Input extends React.Component<InputProps, {}> {
   render() {
-    const { value, handleChange, name } = this.props;
+    const { value, handleChange, name, active } = this.props;
     return (
       <React.Fragment>
         <input
@@ -18,6 +19,7 @@ export class Input extends React.Component<InputProps, {}> {
           onChange={e => {
             handleChange(e.target.value);
           }}
+          ref={input => input && active && input.focus()}
         />
       </React.Fragment>
     );
