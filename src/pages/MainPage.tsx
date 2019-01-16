@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContainer } from "../containers/FormContainer";
 import { Pattern } from "../components/Pattern";
-
+import { List } from "../components/List";
 export default class MainPage extends React.Component {
   state = {
     submitSuccess: false,
@@ -18,12 +18,19 @@ export default class MainPage extends React.Component {
       shape
     });
   };
-
+  onSelectPattern = (pattern: string): void => {
+    console.log(pattern);
+    this.setState({
+      pattern
+    });
+  };
   render() {
     const { pattern, shape, number, submitSuccess } = this.state;
+    const patterns = ["triangle", "reverseTriangle", "diamond"];
     return (
       <div>
         <h1>Pattern Stamp</h1>
+        <List list={patterns} handleItemClick={this.onSelectPattern} />
         <FormContainer drawPattern={this.drawPattern} />
         {submitSuccess ? (
           <Pattern
