@@ -17,7 +17,6 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
 
   getValidateMessage = (n: number): string => {
     const { pattern } = this.props;
-    console.log(n, pattern);
     const message =
       n < 0
         ? "0보다 큰 숫자를 입력해주세요."

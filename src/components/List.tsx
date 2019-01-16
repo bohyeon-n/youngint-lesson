@@ -5,6 +5,7 @@ export interface ListProps {
   readonly list: string[];
   readonly handleItemClick: Function;
 }
+
 export class List extends React.Component<ListProps, {}> {
   render() {
     const { list, handleItemClick } = this.props;

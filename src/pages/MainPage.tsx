@@ -2,6 +2,7 @@ import * as React from "react";
 import { FormContainer } from "../containers/FormContainer";
 import { Pattern } from "../components/Pattern";
 import { List } from "../components/List";
+
 export default class MainPage extends React.Component {
   state = {
     submitSuccess: false,
@@ -18,6 +19,7 @@ export default class MainPage extends React.Component {
       shape
     });
   };
+
   onSelectPattern = (pattern: string): void => {
     this.setState({
       pattern
