@@ -15,12 +15,13 @@ export default class MainPage extends React.Component {
     firstSubmit: false
   };
 
-  drawPattern = (n: number, shape: string, pattern: "string"): void => {
+  drawPattern = (n: number, shape: string, pattern: string): void => {
     !this.state.firstSubmit && this.setState({ firstSubmit: true });
 
     this.setState({
       number: n,
       shape,
+      pattern,
       submitPattern: this.state.pattern,
       submitNumber: n
     });
