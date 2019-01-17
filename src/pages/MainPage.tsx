@@ -67,7 +67,7 @@ export default class MainPage extends React.Component {
           handleChangeStep={this.onChangeStep}
           getValidate={this.getValidate}
         />
-        {submitSuccess && this.state.validate ? (
+        {submitSuccess ? (
           <Pattern
             number={parseFloat(number)}
             shape={shape}
