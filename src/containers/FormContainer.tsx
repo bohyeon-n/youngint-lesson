@@ -90,7 +90,6 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   };
 
   onShapeChange = (value: string): void => {
-    console.log("hhh");
     this.setState({
       shape: value
     });
