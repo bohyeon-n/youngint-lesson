@@ -36,6 +36,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   isValidate = (value: string): boolean => {
     const { pattern } = this.props;
     const number = Number(value);
+
     if (value === "") {
       this.setState({
         message: "",

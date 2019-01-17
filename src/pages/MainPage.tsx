@@ -10,14 +10,16 @@ export default class MainPage extends React.Component {
     pattern: "diamond",
     step: 0,
     shape: "",
-    validate: false
+    validate: false,
+    submitPattern: "trianlge"
   };
 
   drawPattern = (n: number, shape: string): void => {
     this.setState({
       submitSuccess: true,
       number: n,
-      shape
+      shape,
+      submitPatter: this.state.pattern
     });
   };
 
@@ -27,6 +29,7 @@ export default class MainPage extends React.Component {
       step: 1
     });
   };
+
   onChangeStep = (step: number) => {
     this.setState({
       step: step
@@ -38,8 +41,16 @@ export default class MainPage extends React.Component {
       validate
     });
   };
+
   render() {
-    const { pattern, shape, number, submitSuccess, step } = this.state;
+    const {
+      pattern,
+      shape,
+      number,
+      submitSuccess,
+      step,
+      submitPattern
+    } = this.state;
     const patterns = ["triangle", "reverseTriangle", "diamond"];
     return (
       <div>
@@ -60,7 +71,7 @@ export default class MainPage extends React.Component {
           <Pattern
             number={parseFloat(number)}
             shape={shape}
-            pattern={pattern}
+            pattern={submitPattern}
           />
         ) : null}
       </div>
