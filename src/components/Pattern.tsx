@@ -64,9 +64,9 @@ export class Pattern extends React.Component<PatternProps, {}> {
     const { number, shape, pattern } = this.props;
     const arr: Array<any> = this.createArray(number, pattern);
     return (
-      <div style={{ whiteSpace: "pre" }}>
+      <div style={{ whiteSpace: "pre" }} className={`pattern ${pattern}`}>
         {arr.map((n, index) => (
-          <div key={index}>
+          <div key={index} className={pattern}>
             {this.drawPatternLine(n + 1, shape, pattern, number)}
           </div>
         ))}

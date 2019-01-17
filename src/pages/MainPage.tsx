@@ -11,15 +11,20 @@ export default class MainPage extends React.Component {
     step: 0,
     shape: "",
     validate: false,
-    submitPattern: "trianlge"
+    submitPattern: "trianlge",
+    submitNumber: "",
+    firstSubmit: false
   };
 
   drawPattern = (n: number, shape: string, pattern: "string"): void => {
+    !this.state.firstSubmit && this.setState({ firstSubmit: true });
+
     this.setState({
       submitSuccess: true,
       number: n,
       shape,
-      submitPattern: this.state.pattern
+      submitPattern: this.state.pattern,
+      submitNumber: n
     });
   };
 
@@ -39,6 +44,7 @@ export default class MainPage extends React.Component {
   getValidate = (validate: boolean) => {
     this.setState({
       validate
+      // submitSuccess: false
     });
   };
 
@@ -67,13 +73,13 @@ export default class MainPage extends React.Component {
           handleChangeStep={this.onChangeStep}
           getValidate={this.getValidate}
         />
-        {submitSuccess && this.state.validate ? (
+        {this.state.firstSubmit && (
           <Pattern
-            number={parseFloat(number)}
+            number={Number(this.state.submitNumber)}
             shape={shape}
             pattern={submitPattern}
           />
-        ) : null}
+        )}
       </div>
     );
   }

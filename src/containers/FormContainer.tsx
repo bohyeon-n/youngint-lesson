@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Form } from "../components/Form";
 import { Message } from "../components/Message";
+import { withStep } from "../HOC/withStep";
 
 export interface FormContainerProps {
   readonly drawPattern: Function;

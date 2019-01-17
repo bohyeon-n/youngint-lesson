@@ -1,6 +1,12 @@
 import * as React from "react";
 
-function withStep<P extends {}>(WrappedComponet: React.ComponentType<P>) {
+export interface withStepProps {
+  step: number;
+  handleChangeStep(): void;
+}
+export function withStep<P extends withStepProps>(
+  WrappedComponet: React.ComponentType<P>
+) {
   return class extends React.Component<P> {
     state = {
       step: 0
