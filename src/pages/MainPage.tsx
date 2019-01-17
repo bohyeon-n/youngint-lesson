@@ -5,7 +5,6 @@ import { List } from "../components/List";
 
 export default class MainPage extends React.Component {
   state = {
-    submitSuccess: false,
     number: "",
     pattern: "diamond",
     step: 0,
@@ -20,7 +19,6 @@ export default class MainPage extends React.Component {
     !this.state.firstSubmit && this.setState({ firstSubmit: true });
 
     this.setState({
-      submitSuccess: true,
       number: n,
       shape,
       submitPattern: this.state.pattern,
@@ -44,19 +42,11 @@ export default class MainPage extends React.Component {
   getValidate = (validate: boolean) => {
     this.setState({
       validate
-      // submitSuccess: false
     });
   };
 
   render() {
-    const {
-      pattern,
-      shape,
-      number,
-      submitSuccess,
-      step,
-      submitPattern
-    } = this.state;
+    const { pattern, shape, step, submitPattern, submitNumber } = this.state;
     const patterns = ["triangle", "reverseTriangle", "diamond"];
     return (
       <div>
@@ -75,7 +65,7 @@ export default class MainPage extends React.Component {
         />
         {this.state.firstSubmit && (
           <Pattern
-            number={Number(this.state.submitNumber)}
+            number={Number(submitNumber)}
             shape={shape}
             pattern={submitPattern}
           />
