@@ -70,7 +70,8 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
         !(pattern === "diamond" && number % 2 === 0)
       ) {
         this.setState({
-          validate: true
+          validate: true,
+          message: ""
         });
         return true;
       } else {
