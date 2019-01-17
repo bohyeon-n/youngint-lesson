@@ -20,7 +20,9 @@ export class List extends React.Component<ListProps, {}> {
             onClick={e => handleItemClick(item)}
           >
             <div>{item}</div>
-            <Pattern number={5} shape="*" pattern={item} />
+            <div className="pattern">
+              <Pattern number={5} shape="*" pattern={item} />
+            </div>
           </div>
         ))}
       </div>
