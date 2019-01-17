@@ -14,7 +14,7 @@ export default class MainPage extends React.Component {
     submitPattern: "trianlge"
   };
 
-  drawPattern = (n: number, shape: string): void => {
+  drawPattern = (n: number, shape: string, pattern: "string"): void => {
     this.setState({
       submitSuccess: true,
       number: n,
@@ -67,7 +67,7 @@ export default class MainPage extends React.Component {
           handleChangeStep={this.onChangeStep}
           getValidate={this.getValidate}
         />
-        {submitSuccess ? (
+        {submitSuccess && this.state.validate ? (
           <Pattern
             number={parseFloat(number)}
             shape={shape}
