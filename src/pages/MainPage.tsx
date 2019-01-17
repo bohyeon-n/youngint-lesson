@@ -19,7 +19,7 @@ export default class MainPage extends React.Component {
       submitSuccess: true,
       number: n,
       shape,
-      submitPatter: this.state.pattern
+      submitPattern: this.state.pattern
     });
   };
 

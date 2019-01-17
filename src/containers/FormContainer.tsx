@@ -106,7 +106,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
       shape
     });
     validate
-      ? this.props.drawPattern(Number(number), shape)
+      ? this.props.drawPattern(Number(number), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
