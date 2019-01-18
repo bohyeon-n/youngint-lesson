@@ -12,11 +12,28 @@ export default class MainPage extends React.Component {
     validate: false,
     submitPattern: "trianlge",
     submitNumber: "",
-    firstSubmit: false
+    firstSubmit: false,
+    formerSubmit: false,
+    formerInputState: {
+      number: "",
+      shape: "",
+      pattern: ""
+    }
   };
 
   drawPattern = (n: number, shape: string, pattern: string): void => {
-    !this.state.firstSubmit && this.setState({ firstSubmit: true });
+    if (this.state.firstSubmit) {
+      this.setState({
+        formerSubmit: true,
+        formerInputState: {
+          number: this.state.number,
+          pattern: this.state.pattern,
+          shape: this.state.shape
+        }
+      });
+    } else {
+      this.setState({ firstSubmit: true });
+    }
 
     this.setState({
       number: n,
@@ -47,7 +64,15 @@ export default class MainPage extends React.Component {
   };
 
   render() {
-    const { pattern, shape, step, submitPattern, submitNumber } = this.state;
+    const {
+      pattern,
+      shape,
+      step,
+      submitPattern,
+      submitNumber,
+      formerInputState,
+      formerSubmit
+    } = this.state;
     const patterns = ["triangle", "reverseTriangle", "diamond"];
     return (
       <div>
@@ -64,12 +89,23 @@ export default class MainPage extends React.Component {
           handleChangeStep={this.onChangeStep}
           getValidate={this.getValidate}
         />
+
         {this.state.firstSubmit && (
           <Pattern
             number={Number(submitNumber)}
             shape={shape}
             pattern={submitPattern}
           />
+        )}
+        {formerSubmit && (
+          <div>
+            <div>이전 패턴</div>
+            <Pattern
+              number={Number(formerInputState.number)}
+              shape={formerInputState.shape}
+              pattern={formerInputState.pattern}
+            />
+          </div>
         )}
       </div>
     );
