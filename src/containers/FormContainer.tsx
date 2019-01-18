@@ -121,13 +121,18 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
     const { step } = this.props;
     return (
       <React.Fragment>
+        <div>모양을 입력해주세요 *</div>
         <Form
           value={shape}
           handleInputChange={this.onShapeChange}
-          labelName="패턴"
+          labelName="모양"
           focus={step === 1}
           onSubmit={this.onSubmit}
         />
+        <div>
+          숫자를 입력해주세요.* 숫자는 1부터 100까지의 정수만을 입력할 수
+          있습니다.
+        </div>
         <Form
           focus={false}
           value={number}
@@ -138,7 +143,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
 
         <Message message={message} alert={!validate} />
 
-        <button onClick={this.onSubmit}>패턴 그리기</button>
+        <button onClick={this.onSubmit}>패턴 출력하기</button>
       </React.Fragment>
     );
   }

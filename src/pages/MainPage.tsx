@@ -85,13 +85,16 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <h1>Pattern Stamp</h1>
-        <div>원하는 패턴을 선택해주세요.</div>
+        <p>
+          패턴을 선택하고 모양과 숫자를 입력해주세요. <br />
+          입력 후 패턴 출력하기 버튼을 누르면 원하는 패턴이 출력됩니다.
+        </p>
+        <div>패턴을 선택해주세요.</div>
         <List
           list={patterns}
           handleItemClick={this.onSelectPattern}
           activeItem={pattern}
         />
-        <div>모양과 숫자를 입력해주세요.</div>
         <FormContainer
           drawPattern={this.drawPattern}
           pattern={pattern}
