@@ -104,7 +104,7 @@ export default class MainPage extends React.Component {
           getValidate={this.getValidate}
         />
         <div className="printed">
-          {this.state.firstSubmit && validate && (
+          {this.state.firstSubmit && (
             <div className="pattern">
               <div>출력 결과</div>
               <Pattern
