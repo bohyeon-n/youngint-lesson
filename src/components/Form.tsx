@@ -52,7 +52,7 @@ export class Form extends React.Component<FormProps, {}> {
               step={2}
             />
           </label>
-          <button>Submit</button>
+          <button>패턴 그리기</button>
         </form>
       </div>
     );
