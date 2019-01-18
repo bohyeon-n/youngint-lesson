@@ -73,7 +73,8 @@ export default class MainPage extends React.Component {
       submitPattern,
       submitNumber,
       formerInputState,
-      formerSubmit
+      formerSubmit,
+      validate
     } = this.state;
     const patterns = [
       "triangle",
@@ -103,7 +104,7 @@ export default class MainPage extends React.Component {
           getValidate={this.getValidate}
         />
         <div className="printed">
-          {this.state.firstSubmit && (
+          {this.state.firstSubmit && validate && (
             <div className="pattern">
               <div>출력 결과</div>
               <Pattern

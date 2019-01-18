@@ -36,7 +36,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   isValidate = (value: string): boolean => {
     const { pattern } = this.props;
     const number = Number(value);
-
+    console.log(value);
     if (value === "") {
       this.setState({
         message: "",
@@ -102,17 +102,18 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   onSubmit = (): void => {
     const { number, validate, message, shape } = this.state;
     const { pattern } = this.props;
-    this.setState({
-      number: "",
-      message: "",
-      pattern,
-      shape
-    });
     validate
       ? this.props.drawPattern(Number(number), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
+    this.setState({
+      number: "",
+      message: "",
+      pattern,
+      shape,
+      validate: false
+    });
   };
 
   render() {
