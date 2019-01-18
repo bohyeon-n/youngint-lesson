@@ -89,15 +89,18 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
     });
     const validate = this.isValidate(value);
     this.props.getValidate(validate);
+    this.props.handleChangeStep(2);
   };
 
   onShapeChange = (value: string): void => {
     this.setState({
       shape: value
     });
+    this.props.handleChangeStep(1);
   };
 
   onSubmit = (): void => {
+    console.log("sub  ");
     const { number, validate, message, shape } = this.state;
     const { pattern } = this.props;
     this.setState({
@@ -115,19 +118,27 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
 
   render() {
     const { number, message, shape, validate } = this.state;
+    const { step } = this.props;
     return (
       <React.Fragment>
         <Form
-          number={number}
-          shape={shape}
-          handleNumberChange={this.onNumberChange}
-          handlePatternChange={this.onShapeChange}
-          handleSubmit={this.onSubmit}
-          step={this.props.step}
-          handleChangeStep={this.props.handleChangeStep}
+          value={shape}
+          handleInputChange={this.onShapeChange}
+          labelName="패턴"
+          focus={step === 1}
+          onSubmit={this.onSubmit}
+        />
+        <Form
+          focus={false}
+          value={number}
+          handleInputChange={this.onNumberChange}
+          labelName="숫자"
+          onSubmit={this.onSubmit}
         />
 
         <Message message={message} alert={!validate} />
+
+        <button onClick={this.onSubmit}>패턴 그리기</button>
       </React.Fragment>
     );
   }
