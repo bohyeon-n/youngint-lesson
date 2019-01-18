@@ -114,7 +114,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   };
 
   render() {
-    const { number, message, shape } = this.state;
+    const { number, message, shape, validate } = this.state;
     return (
       <React.Fragment>
         <Form
@@ -127,7 +127,7 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
           handleChangeStep={this.props.handleChangeStep}
         />
 
-        <Message message={message} />
+        <Message message={message} alert={!validate} />
       </React.Fragment>
     );
   }
