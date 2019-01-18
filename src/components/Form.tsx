@@ -6,20 +6,24 @@ export interface FormProps {
   readonly handleNumberChange: Function;
   readonly handlePatternChange: Function;
   readonly handleSubmit: Function;
-  readonly pattern: string;
+  readonly shape: string;
+  readonly step: number;
+  readonly handleChangeStep: Function;
 }
 
 export class Form extends React.Component<FormProps, {}> {
   render() {
     const {
       number,
-      pattern,
+      shape,
       handleNumberChange,
       handlePatternChange,
-      handleSubmit
+      handleSubmit,
+      handleChangeStep,
+      step
     } = this.props;
     return (
-      <React.Fragment>
+      <div className="form">
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -27,11 +31,14 @@ export class Form extends React.Component<FormProps, {}> {
           }}
         >
           <label>
-            Pattern:
+            Shape:
             <Input
-              value={pattern}
+              value={shape}
               handleChange={handlePatternChange}
-              name={"pattern"}
+              name={"shape"}
+              active={step === 1}
+              handleChangeStep={handleChangeStep}
+              step={1}
             />
           </label>
           <label>
@@ -40,11 +47,14 @@ export class Form extends React.Component<FormProps, {}> {
               name={"number"}
               value={number}
               handleChange={handleNumberChange}
+              active={false}
+              handleChangeStep={handleChangeStep}
+              step={2}
             />
           </label>
           <button>Submit</button>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }

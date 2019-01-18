@@ -4,17 +4,22 @@ import { Message } from "../components/Message";
 
 export interface FormContainerProps {
   readonly drawPattern: Function;
+  readonly pattern: string;
+  readonly step: number;
+  readonly handleChangeStep: Function;
+  readonly getValidate: Function;
 }
 
 export class FormContainer extends React.Component<FormContainerProps, {}> {
   state = {
     number: "",
-    pattern: "",
     validate: false,
-    message: ""
+    message: "",
+    shape: ""
   };
 
   getValidateMessage = (n: number): string => {
+    const { pattern } = this.props;
     const message =
       n < 0
         ? "0보다 큰 숫자를 입력해주세요."
@@ -22,23 +27,28 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
         ? "100보다 큰 숫자는 입력할 수 없습니다."
         : n === 0
         ? "0은 입력할 수 없습니다."
+        : pattern === "diamond" && n % 2 === 0
+        ? "다이아몬드 패턴은 홀수만 입력할 수 있습니다"
         : "";
     return message;
   };
 
   isValidate = (value: string): boolean => {
+    const { pattern } = this.props;
     const number = Number(value);
 
+    if (value === "") {
+      this.setState({
+        message: "",
+        validate: false
+      });
+      return false;
+    }
     if (isNaN(number)) {
-      value === ""
-        ? this.setState({
-            message: "",
-            validate: false
-          })
-        : this.setState({
-            message: "숫자를 입력해주세요.",
-            validate: false
-          });
+      this.setState({
+        message: "숫자를 입력해주세요.",
+        validate: false
+      });
       return false;
     } else if (value.indexOf(".") !== -1) {
       this.setState({
@@ -53,9 +63,14 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
       });
       return false;
     } else {
-      if (number > 0 && number <= 100) {
+      if (
+        number > 0 &&
+        number <= 100 &&
+        !(pattern === "diamond" && number % 2 === 0)
+      ) {
         this.setState({
-          validate: true
+          validate: true,
+          message: ""
         });
         return true;
       } else {
@@ -72,39 +87,44 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
     this.setState({
       number: value
     });
-    this.isValidate(value);
+    const validate = this.isValidate(value);
+    this.props.getValidate(validate);
   };
 
-  onPatternChange = (value: string): void => {
+  onShapeChange = (value: string): void => {
     this.setState({
-      pattern: value
+      shape: value
     });
   };
 
   onSubmit = (): void => {
-    const { number, validate, message, pattern } = this.state;
+    const { number, validate, message, shape } = this.state;
+    const { pattern } = this.props;
     this.setState({
       number: "",
       message: "",
-      pattern: pattern
+      pattern,
+      shape
     });
     validate
-      ? this.props.drawPattern(Number(number), pattern)
+      ? this.props.drawPattern(Number(number), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
   };
 
   render() {
-    const { number, message, pattern } = this.state;
+    const { number, message, shape } = this.state;
     return (
       <React.Fragment>
         <Form
           number={number}
-          pattern={pattern}
+          shape={shape}
           handleNumberChange={this.onNumberChange}
-          handlePatternChange={this.onPatternChange}
+          handlePatternChange={this.onShapeChange}
           handleSubmit={this.onSubmit}
+          step={this.props.step}
+          handleChangeStep={this.props.handleChangeStep}
         />
 
         <Message message={message} />
