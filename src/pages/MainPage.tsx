@@ -102,24 +102,28 @@ export default class MainPage extends React.Component {
           handleChangeStep={this.onChangeStep}
           getValidate={this.getValidate}
         />
-
-        {this.state.firstSubmit && (
-          <Pattern
-            number={Number(submitNumber)}
-            shape={shape}
-            pattern={submitPattern}
-          />
-        )}
-        {formerSubmit && (
-          <div>
-            <div>이전 패턴</div>
-            <Pattern
-              number={Number(formerInputState.number)}
-              shape={formerInputState.shape}
-              pattern={formerInputState.pattern}
-            />
-          </div>
-        )}
+        <div className="printed">
+          {this.state.firstSubmit && (
+            <div className="pattern">
+              <div>출력 결과</div>
+              <Pattern
+                number={Number(submitNumber)}
+                shape={shape}
+                pattern={submitPattern}
+              />
+            </div>
+          )}
+          {formerSubmit && (
+            <div className="pattern">
+              <div>이전 패턴</div>
+              <Pattern
+                number={Number(formerInputState.number)}
+                shape={formerInputState.shape}
+                pattern={formerInputState.pattern}
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   }

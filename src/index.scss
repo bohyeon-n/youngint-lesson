@@ -60,3 +60,10 @@ button {
   width: 100px;
   height: 50px;
 }
+
+.printed {
+  display: flex;
+  .pattern {
+    margin: 20px;
+  }
+}
