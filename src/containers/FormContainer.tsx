@@ -100,7 +100,6 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
   };
 
   onSubmit = (): void => {
-    console.log("sub  ");
     const { number, validate, message, shape } = this.state;
     const { pattern } = this.props;
     this.setState({
@@ -129,10 +128,8 @@ export class FormContainer extends React.Component<FormContainerProps, {}> {
           focus={step === 1}
           onSubmit={this.onSubmit}
         />
-        <div>
-          숫자를 입력해주세요.* 숫자는 1부터 100까지의 정수만을 입력할 수
-          있습니다.
-        </div>
+        <div>숫자를 입력해주세요.*</div>
+        <div>숫자는 1부터 100까지의 정수만을 입력할 수 있습니다.</div>
         <Form
           focus={false}
           value={number}
