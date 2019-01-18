@@ -75,7 +75,13 @@ export default class MainPage extends React.Component {
       formerInputState,
       formerSubmit
     } = this.state;
-    const patterns = ["triangle", "reverseTriangle", "diamond", "pattern4"];
+    const patterns = [
+      "triangle",
+      "reverseTriangle",
+      "diamond",
+      "pattern4",
+      "pattern5"
+    ];
     return (
       <div>
         <h1>Pattern Stamp</h1>
