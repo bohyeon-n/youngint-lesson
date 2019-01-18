@@ -6,7 +6,7 @@ import { List } from "../components/List";
 export default class MainPage extends React.Component {
   state = {
     number: "",
-    pattern: "diamond",
+    pattern: "pattern4",
     step: 0,
     shape: "",
     validate: false,

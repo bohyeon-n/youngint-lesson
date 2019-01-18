@@ -25,6 +25,20 @@ export class Pattern extends React.Component<PatternProps, {}> {
       for (let i: number = n; i > 0; i--) {
         string += shape;
       }
+    } else if (pattern === "pattern4") {
+      // pattern4
+      let stringLine = "";
+      let blankLine = "";
+      for (let i: number = 0; i < totalNumber; i++) {
+        stringLine += shape;
+      }
+      for (let i: number = 0; i < totalNumber + (totalNumber - 1); i++) {
+        blankLine += " ";
+      }
+      string =
+        blankLine.slice(n, blankLine.length - n) +
+        stringLine +
+        blankLine.slice(-n);
     } else {
       //diamond
       let blank: string = "";
