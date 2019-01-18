@@ -12,6 +12,7 @@ export default class MainPage extends React.Component {
     validate: false,
     submitPattern: "trianlge",
     submitNumber: "",
+    submitShape: "",
     firstSubmit: false,
     formerSubmit: false,
     formerInputState: {
@@ -26,9 +27,9 @@ export default class MainPage extends React.Component {
       this.setState({
         formerSubmit: true,
         formerInputState: {
-          number: this.state.number,
-          pattern: this.state.pattern,
-          shape: this.state.shape
+          number: this.state.submitNumber,
+          pattern: this.state.submitPattern,
+          shape: this.state.submitShape
         }
       });
     } else {
@@ -40,7 +41,8 @@ export default class MainPage extends React.Component {
       shape,
       pattern,
       submitPattern: this.state.pattern,
-      submitNumber: n
+      submitNumber: n,
+      submitShape: shape
     });
   };
 
@@ -73,7 +75,7 @@ export default class MainPage extends React.Component {
       formerInputState,
       formerSubmit
     } = this.state;
-    const patterns = ["triangle", "reverseTriangle", "diamond"];
+    const patterns = ["triangle", "reverseTriangle", "diamond", "pattern4"];
     return (
       <div>
         <h1>Pattern Stamp</h1>
