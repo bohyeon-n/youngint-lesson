@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Pattern } from "../components/Pattern";
 import classnames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface ListProps {
   readonly list: string[];
@@ -22,6 +23,10 @@ export class List extends React.Component<ListProps, {}> {
             <div>{item}</div>
             <div className="pattern">
               <Pattern number={5} shape="*" pattern={item} />
+            </div>
+
+            <div className="check">
+              <FontAwesomeIcon icon="check-circle" size="5x" />
             </div>
           </div>
         ))}
