@@ -41,6 +41,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
         stringLine +
         blankLine.slice(-n);
     } else if (pattern === "pattern5") {
+      // pattern5
       let stringLine = "";
       let blankLine = "";
       for (let i: number = 0; i < totalNumber - n + 1; i++) {
