@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface InputProps {
-  readonly value: any;
+  readonly value: string | number;
   readonly onInputChange: Function;
   readonly name: string;
   readonly active: boolean;
@@ -17,9 +17,7 @@ export class Input extends React.Component<InputProps, {}> {
           type="text"
           name={name}
           value={value}
-          onChange={e => {
-            onInputChange(e.target.value);
-          }}
+          onChange={e => onInputChange(e.target.value)}
           onKeyPress={e => e.key == "Enter" && onSubmit()}
           ref={input => input && active && input.focus()}
         />

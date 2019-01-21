@@ -7,6 +7,8 @@ export interface FormProps {
   readonly focus: boolean;
   readonly labelName: string;
   readonly onSubmit: Function;
+  readonly pattern?: any;
+  readonly name?: string;
 }
 
 export class Form extends React.Component<FormProps, {}> {
@@ -21,7 +23,7 @@ export class Form extends React.Component<FormProps, {}> {
               onSubmit={onSubmit}
               value={value}
               onInputChange={handleInputChange}
-              name={"shape"}
+              name={name}
               active={focus}
             />
           </label>
