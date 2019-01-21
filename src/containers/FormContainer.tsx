@@ -3,12 +3,9 @@ import { Form } from "../components/Form";
 import { Message } from "../components/Message";
 import { observer, inject } from "mobx-react";
 
-interface FormContainerProps {
-  p: string;
-}
 @inject("pattern")
 @observer
-export class FormContainer extends React.Component<FormContainerProps, {}> {
+export class FormContainer extends React.Component {
   render() {
     const { pattern }: any = this.props;
     return (
