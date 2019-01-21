@@ -17,6 +17,7 @@ class PatternStore {
   @action onChangePattern(pattern: string) {
     this.pattern = pattern;
     this.isValidate();
+    this.step = 1;
   }
 
   @action getValidateMessage = (n: number): string => {
@@ -74,6 +75,7 @@ class PatternStore {
   };
 
   @action onChangeNumber = (value: string): void => {
+    this.step = 2;
     this.number = value;
     const validate = this.isValidate();
     this.getValidate(validate);
@@ -83,12 +85,7 @@ class PatternStore {
     this.shape = value;
   };
 
-  @action handleChangeStep = (step: number) => {
-    this.step = step;
-  };
-
   @action onSubmit = (): void => {
-    console.log("hhh");
     const { number, validate, message, shape, pattern } = this;
 
     validate
@@ -128,11 +125,6 @@ class PatternStore {
     this.submitPattern = this.pattern;
     this.submitNumber = n;
     this.submitShape = shape;
-  };
-
-  @action onSelectPattern = (pattern: string): void => {
-    this.pattern = pattern;
-    this.step = 1;
   };
 }
 
