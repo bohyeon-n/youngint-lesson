@@ -7,14 +7,8 @@ import { observer, inject } from "mobx-react";
 @inject("pattern")
 @observer
 export default class MainPage extends React.Component {
+  patterns = ["triangle", "reverseTriangle", "diamond", "pattern4", "pattern5"];
   render() {
-    const patterns = [
-      "triangle",
-      "reverseTriangle",
-      "diamond",
-      "pattern4",
-      "pattern5"
-    ];
     const { pattern }: any = this.props;
     return (
       <div>
@@ -24,8 +18,8 @@ export default class MainPage extends React.Component {
           입력 후 패턴 출력하기 버튼을 누르면 원하는 패턴이 출력됩니다.
         </p>
         <div>패턴을 선택해주세요.</div>
-        <List list={patterns} />
-        <FormContainer p={pattern.pattern} />
+        <List list={this.patterns} />
+        <FormContainer />
         <div className="printed">
           {pattern.firstSubmit && (
             <div className="pattern">
