@@ -22,7 +22,7 @@ export class FormContainer extends React.Component {
         <div>숫자를 입력해주세요.*</div>
         <div>숫자는 1부터 100까지의 정수만을 입력할 수 있습니다.</div>
         <Form
-          focus={false}
+          focus={pattern.step === 2}
           value={pattern.number}
           handleInputChange={pattern.onChangeNumber}
           labelName="숫자"

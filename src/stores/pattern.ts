@@ -17,7 +17,7 @@ class PatternStore {
   @action onChangePattern(pattern: string) {
     this.pattern = pattern;
     this.isValidate();
-    this.step = 1;
+    this.step = this.shape === "" ? 1 : 2;
   }
 
   @action getValidateMessage = (n: number): string => {
