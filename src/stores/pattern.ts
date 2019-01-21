@@ -16,7 +16,7 @@ class PatternStore {
 
   @action onChangePattern(pattern: string) {
     this.pattern = pattern;
-    this.isValidate();
+    this.validate = this.isValidate();
     this.step = this.shape === "" ? 1 : 2;
   }
 
@@ -41,21 +41,17 @@ class PatternStore {
     const number = Number(this.number);
     if (value === "") {
       this.message = "";
-      this.validate = false;
       return false;
     }
     if (isNaN(number)) {
       this.message = "숫자를 입력해주세요.";
-      this.validate = false;
       return false;
     } else if (value.indexOf(".") !== -1) {
       this.message = "정수만 입력할 수 있습니다.";
-      this.validate = false;
+      return false;
     } else if (!isFinite(number)) {
       const message = value.slice(0, 1) === "-" ? "작은 수" : "큰 수";
-
       this.message = `너무 ${message}를 입력하셨네요🤮 0보다 크고 100보다 작은 정수만 입력할 수 있습니다.`;
-      this.validate = false;
       return false;
     } else {
       if (
@@ -63,12 +59,10 @@ class PatternStore {
         number <= 100 &&
         !(pattern === "diamond" && number % 2 === 0)
       ) {
-        this.validate = true;
         this.message = "";
         return true;
       } else {
         this.message = this.getValidateMessage(number);
-        this.validate = false;
         return false;
       }
     }
@@ -78,6 +72,7 @@ class PatternStore {
     this.step = 2;
     this.number = value;
     const validate = this.isValidate();
+    this.validate = validate;
     this.getValidate(validate);
   };
 
