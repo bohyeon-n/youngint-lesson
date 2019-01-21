@@ -30,8 +30,9 @@ export class FormContainer extends React.Component {
           pattern={pattern.pattern}
           name={"number"}
         />
-
-        <Message message={pattern.message} alert={!pattern.validate} />
+        <div className="message">
+          <Message message={pattern.message} alert={pattern.validate} />
+        </div>
 
         <button onClick={pattern.onSubmit}>패턴 출력하기</button>
       </React.Fragment>

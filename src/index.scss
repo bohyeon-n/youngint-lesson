@@ -47,7 +47,8 @@
 }
 
 .message {
-  .alert {
+  display: flex;
+  .icon {
     color: red;
   }
 }
@@ -66,4 +67,8 @@ button {
   .pattern {
     margin: 20px;
   }
+}
+
+.message {
+  height: 20px;
 }
