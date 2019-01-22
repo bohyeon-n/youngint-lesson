@@ -70,7 +70,6 @@ class PatternStore {
   @action onChangeNumber = (value: string): void => {
     this.step = 2;
     this.numberInputValue = value;
-
     const validate = this.isValidate(value, this.pattern);
     this.validate = validate;
     this.getValidate(validate);
@@ -81,10 +80,9 @@ class PatternStore {
   };
 
   @action onSubmit = (): void => {
-    const { numberInputValue, validate, message, shape, pattern } = this;
-
+    const { validate, message, shape, pattern } = this;
     validate
-      ? this.drawPattern(Number(numberInputValue), shape, pattern)
+      ? this.drawPattern(Number(this.numberInputValue), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
