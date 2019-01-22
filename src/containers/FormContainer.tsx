@@ -31,7 +31,7 @@ export class FormContainer extends React.Component {
           name={"number"}
         />
         <div className="message">
-          <Message message={pattern.message} alert={pattern.validate} />
+          <Message message={pattern.message} alert={pattern.valid} />
         </div>
 
         <button onClick={pattern.onSubmit}>패턴 출력하기</button>

@@ -6,7 +6,7 @@ class PatternStore {
   @observable numberInputValue: string = "";
   @observable step: number = 0;
   @observable message: string = "";
-  @observable validate: boolean = false;
+  @observable valid: boolean = false;
   @observable formerSubmit: boolean = false;
   @observable firstSubmit: boolean = false;
   @observable formerInputState: object;
@@ -15,12 +15,18 @@ class PatternStore {
   @observable submitShape: string;
 
   @action onChangePattern(pattern: string) {
-    this.validate = this.isValidate(this.numberInputValue, pattern);
+    const { valid, message } = this.isValid(
+      this.numberInputValue,
+      this.pattern
+    );
+    this.valid = valid;
+    this.message = message;
+
     this.pattern = pattern;
     this.step = this.shape === "" ? 1 : 2;
   }
 
-  @action getValidateMessage = (n: number): string => {
+  getAlertMessage = (n: number): string => {
     const pattern = this.pattern;
     const message =
       n < 0
@@ -35,44 +41,46 @@ class PatternStore {
     return message;
   };
 
-  @action isValidate = (numberInputValue: string, pattern: string): boolean => {
+  @action isValid = (numberInputValue: string, pattern: string) => {
     const number = Number(numberInputValue);
+    let valid: boolean = false;
+    let message: string;
     if (numberInputValue === "") {
-      this.message = "";
-      return false;
-    }
-    if (isNaN(number)) {
-      this.message = "숫자를 입력해주세요.";
-      return false;
+      message = "";
+    } else if (isNaN(number)) {
+      message = "숫자를 입력해주세요.";
     } else if (numberInputValue.indexOf(".") !== -1) {
-      this.message = "정수만 입력할 수 있습니다.";
-      return false;
+      message = "정수만 입력할 수 있습니다.";
     } else if (!isFinite(number)) {
-      const message =
+      const messageContent =
         numberInputValue.slice(0, 1) === "-" ? "작은 수" : "큰 수";
-      this.message = `너무 ${message}를 입력하셨네요🤮 0보다 크고 100보다 작은 정수만 입력할 수 있습니다.`;
-      return false;
+      const messageTemplate = `너무 ${messageContent}를 입력하셨네요🤮 0보다 크고 100보다 작은 정수만 입력할 수 있습니다.`;
+      message = messageTemplate;
     } else {
       if (
         number > 0 &&
         number <= 100 &&
         !(pattern === "diamond" && number % 2 === 0)
       ) {
-        this.message = "";
-        return true;
+        message = "";
+        valid = true;
       } else {
-        this.message = this.getValidateMessage(number);
-        return false;
+        message = this.getAlertMessage(number);
       }
     }
+
+    return {
+      valid: valid,
+      message: message
+    };
   };
 
   @action onChangeNumber = (value: string): void => {
     this.step = 2;
     this.numberInputValue = value;
-    const validate = this.isValidate(value, this.pattern);
-    this.validate = validate;
-    this.getValidate(validate);
+    const { valid, message } = this.isValid(value, this.pattern);
+    this.valid = valid;
+    this.message = message;
   };
 
   @action onChangeShape = (value: string): void => {
@@ -80,8 +88,8 @@ class PatternStore {
   };
 
   @action onSubmit = (): void => {
-    const { validate, message, shape, pattern } = this;
-    validate
+    const { valid, message, shape, pattern } = this;
+    valid
       ? this.drawPattern(Number(this.numberInputValue), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
@@ -89,15 +97,11 @@ class PatternStore {
     this.numberInputValue = "";
     this.message = "";
     this.shape = shape;
-    this.validate = false;
+    this.valid = false;
   };
 
   @action onChangeStep = (step: number) => {
     this.step = step;
-  };
-
-  @action getValidate = (validate: boolean) => {
-    this.validate = validate;
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
