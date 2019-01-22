@@ -35,21 +35,21 @@ class PatternStore {
     return message;
   };
 
-  @action isValidate = (inputNumberValue: string, pattern: string): boolean => {
-    const number = Number(inputNumberValue);
-    if (inputNumberValue === "") {
+  @action isValidate = (numberInputValue: string, pattern: string): boolean => {
+    const number = Number(numberInputValue);
+    if (numberInputValue === "") {
       this.message = "";
       return false;
     }
     if (isNaN(number)) {
       this.message = "숫자를 입력해주세요.";
       return false;
-    } else if (inputNumberValue.indexOf(".") !== -1) {
+    } else if (numberInputValue.indexOf(".") !== -1) {
       this.message = "정수만 입력할 수 있습니다.";
       return false;
     } else if (!isFinite(number)) {
       const message =
-        inputNumberValue.slice(0, 1) === "-" ? "작은 수" : "큰 수";
+        numberInputValue.slice(0, 1) === "-" ? "작은 수" : "큰 수";
       this.message = `너무 ${message}를 입력하셨네요🤮 0보다 크고 100보다 작은 정수만 입력할 수 있습니다.`;
       return false;
     } else {
