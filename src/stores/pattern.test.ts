@@ -10,7 +10,7 @@ test.only.each([
   // arrange
   let pattern = new PatternStore();
   // act
-  let result = pattern.isValidate(input, "triangle");
+  let result = pattern.isValid(input, "triangle");
   // assert
   expect(result).toBe(expected);
 });
@@ -28,7 +28,7 @@ test.only.each([
   let pattern = new PatternStore();
 
   // act
-  let result = pattern.isValidate(input, "triangle");
+  let result = pattern.isValid(input, "triangle");
 
   // assert
   expect(result).toBe(expected);
