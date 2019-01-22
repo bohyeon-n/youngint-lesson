@@ -3,11 +3,12 @@ import { FormContainer } from "../containers/FormContainer";
 import { Pattern } from "../components/Pattern";
 import List from "../components/List";
 import { observer, inject } from "mobx-react";
+import Pattrens from "../utils/Patterns";
 
 @inject("pattern")
 @observer
 export default class MainPage extends React.Component {
-  patterns = ["triangle", "reverseTriangle", "diamond", "pattern4", "pattern5"];
+  patterns = [Pattrens.Triangle, Pattrens.Diamond, Pattrens.Pattern4, Pattrens.Pattern5, Pattrens.ReverseTriangle];
   render() {
     const { pattern }: any = this.props;
     return (
