@@ -3,7 +3,7 @@ import { observable, action } from "mobx";
 class PatternStore {
   @observable pattern: string = "triangle";
   @observable shape: string = "";
-  @observable number: string = "";
+  @observable numberInputValue: string = "";
   @observable step: number = 0;
   @observable message: string = "";
   @observable validate: boolean = false;
@@ -15,8 +15,8 @@ class PatternStore {
   @observable submitShape: string;
 
   @action onChangePattern(pattern: string) {
+    this.validate = this.isValidate(this.numberInputValue, pattern);
     this.pattern = pattern;
-    this.validate = this.isValidate();
     this.step = this.shape === "" ? 1 : 2;
   }
 
@@ -35,22 +35,21 @@ class PatternStore {
     return message;
   };
 
-  @action isValidate = (): boolean => {
-    const pattern = this.pattern;
-    const value = this.number;
-    const number = Number(this.number);
-    if (value === "") {
+  @action isValidate = (inputNumberValue: string, pattern: string): boolean => {
+    const number = Number(inputNumberValue);
+    if (inputNumberValue === "") {
       this.message = "";
       return false;
     }
     if (isNaN(number)) {
       this.message = "숫자를 입력해주세요.";
       return false;
-    } else if (value.indexOf(".") !== -1) {
+    } else if (inputNumberValue.indexOf(".") !== -1) {
       this.message = "정수만 입력할 수 있습니다.";
       return false;
     } else if (!isFinite(number)) {
-      const message = value.slice(0, 1) === "-" ? "작은 수" : "큰 수";
+      const message =
+        inputNumberValue.slice(0, 1) === "-" ? "작은 수" : "큰 수";
       this.message = `너무 ${message}를 입력하셨네요🤮 0보다 크고 100보다 작은 정수만 입력할 수 있습니다.`;
       return false;
     } else {
@@ -70,8 +69,9 @@ class PatternStore {
 
   @action onChangeNumber = (value: string): void => {
     this.step = 2;
-    this.number = value;
-    const validate = this.isValidate();
+    this.numberInputValue = value;
+
+    const validate = this.isValidate(value, this.pattern);
     this.validate = validate;
     this.getValidate(validate);
   };
@@ -81,14 +81,14 @@ class PatternStore {
   };
 
   @action onSubmit = (): void => {
-    const { number, validate, message, shape, pattern } = this;
+    const { numberInputValue, validate, message, shape, pattern } = this;
 
     validate
-      ? this.drawPattern(Number(number), shape, pattern)
+      ? this.drawPattern(Number(numberInputValue), shape, pattern)
       : alert(`${message}
 다시 입력해주세요.
     `);
-    this.number = "";
+    this.numberInputValue = "";
     this.message = "";
     this.shape = shape;
     this.validate = false;
@@ -114,7 +114,7 @@ class PatternStore {
       this.firstSubmit = true;
     }
 
-    this.number = String(n);
+    this.numberInputValue = String(n);
     this.shape = shape;
     this.pattern = pattern;
     this.submitPattern = this.pattern;
