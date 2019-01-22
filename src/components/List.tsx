@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";
 
 export interface ListProps {
-  readonly list: symbol[];
+  readonly list: string[];
 }
 
 @inject("pattern")

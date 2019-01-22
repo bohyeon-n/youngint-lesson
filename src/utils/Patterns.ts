@@ -1,9 +1,9 @@
-const Patterns = {
-  Triangle: Symbol("triangle"),
-  ReverseTriangle: Symbol("reverseTriangle"),
-  Diamond: Symbol("diamond"),
-  Pattern4: Symbol("pattern4"),
-  Pattern5: Symbol("pattern5")
+enum Patterns {
+  Triangle = "triangle",
+  ReverseTriangle = "reverseTriangle",
+  Diamond = "diamond",
+  Pattern4 = "pattern4",
+  Pattern5 = "pattern5"
 }
 
 export default Patterns;

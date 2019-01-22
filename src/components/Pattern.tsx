@@ -4,14 +4,14 @@ import Patterns from "../utils/Patterns";
 export interface PatternProps {
   readonly number: number;
   readonly shape: string;
-  readonly pattern: symbol;
+  readonly pattern: string;
 }
 
 export class Pattern extends React.Component<PatternProps, {}> {
   drawPatternLine = (
     n: number,
     shape: string,
-    pattern: symbol,
+    pattern: string,
     totalNumber: number
   ): string => {
     let string: string = "";
@@ -52,7 +52,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
         blankLine += " ";
       }
       string = blankLine.slice(0, blankLine.length - 2 * (n - 1)) + stringLine;
-    } else if (pattern = Patterns.Diamond) {
+    } else if ((pattern = Patterns.Diamond)) {
       //diamond
       let blank: string = "";
       let pattern: string = "";
@@ -66,11 +66,11 @@ export class Pattern extends React.Component<PatternProps, {}> {
         blank.slice(0, blank.length / 2) +
         pattern +
         blank.slice(blank.length / 2, blank.length);
-    } 
+    }
     return string;
   };
 
-  createArray = (n: number, pattern: symbol): number[] => {
+  createArray = (n: number, pattern: string): number[] => {
     const array: Array<number> = [];
     if (pattern === Patterns.Diamond) {
       let i: number = 0;
@@ -91,7 +91,10 @@ export class Pattern extends React.Component<PatternProps, {}> {
     const { number, shape, pattern } = this.props;
     const arr: Array<any> = this.createArray(number, pattern);
     return (
-      <div style={{ whiteSpace: "pre" }} className={`pattern ${String(pattern)}`}>
+      <div
+        style={{ whiteSpace: "pre" }}
+        className={`pattern ${String(pattern)}`}
+      >
         {arr.map((n, index) => (
           <div key={index} className={String(pattern)}>
             {this.drawPatternLine(n + 1, shape, pattern, number)}
