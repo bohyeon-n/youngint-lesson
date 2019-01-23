@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { drawPatternLine, createShapesInLine } from "../utils/drawPattern";
+import { drawPatternLine, createShapesInLines } from "../utils/drawPattern";
 
 export interface PatternProps {
   readonly number: number;
@@ -11,7 +11,7 @@ export interface PatternProps {
 export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { number, shape, pattern } = this.props;
-    const arr: Array<any> = createShapesInLine(number, pattern);
+    const arr: Array<any> = createShapesInLines(number, pattern);
     return (
       <div
         style={{ whiteSpace: "pre" }}

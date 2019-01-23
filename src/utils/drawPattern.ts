@@ -1,5 +1,4 @@
 import Patterns from "../utils/Patterns";
-import Pattern from "../stores/pattern";
 
 const createPatternLine = (
   pattern: string,
@@ -67,7 +66,7 @@ const createString = (character: string, number: number) => {
   return string;
 };
 
-const createShapesInLine = (n: number, pattern: string): number[] => {
+const createShapesInLines = (n: number, pattern: string): number[] => {
   let array: Array<number> = [];
   if (pattern === Patterns.Diamond) {
     let i: number = 0;
@@ -92,6 +91,7 @@ const createShapesInLine = (n: number, pattern: string): number[] => {
     return array;
   }
 };
+
 const drawPatternLine = (
   n: number,
   shape: string,
@@ -113,4 +113,4 @@ const drawPatternLine = (
 
   return patternLine;
 };
-export { drawPatternLine, createShapesInLine };
+export { drawPatternLine, createShapesInLines };
