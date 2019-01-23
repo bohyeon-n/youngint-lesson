@@ -6,36 +6,36 @@ const createPatternLine = (
   shapesInLine: string,
   blankInLine: string
 ): string => {
-  let string: string = "";
+  //  string 변수명 변경
+  let line: string = "";
   switch (pattern) {
     case Patterns.Triangle:
-      string = shapesInLine + blankInLine;
+      line = shapesInLine + blankInLine;
       break;
     case Patterns.ReverseTriangle:
-      string = blankInLine + shapesInLine;
+      line = blankInLine + shapesInLine;
       break;
     case Patterns.Diamond:
       const centerIndex = blankInLine.length / 2;
-      string =
+      line =
         blankInLine.slice(0, centerIndex) +
         shapesInLine +
         blankInLine.slice(centerIndex, blankInLine.length);
       break;
     case Patterns.Pattern4:
       const blankLength = blankInLine.length;
-      string =
+      line =
         blankInLine.slice(0, blankLength - index) +
         shapesInLine +
         (index !== 0 ? blankInLine.slice(-index) : "");
-      console.log(string, index);
       break;
     case Patterns.Pattern5:
-      string =
+      line =
         blankInLine.slice(0, blankInLine.length - 2 * index) +
         shapesInLine +
         (index !== 0 ? blankInLine.slice(-2 * index) : "");
   }
-  return string;
+  return line;
 };
 
 const countBlanksInLine = (
