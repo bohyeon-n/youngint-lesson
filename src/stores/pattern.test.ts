@@ -45,5 +45,5 @@ test.only.each([
   // act
   const result = createShapesInLines(5, input);
   //assert
-  expect(result).toBe(expected);
+  expect(result).toEqual(expect.arrayContaining(expected));
 });
