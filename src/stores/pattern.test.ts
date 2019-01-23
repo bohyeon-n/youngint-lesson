@@ -1,4 +1,4 @@
-import Pattern from "./pattern";
+import { isValid } from "../utils/validation";
 
 test.only.each([
   [1, true],
@@ -8,11 +8,11 @@ test.only.each([
   [99999, false]
 ])("basic for number", (input, expected) => {
   // arrange
-  let pattern = new Pattern();
+
   // act
-  let result = pattern.isValid(input, "triangle");
+  let result = isValid(input, "triangle");
   // assert
-  expect(result).toBe(expected);
+  expect(result.valid).toBe(expected);
 });
 
 test.only.each([
@@ -25,11 +25,10 @@ test.only.each([
   ]
 ])("텍스트 값을 입력했을 때", (input, expected) => {
   // arrange
-  let pattern = new Pattern();
 
   // act
-  let result = pattern.isValid(input, "triangle");
+  let result = isValid(input, "triangle");
 
   // assert
-  expect(result).toBe(expected);
+  expect(result.valid).toBe(expected);
 });
