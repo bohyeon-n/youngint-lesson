@@ -57,7 +57,7 @@ const countBlanksInLine = (
   }
   return blankCount;
 };
-// character와 number를 받아서 number 만큼의 character가 있는 문자열을 리턴하는 함수.
+
 const createString = (character: string, number: number) => {
   let string: string = "";
   for (let i: number = 0; i < number; i++) {
@@ -77,8 +77,9 @@ const createShapesInLines = (shapeCount: number, pattern: string): number[] => {
     return [...array, ...[...array.slice(0, -1)].reverse()];
   } else if (pattern === Patterns.Pattern4) {
     for (let i = 0; i < shapeCount; i++) {
-      array.push(shapeCount);
+      array.push(shapeCount - 1);
     }
+    console.log(array);
     return array;
   } else {
     for (let i = 0; i < shapeCount; i++) {
@@ -88,6 +89,7 @@ const createShapesInLines = (shapeCount: number, pattern: string): number[] => {
       Patterns.ReverseTriangle === pattern || Patterns.Pattern5 === pattern
         ? array.reverse()
         : array;
+
     return array;
   }
 };
@@ -113,4 +115,4 @@ const drawPatternLine = (
 
   return patternLine;
 };
-export { drawPatternLine, createShapesInLines };
+export { drawPatternLine, createShapesInLines, countBlanksInLine };
