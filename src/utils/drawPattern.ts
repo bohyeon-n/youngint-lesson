@@ -1,6 +1,6 @@
 import Patterns from "../utils/Patterns";
 
-const makeShapeAndBlank = (
+const getShapeAndBlank = (
   n: number,
   shape: string,
   pattern: string,
@@ -91,4 +91,4 @@ const numberOfShapeInLine = (n: number, pattern: string): number[] => {
   }
 };
 
-export { makeShapeAndBlank, combineShapeAndBlank, numberOfShapeInLine };
+export { getShapeAndBlank, combineShapeAndBlank, numberOfShapeInLine };

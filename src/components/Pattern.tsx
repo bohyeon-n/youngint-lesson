@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {
-  makeShapeAndBlank,
+  getShapeAndBlank,
   combineShapeAndBlank,
   numberOfShapeInLine
 } from "../utils/drawPattern";
@@ -20,7 +20,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
     totalNumber: number,
     index: number
   ): string => {
-    const { shapesInLine, blankInLine } = makeShapeAndBlank(
+    const { shapesInLine, blankInLine } = getShapeAndBlank(
       n,
       shape,
       pattern,
