@@ -122,4 +122,21 @@ test.only.each([[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]])(
   }
 );
 
-// test.only([])("check triangle ");
+test.only.each([
+  ["triangle", ["*  ", "** ", "***"]],
+  ["reverseTriangle", ["***", " **", "  *"]],
+  ["diamond", [" * ", "***", " * "]],
+  ["pattern4", ["  ***", " *** ", "***  "]],
+  ["pattern5", ["  ***", " **  ", "*    "]]
+])("check overall patterns ", (input, expected) => {
+  //arrange
+  //act
+  const number = 3;
+  const shape = "*";
+  const pattern = input;
+  const result = createPattern(number, shape, pattern);
+
+  //assert
+
+  expect(result).toEqual(expect.arrayContaining(expected));
+});
