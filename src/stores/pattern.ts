@@ -1,6 +1,6 @@
 import { observable, action } from "mobx";
 
-class PatternStore {
+class Pattern {
   @observable pattern: string = "triangle";
   @observable shape: string = "";
   @observable numberInputValue: string = "";
@@ -124,4 +124,4 @@ class PatternStore {
   };
 }
 
-export default PatternStore;
+export default Pattern;

@@ -1,4 +1,4 @@
-import PatternStore from "./pattern";
+import Pattern from "./pattern";
 
 test.only.each([
   [1, true],
@@ -8,7 +8,7 @@ test.only.each([
   [99999, false]
 ])("basic for number", (input, expected) => {
   // arrange
-  let pattern = new PatternStore();
+  let pattern = new Pattern();
   // act
   let result = pattern.isValid(input, "triangle");
   // assert
@@ -25,7 +25,7 @@ test.only.each([
   ]
 ])("텍스트 값을 입력했을 때", (input, expected) => {
   // arrange
-  let pattern = new PatternStore();
+  let pattern = new Pattern();
 
   // act
   let result = pattern.isValid(input, "triangle");

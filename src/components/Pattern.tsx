@@ -1,6 +1,5 @@
 import * as React from "react";
 import Patterns from "../utils/Patterns";
-import PatternStore from "../stores/pattern";
 
 export interface PatternProps {
   readonly number: number;
