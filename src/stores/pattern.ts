@@ -40,7 +40,7 @@ class Pattern {
     return message;
   };
 
-  @action isValid = (numberInputValue: string, pattern: string) => {
+  isValid = (numberInputValue: string, pattern: string) => {
     const number = Number(numberInputValue);
     let valid: boolean = false;
     let message: string;
@@ -97,10 +97,6 @@ class Pattern {
     this.message = "";
     this.shape = shape;
     this.valid = false;
-  };
-
-  @action onChangeStep = (step: number) => {
-    this.step = step;
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
