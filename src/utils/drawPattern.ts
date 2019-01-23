@@ -38,7 +38,7 @@ const createPatternLine = (
 };
 
 const countBlanksInLine = (
-  n: number,
+  shapeCount: number,
   pattern: string,
   totalNumber: number,
   index: number
@@ -47,17 +47,17 @@ const countBlanksInLine = (
   let blankCount = 0;
   switch (pattern) {
     case Patterns.Pattern4:
-      blankCount = n - 1;
+      blankCount = shapeCount - 1;
       break;
     case Patterns.Pattern5:
       blankCount = totalNumber - 1 + index;
       break;
     default:
-      blankCount = totalNumber - n;
+      blankCount = totalNumber - shapeCount;
   }
   return blankCount;
 };
-
+// character와 number를 받아서 number 만큼의 character가 있는 문자열을 리턴하는 함수.
 const createString = (character: string, number: number) => {
   let string: string = "";
   for (let i: number = 0; i < number; i++) {
@@ -66,22 +66,22 @@ const createString = (character: string, number: number) => {
   return string;
 };
 
-const createShapesInLines = (n: number, pattern: string): number[] => {
+const createShapesInLines = (shapeCount: number, pattern: string): number[] => {
   let array: Array<number> = [];
   if (pattern === Patterns.Diamond) {
     let i: number = 0;
-    while (i < n) {
+    while (i < shapeCount) {
       array.push(i);
       i += 2;
     }
     return [...array, ...[...array.slice(0, -1)].reverse()];
   } else if (pattern === Patterns.Pattern4) {
-    for (let i = 0; i < n; i++) {
-      array.push(n);
+    for (let i = 0; i < shapeCount; i++) {
+      array.push(shapeCount);
     }
     return array;
   } else {
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < shapeCount; i++) {
       array.push(i);
     }
     array =
@@ -93,16 +93,16 @@ const createShapesInLines = (n: number, pattern: string): number[] => {
 };
 
 const drawPatternLine = (
-  n: number,
+  shapeCount: number,
   shape: string,
   pattern: string,
   totalNumber: number,
   index: number
 ) => {
-  const shapeInLine = createString(shape, n);
+  const shapeInLine = createString(shape, shapeCount);
   const blankInLine = createString(
     " ",
-    countBlanksInLine(n, pattern, totalNumber, index)
+    countBlanksInLine(shapeCount, pattern, totalNumber, index)
   );
   const patternLine = createPatternLine(
     pattern,
