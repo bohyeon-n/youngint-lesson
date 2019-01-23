@@ -26,13 +26,14 @@ const createPatternLine = (
       string =
         blankInLine.slice(0, blankLength - index) +
         shapesInLine +
-        blankInLine.slice(-index);
+        (index !== 0 ? blankInLine.slice(-index) : "");
+      console.log(string, index);
       break;
     case Patterns.Pattern5:
       string =
         blankInLine.slice(0, blankInLine.length - 2 * index) +
         shapesInLine +
-        blankInLine.slice(-2 * index);
+        (index !== 0 ? blankInLine.slice(-2 * index) : "");
   }
   return string;
 };
@@ -115,7 +116,11 @@ const drawPatternLine = (
 
   return patternLine;
 };
-const createPattern = (number: number, shape: string, pattern: string) => {
+const createPattern = (
+  number: number,
+  shape: string,
+  pattern: string
+): Array<string> => {
   const shapeArray = countShapesInLines(number, pattern);
   const patterns: Array<string> = [];
   shapeArray.map((shapeCount, index) =>
@@ -123,6 +128,7 @@ const createPattern = (number: number, shape: string, pattern: string) => {
       drawPatternLine(shapeCount + 1, shape, pattern, number, index)
     )
   );
+  console.log(pattern, patterns);
   return patterns;
 };
 
