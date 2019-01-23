@@ -1,10 +1,6 @@
 import * as React from "react";
 
-import {
-  createPatternLine,
-  createShapesInLine,
-  createPatternLineElements
-} from "../utils/drawPattern";
+import { drawPatternLine, createShapesInLine } from "../utils/drawPattern";
 
 export interface PatternProps {
   readonly number: number;
@@ -13,23 +9,6 @@ export interface PatternProps {
 }
 
 export class Pattern extends React.Component<PatternProps, {}> {
-  drawPatternLine = (
-    n: number,
-    shape: string,
-    pattern: string,
-    totalNumber: number,
-    index: number
-  ): string => {
-    const { shapesInLine, blankInLine } = createPatternLineElements(
-      n,
-      shape,
-      pattern,
-      totalNumber,
-      index
-    );
-    return createPatternLine(pattern, index, shapesInLine, blankInLine);
-  };
-
   render() {
     const { number, shape, pattern } = this.props;
     const arr: Array<any> = createShapesInLine(number, pattern);
@@ -40,7 +19,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
       >
         {arr.map((n, index) => (
           <div key={index} className={String(pattern)}>
-            {this.drawPatternLine(n + 1, shape, pattern, number, index)}
+            {drawPatternLine(n + 1, shape, pattern, number, index)}
           </div>
         ))}
       </div>
