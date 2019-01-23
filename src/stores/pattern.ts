@@ -15,14 +15,13 @@ class PatternStore {
   @observable submitShape: string;
 
   @action onChangePattern(pattern: string) {
+    this.pattern = pattern;
     const { valid, message } = this.isValid(
       this.numberInputValue,
       this.pattern
     );
     this.valid = valid;
     this.message = message;
-
-    this.pattern = pattern;
     this.step = this.shape === "" ? 1 : 2;
   }
 
