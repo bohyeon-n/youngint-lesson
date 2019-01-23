@@ -1,5 +1,7 @@
 import { isValid } from "../utils/validation";
 import { createShapesInLines, countBlanksInLine } from "../utils/drawPattern";
+import { text } from "@fortawesome/fontawesome-svg-core";
+import { shape } from "prop-types";
 
 test.only.each([
   [1, true],
@@ -40,10 +42,80 @@ test.only.each([
   ["diamond", [0, 2, 4, 2, 0]],
   ["pattern4", [4, 4, 4, 4, 4]],
   ["pattern5", [4, 3, 2, 1, 0]]
-])("한 줄에 들어가는 모양의 개수의 배열", (input, expected) => {
+])("check shapes in lines", (input, expected) => {
   // arrange
   // act
   const result = createShapesInLines(5, input);
   //assert
   expect(result).toEqual(expect.arrayContaining(expected));
 });
+
+test.only.each([[0, 4], [1, 2], [2, 0], [3, 2], [4, 4]])(
+  "check diamond blank count",
+  (input, expected) => {
+    //arrange;
+    //act
+    const totalNumber = 5;
+    const pattern = "diamond";
+    const shapeCount = totalNumber - expected;
+    const result = countBlanksInLine(shapeCount, pattern, totalNumber, input);
+    //assert
+    expect(result).toBe(expected);
+  }
+);
+
+test.only.each([[0, 4], [1, 4], [2, 4], [3, 4], [4, 4]])(
+  "check pattern4 blank count",
+  (input, expected) => {
+    // arrange
+    // act
+    const totalNumber = 5;
+    const pattern = "pattern4";
+    const result = countBlanksInLine(totalNumber, pattern, totalNumber, input);
+    // assert
+    expect(result).toBe(expected);
+  }
+);
+
+test.only.each([[0, 4], [1, 5], [2, 6], [3, 7], [4, 8]])(
+  "check pattern5 blank count",
+  (input, expected) => {
+    //arrange
+    //act
+    const totalNumber = 5;
+    const pattern = "pattern5";
+    const shapeCount = totalNumber - input;
+    const result = countBlanksInLine(shapeCount, pattern, totalNumber, input);
+    //assert
+    expect(result).toBe(expected);
+  }
+);
+
+test.only.each([[0, 4], [1, 3], [2, 2], [3, 1], [4, 0]])(
+  "check triangle blank count",
+  (input, expected) => {
+    //arrange
+    // act
+    const totalNumber = 5;
+    const pattern = "triangle";
+    const shapeCount = input + 1;
+    const result = countBlanksInLine(shapeCount, pattern, totalNumber, input);
+
+    // assert
+    expect(result).toBe(expected);
+  }
+);
+
+test.only.each([[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]])(
+  "check reverseTriangle blank count",
+  (input, expected) => {
+    //arrange
+    //act
+    const totalNumber = 5;
+    const pattern = "reverseTriangle";
+    const shapeCount = totalNumber - input;
+    const result = countBlanksInLine(shapeCount, pattern, totalNumber, input);
+    //assert
+    expect(result).toBe(expected);
+  }
+);

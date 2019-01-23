@@ -55,6 +55,7 @@ const countBlanksInLine = (
     default:
       blankCount = totalNumber - shapeCount;
   }
+
   return blankCount;
 };
 
