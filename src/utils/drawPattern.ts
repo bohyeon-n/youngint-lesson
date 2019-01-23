@@ -5,7 +5,7 @@ const createPatternLine = (
   index: number,
   shapesInLine: string,
   blankInLine: string
-) => {
+): string => {
   let string: string = "";
   switch (pattern) {
     case Patterns.Triangle:
@@ -42,7 +42,7 @@ const countBlanksInLine = (
   pattern: string,
   totalNumber: number,
   index: number
-) => {
+): number => {
   // 공백
   let blankCount = 0;
   switch (pattern) {
@@ -67,7 +67,7 @@ const createString = (character: string, number: number) => {
   return string;
 };
 
-const createShapesInLines = (shapeCount: number, pattern: string): number[] => {
+const countShapesInLines = (shapeCount: number, pattern: string): number[] => {
   let array: Array<number> = [];
   if (pattern === Patterns.Diamond) {
     let i: number = 0;
@@ -80,7 +80,6 @@ const createShapesInLines = (shapeCount: number, pattern: string): number[] => {
     for (let i = 0; i < shapeCount; i++) {
       array.push(shapeCount - 1);
     }
-    console.log(array);
     return array;
   } else {
     for (let i = 0; i < shapeCount; i++) {
@@ -116,4 +115,15 @@ const drawPatternLine = (
 
   return patternLine;
 };
-export { drawPatternLine, createShapesInLines, countBlanksInLine };
+const createPattern = (number: number, shape: string, pattern: string) => {
+  const shapeArray = countShapesInLines(number, pattern);
+  const patterns: Array<string> = [];
+  shapeArray.map((shapeCount, index) =>
+    patterns.push(
+      drawPatternLine(shapeCount + 1, shape, pattern, number, index)
+    )
+  );
+  return patterns;
+};
+
+export { createPattern, countShapesInLines, countBlanksInLine };

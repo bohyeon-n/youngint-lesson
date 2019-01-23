@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { drawPatternLine, createShapesInLines } from "../utils/drawPattern";
+import { createPattern } from "../utils/drawPattern";
 
 export interface PatternProps {
   readonly number: number;
@@ -11,15 +11,16 @@ export interface PatternProps {
 export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { number, shape, pattern } = this.props;
-    const arr: Array<any> = createShapesInLines(number, pattern);
+    const patterns = createPattern(number, shape, pattern);
+
     return (
       <div
         style={{ whiteSpace: "pre" }}
         className={`pattern ${String(pattern)}`}
       >
-        {arr.map((n, index) => (
+        {patterns.map((patternLine, index) => (
           <div key={index} className={String(pattern)}>
-            {drawPatternLine(n + 1, shape, pattern, number, index)}
+            {patternLine}
           </div>
         ))}
       </div>
