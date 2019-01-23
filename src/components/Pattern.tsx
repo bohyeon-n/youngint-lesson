@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import {
-  getShapeAndBlank,
-  combineShapeAndBlank,
-  numberOfShapeInLine
+  createPatternLine,
+  createShapesInLine,
+  createPatternLineElements
 } from "../utils/drawPattern";
 
 export interface PatternProps {
@@ -20,19 +20,19 @@ export class Pattern extends React.Component<PatternProps, {}> {
     totalNumber: number,
     index: number
   ): string => {
-    const { shapesInLine, blankInLine } = getShapeAndBlank(
+    const { shapesInLine, blankInLine } = createPatternLineElements(
       n,
       shape,
       pattern,
       totalNumber,
       index
     );
-    return combineShapeAndBlank(pattern, index, shapesInLine, blankInLine);
+    return createPatternLine(pattern, index, shapesInLine, blankInLine);
   };
 
   render() {
     const { number, shape, pattern } = this.props;
-    const arr: Array<any> = numberOfShapeInLine(number, pattern);
+    const arr: Array<any> = createShapesInLine(number, pattern);
     return (
       <div
         style={{ whiteSpace: "pre" }}

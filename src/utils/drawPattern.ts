@@ -1,6 +1,6 @@
 import Patterns from "../utils/Patterns";
 
-const getShapeAndBlank = (
+const createPatternLineElements = (
   n: number,
   shape: string,
   pattern: string,
@@ -30,7 +30,7 @@ const getShapeAndBlank = (
   return { shapesInLine, blankInLine };
 };
 
-const combineShapeAndBlank = (
+const createPatternLine = (
   pattern: string,
   index: number,
   shapesInLine: string,
@@ -65,7 +65,7 @@ const combineShapeAndBlank = (
   return string;
 };
 
-const numberOfShapeInLine = (n: number, pattern: string): number[] => {
+const createShapesInLine = (n: number, pattern: string): number[] => {
   let array: Array<number> = [];
   if (pattern === Patterns.Diamond) {
     let i: number = 0;
@@ -91,4 +91,4 @@ const numberOfShapeInLine = (n: number, pattern: string): number[] => {
   }
 };
 
-export { getShapeAndBlank, combineShapeAndBlank, numberOfShapeInLine };
+export { createPatternLine, createPatternLineElements, createShapesInLine };
