@@ -28,6 +28,7 @@ const createPatternLine = (
         blankInLine.slice(0, blankLength - index) +
         shapesInLine +
         blankInLine.slice(-index);
+      break;
     case Patterns.Pattern5:
       string =
         blankInLine.slice(0, blankInLine.length - 2 * index) +
@@ -109,6 +110,7 @@ const drawPatternLine = (
     shapeInLine,
     blankInLine
   );
+
   return patternLine;
 };
 export { drawPatternLine, createShapesInLine };
