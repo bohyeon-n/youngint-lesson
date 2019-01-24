@@ -1,4 +1,4 @@
-const isValid = (inputValue: string, pattern: string) => {
+const isValid = (inputValue: string | number, pattern: string) => {
   const inputNumber = Number(inputValue);
   const inputString = String(inputValue);
   let valid: boolean = false;
