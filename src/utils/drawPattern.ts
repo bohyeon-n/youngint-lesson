@@ -6,7 +6,6 @@ const createPatternLine = (
   shapesInLine: string,
   blankInLine: string
 ): string => {
-  //  string 변수명 변경
   let line: string = "";
   switch (pattern) {
     case Patterns.Triangle:
@@ -128,7 +127,6 @@ const createPattern = (
       drawPatternLine(shapeCount + 1, shape, pattern, number, index)
     )
   );
-  console.log(pattern, patterns);
   return patterns;
 };
 
