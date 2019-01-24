@@ -9,12 +9,24 @@ export default class DiamondShapePattern extends BaseShapePattern {
   countShapesInLines = (totalNumber = this.totalNumber): number[] => {
     let array: Array<number> = [];
     let i: number = 0;
-
     while (i < totalNumber) {
       array.push(i);
       i += 2;
     }
     return [...array, ...[...array.slice(0, -1)].reverse()];
+  };
+
+  createPatternLine = (
+    index: number,
+    shapesInLine: string,
+    blankInLine: string
+  ): string => {
+    const centerIndex = blankInLine.length / 2;
+    return (
+      blankInLine.slice(0, centerIndex) +
+      shapesInLine +
+      blankInLine.slice(centerIndex, blankInLine.length)
+    );
   };
 
   createPattern = (number: number, shape: string): Array<string> => {
