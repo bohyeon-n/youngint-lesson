@@ -2,7 +2,7 @@ import BaseShapePattern from "./BaseShapePattern";
 import CharCounter from "./CharCounter";
 import Patterns from "../utils/Patterns";
 
-export default class TriangleShapePattern extends BaseShapePattern {
+export default class DiamondShapePattern extends BaseShapePattern {
   totalNumber: number;
   shape: string;
 
@@ -12,9 +12,20 @@ export default class TriangleShapePattern extends BaseShapePattern {
     this.shape = shape;
   }
 
+  countShapesInLines = (totalNumber: number = this.totalNumber): number[] => {
+    let array: Array<number> = [];
+
+    let i: number = 0;
+    while (i < totalNumber) {
+      array.push(i);
+      i += 2;
+    }
+    return [...array, ...[...array.slice(0, -1)].reverse()];
+  };
+
   createPattern = (number: number, shape: string): Array<string> => {
-    const pattern = Patterns.Triangle;
-    const shapeArray = this.CharCounter.countShapesInLines(number);
+    const pattern = Patterns.Diamond;
+    const shapeArray = this.countShapesInLines(number);
     const patterns: Array<string> = [];
 
     shapeArray.map((shapeCount, index) =>
