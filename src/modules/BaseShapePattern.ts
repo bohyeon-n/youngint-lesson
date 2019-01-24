@@ -2,11 +2,33 @@ import Patterns from "../utils/Patterns";
 import CharCounter from "../modules/CharCounter";
 
 export default class BaseShapePattern {
-  CharCounter: CharCounter;
-
-  constructor(CharCounter: CharCounter) {
-    this.CharCounter = CharCounter;
+  totalNumber: number;
+  shape: string;
+  constructor(totalNumber: number, shape: string) {
+    this.totalNumber = totalNumber;
+    this.shape = shape;
   }
+  countBlanksInLine = (
+    shapeCount: number,
+    pattern: string,
+    totalNumber: number,
+    index: number
+  ): number => {
+    // 공백
+    let blankCount = 0;
+    switch (pattern) {
+      case Patterns.Pattern4:
+        blankCount = shapeCount - 1;
+        break;
+      case Patterns.Pattern5:
+        blankCount = totalNumber - 1 + index;
+        break;
+      default:
+        blankCount = totalNumber - shapeCount;
+    }
+
+    return blankCount;
+  };
 
   createShapesOfNumber = (character: string, number: number) => {
     let string: string = "";
@@ -14,6 +36,15 @@ export default class BaseShapePattern {
       string += character;
     }
     return string;
+  };
+
+  countShapesInLines = (shapeCount: number): number[] => {
+    const array: Array<number> = [];
+
+    for (let i = 0; i < shapeCount; i++) {
+      array.push(i);
+    }
+    return array;
   };
 
   createPatternLine = (
@@ -63,12 +94,7 @@ export default class BaseShapePattern {
     const shapeInLine = this.createShapesOfNumber(shape, shapeCount);
     const blankInLine = this.createShapesOfNumber(
       " ",
-      this.CharCounter.countBlanksInLine(
-        shapeCount,
-        pattern,
-        totalNumber,
-        index
-      )
+      this.countBlanksInLine(shapeCount, pattern, totalNumber, index)
     );
     const patternLine = this.createPatternLine(
       pattern,

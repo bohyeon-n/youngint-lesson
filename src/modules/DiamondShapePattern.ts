@@ -1,21 +1,15 @@
 import BaseShapePattern from "./BaseShapePattern";
-import CharCounter from "./CharCounter";
 import Patterns from "../utils/Patterns";
 
 export default class DiamondShapePattern extends BaseShapePattern {
-  totalNumber: number;
-  shape: string;
-
   constructor(totalNumber: number, shape: string) {
-    super(new CharCounter());
-    this.totalNumber = totalNumber;
-    this.shape = shape;
+    super(totalNumber, shape);
   }
 
-  countShapesInLines = (totalNumber: number = this.totalNumber): number[] => {
+  countShapesInLines = (totalNumber = this.totalNumber): number[] => {
     let array: Array<number> = [];
-
     let i: number = 0;
+
     while (i < totalNumber) {
       array.push(i);
       i += 2;
