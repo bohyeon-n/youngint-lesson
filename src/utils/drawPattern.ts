@@ -60,7 +60,7 @@ const countBlanksInLine = (
   return blankCount;
 };
 
-const createString = (character: string, number: number) => {
+const createShapesOfNumber = (character: string, number: number) => {
   let string: string = "";
   for (let i: number = 0; i < number; i++) {
     string += character;
@@ -102,8 +102,8 @@ const drawPatternLine = (
   totalNumber: number,
   index: number
 ) => {
-  const shapeInLine = createString(shape, shapeCount);
-  const blankInLine = createString(
+  const shapeInLine = createShapesOfNumber(shape, shapeCount);
+  const blankInLine = createShapesOfNumber(
     " ",
     countBlanksInLine(shapeCount, pattern, totalNumber, index)
   );
