@@ -1,4 +1,8 @@
-export default class BaseShapePattern {
+export interface IBaseShapePattern {
+  draw(): string[];
+}
+
+export default class BaseShapePattern implements IBaseShapePattern {
   protected totalNumber: number;
   protected shape: string;
 
@@ -47,4 +51,8 @@ export default class BaseShapePattern {
 
     return patternLine;
   };
+
+  draw(): string[] {
+    throw new Error("Method not implemented.");
+  }
 }
