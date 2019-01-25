@@ -1,6 +1,6 @@
 import Pattern4ShapePattern from "../modules/Pattern4ShapePattern";
 
-test("diamond", () => {
+test("pattern4", () => {
   // arrange
   let pattern = new Pattern4ShapePattern(3, "*");
 

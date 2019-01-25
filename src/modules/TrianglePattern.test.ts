@@ -1,6 +1,6 @@
 import TriangleShapePattern from "./TriangleShapePattern";
 
-test("basic", () => {
+test("triangle", () => {
   // arrange
   let pattern = new TriangleShapePattern(3, "*");
 
