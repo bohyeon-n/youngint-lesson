@@ -8,6 +8,7 @@ import { observer, inject } from "mobx-react";
 export class FormContainer extends React.Component {
   render() {
     const { pattern }: any = this.props;
+
     return (
       <React.Fragment>
         <div>모양을 입력해주세요 *</div>

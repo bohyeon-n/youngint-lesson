@@ -1,10 +1,12 @@
 export default class BaseShapePattern {
   totalNumber: number;
   shape: string;
+
   constructor(totalNumber: number, shape: string) {
     this.totalNumber = totalNumber;
     this.shape = shape;
   }
+
   countBlanksInLine = (
     shapeCount: number,
     totalNumber: number,

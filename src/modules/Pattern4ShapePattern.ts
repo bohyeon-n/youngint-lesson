@@ -9,6 +9,7 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
   countShapesInLines = (totalNumber = this.totalNumber): number[] => {
     return new Array(totalNumber).fill(totalNumber - 1);
   };
+
   countBlanksInLine = (
     shapeCount: number,
     totalNumber: number,

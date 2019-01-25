@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "mobx-react";
 import Pattern from "./stores/pattern";
+
 library.add(faCheckCircle, faExclamationTriangle);
 
 const pattern = new Pattern();

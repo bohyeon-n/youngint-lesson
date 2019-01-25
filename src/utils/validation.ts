@@ -3,6 +3,7 @@ const isValid = (inputValue: string | number, pattern: string) => {
   const inputString = String(inputValue);
   let valid: boolean = false;
   let message: string;
+
   if (inputString === "") {
     message = "";
   } else if (isNaN(inputNumber)) {

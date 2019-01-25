@@ -33,6 +33,7 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
   ): string => {
     return blankInLine + shapesInLine;
   };
+
   draw = () => {
     return this.createPattern(this.totalNumber, this.shape);
   };

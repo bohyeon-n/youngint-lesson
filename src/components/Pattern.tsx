@@ -17,6 +17,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { number, shape, pattern } = this.props;
     let patterns: Array<string> = [];
+
     switch (pattern) {
       case Patterns.Triangle:
         patterns = new TriangleShapePattern(number, shape).draw();
