@@ -5,13 +5,13 @@ import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
 
-@inject("pattern")
+@inject("patternStore")
 @observer
 export default class MainPage extends React.Component {
   keys = Object.keys(Patterns).map(k => k);
   patterns = this.keys.map(k => Patterns[k as any]);
   render() {
-    const { pattern }: any = this.props;
+    const { patternStore }: any = this.props;
     return (
       <div>
         <h1>Pattern Stamp</h1>
@@ -23,23 +23,23 @@ export default class MainPage extends React.Component {
         <List list={this.patterns} />
         <FormContainer />
         <div className="printed">
-          {pattern.firstSubmit && (
+          {patternStore.firstSubmit && (
             <div className="pattern">
               <div>출력 결과</div>
               <Pattern
-                number={Number(pattern.submitNumber)}
-                shape={pattern.submitShape}
-                pattern={pattern.submitPattern}
+                number={Number(patternStore.submitNumber)}
+                shape={patternStore.submitShape}
+                pattern={patternStore.submitPattern}
               />
             </div>
           )}
-          {pattern.formerSubmit && (
+          {patternStore.formerSubmit && (
             <div className="pattern">
               <div>이전 패턴</div>
               <Pattern
-                number={Number(pattern.formerInputState.number)}
-                shape={pattern.formerInputState.shape}
-                pattern={pattern.formerInputState.pattern}
+                number={Number(patternStore.formerInputState.number)}
+                shape={patternStore.formerInputState.shape}
+                pattern={patternStore.formerInputState.pattern}
               />
             </div>
           )}

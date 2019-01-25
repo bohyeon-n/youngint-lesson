@@ -1,7 +1,7 @@
 import { observable, action } from "mobx";
 import { isValid } from "../utils/validation";
 
-class Pattern {
+class PatternStore {
   @observable pattern: string = "triangle";
   @observable shape: string = "";
   @observable numberInputValue: string = "";
@@ -69,4 +69,4 @@ class Pattern {
   };
 }
 
-export default Pattern;
+export default PatternStore;
