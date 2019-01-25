@@ -1,6 +1,11 @@
 import { observable, action } from "mobx";
 import { isValid } from "../utils/validation";
 
+interface formerInputState {
+  number: number | string;
+  shape: string;
+  pattern: string;
+}
 class PatternStore {
   @observable pattern: string = "triangle";
   @observable shape: string = "";
@@ -10,7 +15,7 @@ class PatternStore {
   @observable valid: boolean = false;
   @observable formerSubmit: boolean = false;
   @observable firstSubmit: boolean = false;
-  @observable formerInputState: object;
+  @observable formerInputState: formerInputState;
   @observable submitNumber: string | number;
   @observable submitPattern: string;
   @observable submitShape: string;
@@ -53,7 +58,7 @@ class PatternStore {
       this.formerSubmit = true;
       this.formerInputState = {
         number: this.submitNumber,
-        pattern: this.submitPattern,
+        pattern: this.pattern,
         shape: this.submitShape
       };
     } else {
