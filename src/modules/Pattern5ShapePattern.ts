@@ -7,11 +7,10 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
   }
 
   countShapesInLines = (totalNumber = this.totalNumber): number[] => {
-    let array: Array<number> = [];
-    for (let i = 0; i < totalNumber; i++) {
-      array.push(i);
-    }
-    return array.reverse();
+    return new Array(totalNumber)
+      .fill("")
+      .map((i, index) => index)
+      .reverse();
   };
 
   countBlanksInLine = (

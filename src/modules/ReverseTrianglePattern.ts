@@ -6,13 +6,11 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  public countShapesInLines = (shapeCount: number): number[] => {
-    const array: Array<number> = [];
-
-    for (let i = 0; i < shapeCount; i++) {
-      array.push(i);
-    }
-    return array.reverse();
+  public countShapesInLines = (totalNumber: number): number[] => {
+    return new Array(totalNumber)
+      .fill("")
+      .map((i, index) => index)
+      .reverse();
   };
   createPattern = (number: number, shape: string): Array<string> => {
     const pattern = Patterns.Diamond;

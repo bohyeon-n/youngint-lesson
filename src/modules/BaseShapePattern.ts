@@ -17,13 +17,8 @@ export default class BaseShapePattern {
     return character.repeat(number);
   };
 
-  countShapesInLines = (shapeCount: number): number[] => {
-    const array: Array<number> = [];
-
-    for (let i = 0; i < shapeCount; i++) {
-      array.push(i);
-    }
-    return array;
+  countShapesInLines = (totalNumber: number): number[] => {
+    return new Array(totalNumber).fill("").map((i, index) => index);
   };
 
   createPatternLine = (
