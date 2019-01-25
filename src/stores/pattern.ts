@@ -1,6 +1,14 @@
 import { observable, action } from "mobx";
 import { isValid } from "../utils/validation";
 
+
+class PatternModel {
+  number: string | number;
+  pattern: string;
+  shape: string;
+}
+
+
 class Pattern {
   @observable pattern: string = "triangle";
   @observable shape: string = "";
@@ -10,7 +18,7 @@ class Pattern {
   @observable valid: boolean = false;
   @observable formerSubmit: boolean = false;
   @observable firstSubmit: boolean = false;
-  @observable formerInputState: object;
+  @observable formerInputState: PatternModel;
   @observable submitNumber: string | number;
   @observable submitPattern: string;
   @observable submitShape: string;
@@ -51,11 +59,10 @@ class Pattern {
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
     if (this.firstSubmit) {
       this.formerSubmit = true;
-      this.formerInputState = {
-        number: this.submitNumber,
-        pattern: this.submitPattern,
-        shape: this.submitShape
-      };
+      this.formerInputState = new PatternModel();
+      this.formerInputState.number = this.submitNumber;
+      this.formerInputState.pattern = this.submitPattern;
+      this.formerInputState.shape = this.submitShape;
     } else {
       this.firstSubmit = true;
     }
