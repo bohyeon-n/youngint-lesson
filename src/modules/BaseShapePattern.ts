@@ -15,7 +15,7 @@ export default class BaseShapePattern {
     return totalNumber - shapeCount;
   };
 
-  private repeatCharacterNTimes = (character: string, number: number) => {
+  private repeatCharacterNumberTimes = (character: string, number: number) => {
     return character.repeat(number);
   };
 
@@ -38,8 +38,8 @@ export default class BaseShapePattern {
     totalNumber: number,
     index: number
   ) => {
-    const shapeInLine = this.repeatCharacterNTimes(shape, shapeCount);
-    const blankInLine = this.repeatCharacterNTimes(
+    const shapeInLine = this.repeatCharacterNumberTimes(shape, shapeCount);
+    const blankInLine = this.repeatCharacterNumberTimes(
       " ",
       this.countBlanksInLine(shapeCount, totalNumber, index)
     );
