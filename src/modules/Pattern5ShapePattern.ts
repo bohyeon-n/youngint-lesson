@@ -6,14 +6,14 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  countShapesInLines = (totalNumber = this.totalNumber): number[] => {
+  protected countShapesInLines = (totalNumber = this.totalNumber): number[] => {
     return new Array(totalNumber)
       .fill("")
       .map((i, index) => index)
       .reverse();
   };
 
-  countBlanksInLine = (
+  protected countBlanksInLine = (
     shapeCount: number,
     totalNumber: number,
     index: number
@@ -21,7 +21,7 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
     return totalNumber - 1 + index;
   };
 
-  createPatternLine = (
+  protected createPatternLine = (
     index: number,
     shapesInLine: string,
     blankInLine: string
@@ -33,7 +33,7 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
     );
   };
 
-  createPattern = (number: number, shape: string): Array<string> => {
+  protected createPattern = (number: number, shape: string): Array<string> => {
     const pattern = Patterns.Pattern5;
     const shapeArray = this.countShapesInLines(number);
     const patterns: Array<string> = [];

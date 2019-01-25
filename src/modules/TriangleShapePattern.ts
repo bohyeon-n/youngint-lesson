@@ -6,7 +6,7 @@ export default class TriangleShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  createPattern = (number: number, shape: string): Array<string> => {
+  protected createPattern = (number: number, shape: string): Array<string> => {
     const pattern = Patterns.Triangle;
     const shapeArray = this.countShapesInLines(number);
     const patterns: Array<string> = [];

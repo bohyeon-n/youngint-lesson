@@ -6,7 +6,7 @@ export default class DiamondShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  countShapesInLines = (totalNumber = this.totalNumber): number[] => {
+  protected countShapesInLines = (totalNumber = this.totalNumber): number[] => {
     let array: Array<number> = [];
     let i: number = 0;
     while (i < totalNumber) {
@@ -16,7 +16,7 @@ export default class DiamondShapePattern extends BaseShapePattern {
     return [...array, ...[...array.slice(0, -1)].reverse()];
   };
 
-  createPatternLine = (
+  protected createPatternLine = (
     index: number,
     shapesInLine: string,
     blankInLine: string
@@ -29,7 +29,7 @@ export default class DiamondShapePattern extends BaseShapePattern {
     );
   };
 
-  createPattern = (number: number, shape: string): Array<string> => {
+  protected createPattern = (number: number, shape: string): Array<string> => {
     const pattern = Patterns.Diamond;
     const shapeArray = this.countShapesInLines(number);
     const patterns: Array<string> = [];

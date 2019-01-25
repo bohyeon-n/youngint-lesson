@@ -1,13 +1,13 @@
 export default class BaseShapePattern {
-  totalNumber: number;
-  shape: string;
+  protected totalNumber: number;
+  protected shape: string;
 
-  constructor(totalNumber: number, shape: string) {
+  protected constructor(totalNumber: number, shape: string) {
     this.totalNumber = totalNumber;
     this.shape = shape;
   }
 
-  countBlanksInLine = (
+  protected countBlanksInLine = (
     shapeCount: number,
     totalNumber: number,
     index: number
@@ -15,15 +15,15 @@ export default class BaseShapePattern {
     return totalNumber - shapeCount;
   };
 
-  repeatCharacterNTimes = (character: string, number: number) => {
+  private repeatCharacterNTimes = (character: string, number: number) => {
     return character.repeat(number);
   };
 
-  countShapesInLines = (totalNumber: number): number[] => {
+  protected countShapesInLines = (totalNumber: number): number[] => {
     return new Array(totalNumber).fill("").map((i, index) => index);
   };
 
-  createPatternLine = (
+  protected createPatternLine = (
     index: number,
     shapesInLine: string,
     blankInLine: string
@@ -31,7 +31,7 @@ export default class BaseShapePattern {
     return shapesInLine + blankInLine;
   };
 
-  drawPatternLine = (
+  protected drawPatternLine = (
     shapeCount: number,
     shape: string,
     pattern: string,
