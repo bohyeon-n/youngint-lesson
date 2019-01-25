@@ -13,12 +13,8 @@ export default class BaseShapePattern {
     return totalNumber - shapeCount;
   };
 
-  createShapesOfNumber = (character: string, number: number) => {
-    let string: string = "";
-    for (let i: number = 0; i < number; i++) {
-      string += character;
-    }
-    return string;
+  repeatCharacterNTimes = (character: string, number: number) => {
+    return character.repeat(number);
   };
 
   countShapesInLines = (shapeCount: number): number[] => {
@@ -45,8 +41,8 @@ export default class BaseShapePattern {
     totalNumber: number,
     index: number
   ) => {
-    const shapeInLine = this.createShapesOfNumber(shape, shapeCount);
-    const blankInLine = this.createShapesOfNumber(
+    const shapeInLine = this.repeatCharacterNTimes(shape, shapeCount);
+    const blankInLine = this.repeatCharacterNTimes(
       " ",
       this.countBlanksInLine(shapeCount, totalNumber, index)
     );
