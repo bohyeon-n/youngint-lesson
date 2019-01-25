@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": " webpack-dev-server --mode development --open",
     "build": "webpack --config webpack.config.js --mode production",
     "dev": "webpack --config webpack.config.js --mode development"
@@ -21,9 +21,12 @@
   },
   "homepage": "https://github.com/bohyeon-n/youngint-lesson#readme",
   "devDependencies": {
+    "@types/jest": "^23.3.13",
     "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.2",
     "webpack": "^4.28.1",

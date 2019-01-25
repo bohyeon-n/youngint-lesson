@@ -8,12 +8,13 @@ import {
   faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "mobx-react";
-import PatternStore from "./stores/pattern";
+import Pattern from "./stores/patternStore";
+
 library.add(faCheckCircle, faExclamationTriangle);
 
-const pattern = new PatternStore();
+const patternStore = new Pattern();
 ReactDOM.render(
-  <Provider pattern={pattern}>
+  <Provider patternStore={patternStore}>
     <MainPage />
   </Provider>,
   document.getElementById("root")

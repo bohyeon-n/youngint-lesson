@@ -8,22 +8,22 @@ export interface ListProps {
   readonly list: string[];
 }
 
-@inject("pattern")
+@inject("patternStore")
 @observer
 class List extends React.Component<ListProps, {}> {
   render() {
     const { list } = this.props;
-    const { pattern }: any = this.props;
+    const { patternStore }: any = this.props;
 
     return (
       <div className="list">
         {list.map((item, index) => (
           <div
             className={classnames("item", {
-              active: pattern.pattern === item
+              active: patternStore.pattern === item
             })}
             key={index}
-            onClick={e => pattern.onChangePattern(item)}
+            onClick={e => patternStore.onChangePattern(item)}
           >
             <div>{item}</div>
             <div className="pattern">
