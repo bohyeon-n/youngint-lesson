@@ -8,7 +8,7 @@ import {
   faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "mobx-react";
-import Pattern from "./stores/patternStore";
+import Pattern from "./stores/PatternStore";
 
 library.add(faCheckCircle, faExclamationTriangle);
 

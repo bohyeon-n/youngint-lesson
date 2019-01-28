@@ -19,6 +19,26 @@ class PatternStore {
   @observable submitNumber: string | number;
   @observable submitPattern: string;
   @observable submitShape: string;
+  @observable close: boolean = false;
+
+  @action reset() {
+    this.pattern = "triangle";
+    this.shape = "";
+    this.numberInputValue = "";
+    this.step = 0;
+    this.message = "";
+    this.valid = false;
+    this.formerSubmit = false;
+    this.firstSubmit = false;
+    this.formerInputState = {
+      number: "",
+      shape: "",
+      pattern: ""
+    };
+    this.submitPattern = "";
+    this.submitShape = "";
+    this.close = false;
+  }
 
   @action onChangePattern(pattern: string) {
     this.pattern = pattern;
