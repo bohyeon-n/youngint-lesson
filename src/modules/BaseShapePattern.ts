@@ -1,4 +1,4 @@
-export default class BaseShapePattern {
+abstract class BaseShapePattern {
   protected totalNumber: number;
   protected shape: string;
 
@@ -48,3 +48,5 @@ export default class BaseShapePattern {
     return patternLine;
   };
 }
+
+export default BaseShapePattern;
