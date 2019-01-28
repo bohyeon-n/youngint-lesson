@@ -47,6 +47,23 @@ abstract class BaseShapePattern {
 
     return patternLine;
   };
+
+  protected createPattern = (
+    number: number,
+    shape: string,
+    pattern: string
+  ) => {
+    const shapeArray = this.countShapesInLines(number);
+    const patterns: Array<string> = [];
+
+    shapeArray.map((shapeCount, index) =>
+      patterns.push(
+        this.drawPatternLine(shapeCount + 1, shape, pattern, number, index)
+      )
+    );
+
+    return patterns;
+  };
 }
 
 export default BaseShapePattern;

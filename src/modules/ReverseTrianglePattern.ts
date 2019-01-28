@@ -12,19 +12,6 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
       .map((i, index) => index)
       .reverse();
   };
-  protected createPattern = (number: number, shape: string): Array<string> => {
-    const pattern = Patterns.Diamond;
-    const shapeArray = this.countShapesInLines(number);
-    const patterns: Array<string> = [];
-
-    shapeArray.map((shapeCount, index) =>
-      patterns.push(
-        this.drawPatternLine(shapeCount + 1, shape, pattern, number, index)
-      )
-    );
-
-    return patterns;
-  };
 
   protected createPatternLine = (
     index: number,
@@ -35,6 +22,10 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(this.totalNumber, this.shape);
+    return this.createPattern(
+      this.totalNumber,
+      this.shape,
+      Patterns.ReverseTriangle
+    );
   };
 }
