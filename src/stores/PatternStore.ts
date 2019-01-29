@@ -78,7 +78,7 @@ class PatternStore {
       this.formerSubmit = true;
       this.formerInputState = {
         number: this.submitNumber,
-        pattern: this.pattern,
+        pattern: this.submitPattern,
         shape: this.submitShape
       };
     } else {

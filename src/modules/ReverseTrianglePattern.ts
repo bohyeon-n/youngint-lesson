@@ -22,10 +22,6 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(
-      this.totalNumber,
-      this.shape,
-      Patterns.ReverseTriangle
-    );
+    return this.createPattern(Patterns.ReverseTriangle);
   };
 }

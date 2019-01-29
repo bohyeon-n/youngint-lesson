@@ -30,6 +30,6 @@ export default class DiamondShapePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(this.totalNumber, this.shape, Patterns.Diamond);
+    return this.createPattern(Patterns.Diamond);
   };
 }

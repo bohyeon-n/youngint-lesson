@@ -34,6 +34,6 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(this.totalNumber, this.shape, Patterns.Pattern5);
+    return this.createPattern(Patterns.Pattern5);
   };
 }
