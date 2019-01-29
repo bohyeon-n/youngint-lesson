@@ -1,4 +1,4 @@
-import PatternStore from "./patternStore";
+import PatternStore from "./PatternStore";
 
 test("패턴 클릭 시 step 이동 / shape가 없을 시", () => {
   //arrange

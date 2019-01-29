@@ -31,21 +31,7 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
     );
   };
 
-  protected createPattern = (number: number, shape: string): Array<string> => {
-    const pattern = Patterns.Pattern4;
-    const shapeArray = this.countShapesInLines(number);
-    const patterns: Array<string> = [];
-
-    shapeArray.map((shapeCount, index) =>
-      patterns.push(
-        this.drawPatternLine(shapeCount + 1, shape, pattern, number, index)
-      )
-    );
-
-    return patterns;
-  };
-
   draw = () => {
-    return this.createPattern(this.totalNumber, this.shape);
+    return this.createPattern(Patterns.Pattern4);
   };
 }

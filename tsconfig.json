@@ -9,5 +9,6 @@
     "experimentalDecorators": true,
     "lib": ["es2015", "es2016", "dom"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["*.test.ts"]
 }
