@@ -26,14 +26,14 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
     const shapeArray = this.countShapesInLines(number);
     const patterns: Array<string> = [];
 
-    shapeArray.map((section: number[], index: number) =>
+    shapeArray.map((section: number[], index: number) => {
       section.map((shapeCount: number, index: number) => {
         patterns.push(
           this.drawPatternLine(shapeCount + 1, shape, pattern, number, index)
         );
-        patterns.push(this.repeatCharacterNumberTimes(" ", number));
-      })
-    );
+      });
+      patterns.push(this.repeatCharacterNumberTimes(" ", number));
+    });
 
     return patterns;
   };
