@@ -60,8 +60,9 @@ class PatternStore {
   };
 
   @action onSubmit = (): void => {
-    const { valid, shape, pattern } = this;
-    let message = this.message;
+    const { shape, pattern } = this;
+    let { valid, message } = isValid(this.numberInputValue, pattern);
+    message = message === "" ? "숫자를 입력해주세요." : message;
     message = shape === "" ? `모양이 없습니다. \n ${message} ` : message;
     const messageTemplate = `${message} \n 다시 입력해주세요.`;
     valid && shape !== ""
