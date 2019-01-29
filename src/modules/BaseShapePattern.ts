@@ -15,7 +15,10 @@ abstract class BaseShapePattern {
     return totalNumber - shapeCount;
   };
 
-  private repeatCharacterNumberTimes = (character: string, number: number) => {
+  protected repeatCharacterNumberTimes = (
+    character: string,
+    number: number
+  ) => {
     return character.repeat(number);
   };
 
