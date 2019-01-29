@@ -19,7 +19,7 @@ class PatternStore {
   @observable submitNumber: string | number;
   @observable submitPattern: string;
   @observable submitShape: string;
-  @observable gameState: string = "start";
+  @observable gameState: string = "before";
 
   @action reset() {
     this.pattern = "triangle";
