@@ -17,16 +17,18 @@ export default class MainPage extends React.Component {
       <div>
         <h1>Pattern Stamp</h1>
         <button
-          className={patternStore.close ? "시작하기" : "종료하기"}
+          className={patternStore.gameState}
           onClick={e => {
-            patternStore.close
-              ? patternStore.reset()
-              : (patternStore.close = true);
+            patternStore.gameState === "start"
+              ? (patternStore.gameState = "close")
+              : patternStore.gameState === "close"
+              ? (patternStore.gameState = "restart")
+              : (patternStore.reset(), (patternStore.gameState = "close"));
           }}
         >
-          {patternStore.close ? "시작하기" : "종료하기"}
+          {patternStore.gameState}
         </button>
-        {patternStore.close ? null : (
+        {patternStore.gameState === "close" && (
           <div>
             <p>
               패턴을 선택하고 모양과 숫자를 입력해주세요. <br />
@@ -37,30 +39,33 @@ export default class MainPage extends React.Component {
             <FormContainer />
           </div>
         )}
-        <div className="printed">
-          {patternStore.firstSubmit && (
-            <div className="pattern">
-              <div>출력 결과</div>
-              <Pattern
-                number={Number(patternStore.submitNumber)}
-                shape={patternStore.submitShape}
-                pattern={patternStore.submitPattern}
-              />
-            </div>
-          )}
-          {patternStore.formerSubmit && (
-            <div className="pattern">
-              <div>이전 패턴</div>
-              <Pattern
-                number={Number(patternStore.formerInputState.number)}
-                shape={patternStore.formerInputState.shape}
-                pattern={patternStore.formerInputState.pattern}
-              />
-            </div>
-          )}
-          {patternStore.close &&
-            !patternStore.firstSubmit &&
-            "출력된 패턴이 없습니다."}
+        <div>
+          <div className="printed">
+            {patternStore.firstSubmit && (
+              <div className="pattern">
+                <div>출력 결과</div>
+                <Pattern
+                  number={Number(patternStore.submitNumber)}
+                  shape={patternStore.submitShape}
+                  pattern={patternStore.submitPattern}
+                />
+              </div>
+            )}
+            {patternStore.formerSubmit ? (
+              <div className="pattern">
+                <div>이전 패턴</div>
+                <Pattern
+                  number={Number(patternStore.formerInputState.number)}
+                  shape={patternStore.formerInputState.shape}
+                  pattern={patternStore.formerInputState.pattern}
+                />
+              </div>
+            ) : null}
+
+            {patternStore.gameState === "restart" &&
+              !patternStore.firstSubmit &&
+              "출력된 패턴이 없습니다."}
+          </div>
         </div>
       </div>
     );

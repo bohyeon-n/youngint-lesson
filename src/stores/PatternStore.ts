@@ -19,7 +19,7 @@ class PatternStore {
   @observable submitNumber: string | number;
   @observable submitPattern: string;
   @observable submitShape: string;
-  @observable close: boolean = false;
+  @observable gameState: string = "start";
 
   @action reset() {
     this.pattern = "triangle";
@@ -37,7 +37,6 @@ class PatternStore {
     };
     this.submitPattern = "";
     this.submitShape = "";
-    this.close = false;
   }
 
   @action onChangePattern(pattern: string) {
