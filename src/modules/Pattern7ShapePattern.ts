@@ -11,21 +11,21 @@ export default class Pattern7ShapePattern extends BaseShapePattern {
     const shapeArray = new Array(number).fill("");
     const patterns: Array<string> = [];
     const shape = this.shape;
-
+    const blank = 5;
     shapeArray.map((content, index) => {
       const previousBlank = this.repeatCharacterNumberTimes(
-        this.repeatCharacterNumberTimes(" ", number),
+        this.repeatCharacterNumberTimes(" ", number + blank),
         index
       );
       let line: string;
       line =
         this.repeatCharacterNumberTimes(shape, index + 1) +
-        this.repeatCharacterNumberTimes(" ", number - (index + 1));
+        this.repeatCharacterNumberTimes(" ", number - (index + 1) + blank);
 
       line = this.repeatCharacterNumberTimes(line, number - index);
       patterns.push(previousBlank + line);
     });
-    console.log("patterns" + patterns);
+
     return patterns;
   };
 
