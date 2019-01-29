@@ -6,7 +6,8 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  protected countShapesInLines = (totalNumber: number): number[] => {
+  protected countShapesInLines = (): number[] => {
+    const { totalNumber } = this;
     return new Array(totalNumber)
       .fill("")
       .map((i, index) => index)

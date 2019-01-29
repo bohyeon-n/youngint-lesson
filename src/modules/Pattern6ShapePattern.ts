@@ -6,7 +6,8 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  protected countShapesInLines = (totalNumber: number = this.totalNumber) => {
+  protected countShapesInLines = () => {
+    const { totalNumber } = this;
     let array: any = [];
     new Array(totalNumber)
       .fill("")
@@ -23,7 +24,7 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
   protected createPattern = (pattern: string) => {
     const number = this.totalNumber;
     const shape = this.shape;
-    const shapeArray = this.countShapesInLines(number);
+    const shapeArray = this.countShapesInLines();
     const patterns: Array<string> = [];
 
     shapeArray.map((section: number[], index: number) => {
