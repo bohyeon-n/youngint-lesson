@@ -6,7 +6,8 @@ export default class DiamondShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  protected countShapesInLines = (totalNumber = this.totalNumber): number[] => {
+  protected countShapesInLines = (): number[] => {
+    const { totalNumber } = this;
     let array: Array<number> = [];
     let i: number = 0;
     while (i < totalNumber) {

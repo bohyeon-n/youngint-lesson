@@ -6,15 +6,12 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  protected countShapesInLines = (totalNumber = this.totalNumber): number[] => {
+  protected countShapesInLines = (): number[] => {
+    const { totalNumber } = this;
     return new Array(totalNumber).fill(totalNumber - 1);
   };
 
-  protected countBlanksInLine = (
-    shapeCount: number,
-    totalNumber: number,
-    index: number
-  ): number => {
+  protected countBlanksInLine = (shapeCount: number, index: number): number => {
     return shapeCount - 1;
   };
 

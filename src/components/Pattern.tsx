@@ -6,6 +6,7 @@ import DiamondShapePattern from "../modules/DiamondShapePattern";
 import ReverseTrianglePattern from "../modules/ReverseTrianglePattern";
 import Pattern4ShapePattern from "../modules/Pattern4ShapePattern";
 import Pattern5ShapePattern from "../modules/Pattern5ShapePattern";
+import Pattern6ShapePattern from "../modules/Pattern6ShapePattern";
 
 export interface PatternProps {
   readonly number: number;
@@ -34,6 +35,8 @@ export class Pattern extends React.Component<PatternProps, {}> {
       case Patterns.Pattern5:
         patterns = new Pattern5ShapePattern(number, shape).draw();
         break;
+      case Patterns.Pattern6:
+        patterns = new Pattern6ShapePattern(number, shape).draw();
     }
 
     return (

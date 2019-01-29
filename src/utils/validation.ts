@@ -3,11 +3,11 @@ const isValid = (inputValue: string | number, pattern: string) => {
   const inputString = String(inputValue);
   let valid: boolean = false;
   let message: string;
-
+  console.log(inputString === "");
   if (inputString === "") {
     message = "";
   } else if (isNaN(inputNumber)) {
-    message = "숫자를 입력해주세요.";
+    message = "숫자만 입력할 수 있습니다.";
   } else if (inputString.indexOf(".") !== -1) {
     message = "정수만 입력할 수 있습니다.";
   } else if (!isFinite(inputNumber)) {
