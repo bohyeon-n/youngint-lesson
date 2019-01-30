@@ -9,7 +9,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
     const { patterns } = this.props;
 
     return (
-      <div style={{ whiteSpace: "pre" }} className={`pattern }`}>
+      <div style={{ whiteSpace: "pre" }} className={`pattern`}>
         <div className="pattern-content">
           {patterns.map((patternLine, index) => (
             <div key={index} className="line">
