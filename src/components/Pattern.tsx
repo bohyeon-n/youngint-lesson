@@ -13,8 +13,10 @@ export class Pattern extends React.Component<PatternProps, {}> {
         <div className="pattern-content">
           {patterns.map((patternLine, index) => (
             <div key={index} className="line">
-              {patternLine.split("").map(character => (
-                <span className="character">{character}</span>
+              {patternLine.split("").map((character, index) => (
+                <span key={index} className="character">
+                  {character}
+                </span>
               ))}
             </div>
           ))}
