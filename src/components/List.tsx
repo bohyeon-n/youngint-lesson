@@ -26,12 +26,11 @@ class List extends React.Component<ListProps, {}> {
             onClick={e => patternStore.onChangePattern(item)}
           >
             <div>{item}</div>
-            <div className="pattern">
-              <Pattern number={5} shape="*" pattern={item} />
-            </div>
+
+            <Pattern number={5} shape="*" pattern={item} />
 
             <div className="check">
-              <FontAwesomeIcon icon="check-circle" size="5x" />
+              <FontAwesomeIcon icon="check-circle" size="3x" />
             </div>
           </div>
         ))}
