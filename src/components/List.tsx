@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pattern } from "../components/Pattern";
+import { PatternContainer } from "../containers/PatternContainer";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";
@@ -27,7 +27,7 @@ class List extends React.Component<ListProps, {}> {
           >
             <div>{item}</div>
 
-            <Pattern number={5} shape="*" pattern={item} />
+            <PatternContainer number={5} shape="*" pattern={item} />
 
             <div className="check">
               <FontAwesomeIcon icon="check-circle" size="3x" />

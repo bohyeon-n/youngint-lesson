@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FormContainer } from "../containers/FormContainer";
-import { Pattern } from "../components/Pattern";
+import { PatternContainer } from "../containers/PatternContainer";
 import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
@@ -49,7 +49,7 @@ export default class MainPage extends React.Component {
             {patternStore.firstSubmit && (
               <div className="pattern">
                 <div className="result-title">출력 결과</div>
-                <Pattern
+                <PatternContainer
                   number={Number(patternStore.submitNumber)}
                   shape={patternStore.submitShape}
                   pattern={patternStore.submitPattern}
@@ -59,7 +59,7 @@ export default class MainPage extends React.Component {
             {patternStore.formerSubmit ? (
               <div className="pattern">
                 <div className="result-title">이전 패턴</div>
-                <Pattern
+                <PatternContainer
                   number={Number(patternStore.formerInputState.number)}
                   shape={patternStore.formerInputState.shape}
                   pattern={patternStore.formerInputState.pattern}
