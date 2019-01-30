@@ -21,7 +21,7 @@ class PatternStore {
   @observable submitShape: string;
   @observable gameState: string = "before";
 
-  @action reset() {
+  @action reset = () => {
     this.pattern = "triangle";
     this.shape = "";
     this.numberInputValue = "";
@@ -37,15 +37,15 @@ class PatternStore {
     };
     this.submitPattern = "";
     this.submitShape = "";
-  }
+  };
 
-  @action onChangePattern(pattern: string) {
+  @action onChangePattern = (pattern: string) => {
     this.pattern = pattern;
     const { valid, message } = isValid(this.numberInputValue, this.pattern);
     this.valid = valid;
     this.message = message;
     this.step = this.shape === "" ? 1 : 2;
-  }
+  };
 
   @action onChangeNumber = (value: string): void => {
     this.step = 2;
