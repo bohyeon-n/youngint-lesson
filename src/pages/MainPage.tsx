@@ -48,7 +48,7 @@ export default class MainPage extends React.Component {
           <div className="printed">
             {patternStore.firstSubmit && (
               <div className="pattern">
-                <div>출력 결과</div>
+                <div className="result-title">출력 결과</div>
                 <Pattern
                   number={Number(patternStore.submitNumber)}
                   shape={patternStore.submitShape}
@@ -58,7 +58,7 @@ export default class MainPage extends React.Component {
             )}
             {patternStore.formerSubmit ? (
               <div className="pattern">
-                <div>이전 패턴</div>
+                <div className="result-title">이전 패턴</div>
                 <Pattern
                   number={Number(patternStore.formerInputState.number)}
                   shape={patternStore.formerInputState.shape}
