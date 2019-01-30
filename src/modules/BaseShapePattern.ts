@@ -12,6 +12,19 @@ abstract class BaseShapePattern {
     return totalNumber - shapeCount;
   };
 
+  protected shuffleArray = (array: any[]): any[] => {
+    const arrayLength = array.length;
+    array.map((el, i) => {
+      const index = this.getRandomInt(arrayLength);
+      [array[i], array[index]] = [array[index], array[i]];
+    });
+    return array;
+  };
+
+  protected getRandomInt = (max: number) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  };
+
   protected repeatCharacterNumberTimes = (
     character: string,
     number: number
