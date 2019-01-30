@@ -8,6 +8,8 @@ import Pattern4ShapePattern from "../modules/Pattern4ShapePattern";
 import Pattern5ShapePattern from "../modules/Pattern5ShapePattern";
 import Pattern6ShapePattern from "../modules/Pattern6ShapePattern";
 import Pattern7ShapePattern from "../modules/Pattern7ShapePattern";
+import Pattern6RandomShapePattern from "../modules/Pattern6RandomShapePattern";
+import Pattern7RandomShapePattern from "../modules/Pattern7RandomShapePattern";
 
 export interface PatternProps {
   readonly number: number;
@@ -41,6 +43,12 @@ export class PatternContainer extends React.Component<PatternProps, {}> {
         break;
       case Patterns.Pattern7:
         patterns = new Pattern7ShapePattern(number, shape).draw();
+        break;
+      case Patterns.Pattern6Random:
+        patterns = new Pattern6RandomShapePattern(number, shape).draw();
+        break;
+      case Patterns.Pattern7Random:
+        patterns = new Pattern7RandomShapePattern(number, shape).draw();
         break;
     }
 
