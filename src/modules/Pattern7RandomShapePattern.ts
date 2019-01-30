@@ -1,6 +1,6 @@
 import BaseShapePattern from "./BaseShapePattern";
 import Patterns from "../utils/Patterns";
-
+import { shuffleArray } from "../utils/shuffleArray";
 export default class Pattern7RandomShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
     super(totalNumber, shape);
@@ -19,7 +19,7 @@ export default class Pattern7RandomShapePattern extends BaseShapePattern {
       patterns.push(line);
     });
 
-    const shuffledPatterns = this.shuffleArray(patterns);
+    const shuffledPatterns = shuffleArray(patterns);
 
     const horizontalDirection = shapeArray.map((content, lineIndex) => {
       return shapeArray.map((content, index) => {

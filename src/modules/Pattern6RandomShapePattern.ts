@@ -1,6 +1,6 @@
 import BaseShapePattern from "./BaseShapePattern";
 import Patterns from "../utils/Patterns";
-
+import { shuffleArray } from "../utils/shuffleArray";
 export default class Pattern6RandomShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
     super(totalNumber, shape);
@@ -18,7 +18,7 @@ export default class Pattern6RandomShapePattern extends BaseShapePattern {
         ]);
       });
 
-    return this.shuffleArray(array);
+    return shuffleArray(array);
   };
 
   protected createPattern = (pattern: string) => {
