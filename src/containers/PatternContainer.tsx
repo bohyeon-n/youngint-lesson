@@ -18,8 +18,18 @@ export interface PatternProps {
 }
 
 export class PatternContainer extends React.Component<PatternProps, {}> {
-  render() {
-    const { number, shape, pattern } = this.props;
+  pattern = {
+    number: 0,
+    shape: "",
+    pattern: "",
+    patterns: [""]
+  };
+
+  generatePatternClass = (
+    number: number,
+    shape: string,
+    pattern: string
+  ): string[] => {
     let patterns: Array<string> = [];
 
     switch (pattern) {
@@ -51,7 +61,25 @@ export class PatternContainer extends React.Component<PatternProps, {}> {
         patterns = new Pattern7RandomShapePattern(number, shape).draw();
         break;
     }
+    return patterns;
+  };
+  render() {
+    const { number, shape, pattern } = this.props;
 
-    return <Pattern patterns={patterns} />;
+    if (
+      this.pattern.shape === "" ||
+      this.pattern.number !== number ||
+      this.pattern.shape !== shape ||
+      this.pattern.pattern !== pattern
+    ) {
+      this.pattern = {
+        number,
+        shape,
+        pattern,
+        patterns: this.generatePatternClass(number, shape, pattern)
+      };
+    }
+
+    return <Pattern patterns={this.pattern.patterns} />;
   }
 }
