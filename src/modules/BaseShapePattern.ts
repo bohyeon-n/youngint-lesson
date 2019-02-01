@@ -1,10 +1,17 @@
+import {
+  PatternSetModel,
+  PatternModel
+} from "../PatternModel/PatternViewModel";
+
 abstract class BaseShapePattern {
   protected totalNumber: number;
   protected shape: string;
+  protected patternSetModel: any;
 
   protected constructor(totalNumber: number, shape: string) {
     this.totalNumber = totalNumber;
     this.shape = shape;
+    this.patternSetModel = new PatternSetModel();
   }
 
   protected countBlanksInLine = (shapeCount: number, index: number): number => {
@@ -51,12 +58,13 @@ abstract class BaseShapePattern {
     shapeArray.map((shapeCount, index) =>
       patterns.push(this.drawPatternLine(shapeCount + 1, index))
     );
-
-    return patterns;
+    const patternModel = new PatternModel(patterns);
+    this.patternSetModel.addModel(patternModel);
   };
 
   draw = () => {
-    return this.createPattern();
+    this.createPattern();
+    return this.patternSetModel;
   };
 }
 

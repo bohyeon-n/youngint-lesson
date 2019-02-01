@@ -1,7 +1,8 @@
 import BaseShapePattern from "./BaseShapePattern";
 import Patterns from "../utils/Patterns";
 import { shuffleArray } from "../utils/shuffleArray";
-export default class Pattern6RandomShapePattern extends BaseShapePattern {
+import Pattern6ShapePattern from "../modules/Pattern6ShapePattern";
+export default class Pattern6RandomShapePattern extends Pattern6ShapePattern {
   constructor(totalNumber: number, shape: string) {
     super(totalNumber, shape);
   }
@@ -19,20 +20,5 @@ export default class Pattern6RandomShapePattern extends BaseShapePattern {
       });
 
     return shuffleArray(array);
-  };
-
-  protected createPattern = () => {
-    const number = this.totalNumber;
-    const shapeArray = this.countShapesInLines();
-    const patterns: Array<string> = [];
-
-    shapeArray.map((section: number[], index: number) => {
-      section.map((shapeCount: number, index: number) => {
-        patterns.push(this.drawPatternLine(shapeCount + 1, index));
-      });
-      patterns.push(this.repeatCharacterNumberTimes(" ", number));
-    });
-
-    return patterns;
   };
 }

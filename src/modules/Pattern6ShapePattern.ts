@@ -1,5 +1,6 @@
 import BaseShapePattern from "./BaseShapePattern";
 import Patterns from "../utils/Patterns";
+import { PatternModel } from "../PatternModel/PatternViewModel";
 
 export default class Pattern6ShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
@@ -22,17 +23,16 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
   };
 
   protected createPattern = () => {
-    const number = this.totalNumber;
     const shapeArray = this.countShapesInLines();
-    const patterns: Array<string> = [];
 
     shapeArray.map((section: number[], index: number) => {
+      let patterns: string[] = [];
       section.map((shapeCount: number, index: number) => {
         patterns.push(this.drawPatternLine(shapeCount + 1, index));
       });
-      patterns.push(this.repeatCharacterNumberTimes(" ", number));
-    });
 
-    return patterns;
+      const patternModel = new PatternModel(patterns);
+      this.patternSetModel.addModel(patternModel);
+    });
   };
 }
