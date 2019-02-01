@@ -18,9 +18,10 @@ class List extends React.Component<ListProps, {}> {
   createPatterns() {
     const keys = Object.keys(Patterns).map(k => k);
     const patternNames = keys.map(k => Patterns[k as any]);
-    const patternList = patternNames.map(pattern =>
-      generatePattern(5, "*", pattern)
-    );
+    const patternList = patternNames.map(pattern => ({
+      patterns: generatePattern(5, "*", pattern),
+      patternName: pattern
+    }));
 
     this.patternList = patternList;
     this.patternNames = patternNames;
@@ -41,7 +42,10 @@ class List extends React.Component<ListProps, {}> {
           >
             <div>{item}</div>
 
-            <Pattern patterns={this.patternList[index]} />
+            <Pattern
+              patterns={this.patternList[index].patterns}
+              patternName={this.patternList[index].patternName}
+            />
 
             <div className="check">
               <FontAwesomeIcon icon="check-circle" size="3x" />

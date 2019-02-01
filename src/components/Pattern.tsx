@@ -1,22 +1,27 @@
 import * as React from "react";
 
 export interface PatternProps {
-  patterns: Array<string>;
+  readonly patterns: any;
+  readonly patternName: any;
 }
 
 export class Pattern extends React.Component<PatternProps, {}> {
   render() {
-    const { patterns } = this.props;
+    const { patterns, patternName } = this.props;
 
     return (
       <div style={{ whiteSpace: "pre" }} className={`pattern`}>
-        <div className="pattern-content">
-          {patterns.map((patternLine, index) => (
-            <div key={index} className="line">
-              {patternLine.split("").map((character, index) => (
-                <span key={index} className="character">
-                  {character}
-                </span>
+        <div className={`pattern-content ${patternName}`}>
+          {patterns.patterns.map((patternLine: any, index: number) => (
+            <div key={index} className={`section ${patternName}`}>
+              {patternLine.pattern.map((line: any, index: number) => (
+                <div key={index} className="line">
+                  {line.split("").map((character: any, index: number) => (
+                    <span key={index} className="character">
+                      {character}
+                    </span>
+                  ))}
+                </div>
               ))}
             </div>
           ))}
