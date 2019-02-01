@@ -41,11 +41,20 @@
   padding: 0 20px;
   position: relative;
   &-content {
-    .line {
-      .character {
-        width: 10px;
+    &.pattern7 {
+      display: flex;
+    }
+    &.pattern7Random {
+      display: flex;
+    }
+    .section {
+      margin-bottom: 10px;
+      .line {
+        .character {
+          width: 10px;
 
-        display: inline-block;
+          display: inline-block;
+        }
       }
     }
   }
