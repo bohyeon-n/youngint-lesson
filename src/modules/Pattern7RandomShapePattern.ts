@@ -1,6 +1,8 @@
 import BaseShapePattern from "./BaseShapePattern";
 import Patterns from "../utils/Patterns";
 import { shuffleArray } from "../utils/shuffleArray";
+import { PatternSetModel, PatternModel } from "../viewModel/PatternViewModel";
+
 export default class Pattern7RandomShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
     super(totalNumber, shape);
@@ -34,11 +36,15 @@ export default class Pattern7RandomShapePattern extends BaseShapePattern {
       line.map((shape, index) => {
         joinedLine += horizontalDirection[index][i];
       });
+      let model = new PatternModel();
       return joinedLine;
     });
   };
 
   draw = () => {
-    return this.createPattern();
+    const lines = this.createPattern();
+    let vm = new PatternSetModel();
+    vm.lines = lines;
+    return vm;
   };
 }
