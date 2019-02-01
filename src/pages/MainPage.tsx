@@ -27,7 +27,7 @@ export default class MainPage extends React.Component {
       );
       this.patterns = this.patterns.slice(0, 1);
       this.patterns.unshift(patterns);
-    } else if (patternStore.firstSubmit) {
+    } else if (patternStore.firstSubmit && patternStore.gameState !== "after") {
       this.patterns = [];
     }
   };
@@ -45,7 +45,9 @@ export default class MainPage extends React.Component {
               ? (patternStore.gameState = "during")
               : patternStore.gameState === "during"
               ? (patternStore.gameState = "after")
-              : (patternStore.reset(), (patternStore.gameState = "during"));
+              : (patternStore.reset(),
+                (patternStore.gameState = "during"),
+                (this.patterns = []));
           }}
         >
           {patternStore.gameState === "before"
