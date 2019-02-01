@@ -15,7 +15,7 @@ export default class MainPage extends React.Component {
     const { patternStore }: any = this.props;
 
     return (
-      <div className={patternStore.time}>
+      <div>
         <h1>Pattern Stamp</h1>
         <button
           className={patternStore.gameState}
@@ -55,7 +55,7 @@ export default class MainPage extends React.Component {
               </div>
             ))}
             {patternStore.gameState === "after" &&
-              !patternStore.firstSubmit &&
+              patternStore.resultPatterns.length === 0 &&
               "출력된 패턴이 없습니다."}
           </div>
         </div>

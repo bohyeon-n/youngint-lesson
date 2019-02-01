@@ -14,14 +14,7 @@ class PatternStore {
   @observable step: number = 0;
   @observable message: string = "";
   @observable valid: boolean = false;
-  @observable formerSubmit: boolean = false;
-  @observable firstSubmit: boolean = false;
-  @observable formerInputState: formerInputState;
-  @observable submitNumber: string | number;
-  @observable submitPattern: string;
-  @observable submitShape: string;
   @observable gameState: string = "before";
-  @observable time: number = 0;
   @observable resultPatterns: any = [];
 
   @action reset = () => {
@@ -31,15 +24,6 @@ class PatternStore {
     this.step = 0;
     this.message = "";
     this.valid = false;
-    this.formerSubmit = false;
-    this.firstSubmit = false;
-    this.formerInputState = {
-      number: "",
-      shape: "",
-      pattern: ""
-    };
-    this.submitPattern = "";
-    this.submitShape = "";
     this.resultPatterns = [];
   };
 
@@ -87,27 +71,12 @@ class PatternStore {
     this.message = "";
     this.shape = shape;
     this.valid = false;
-    this.time = this.time + 1;
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
-    if (this.firstSubmit) {
-      this.formerSubmit = true;
-      this.formerInputState = {
-        number: this.submitNumber,
-        pattern: this.submitPattern,
-        shape: this.submitShape
-      };
-    } else {
-      this.firstSubmit = true;
-    }
-
     this.numberInputValue = String(n);
     this.shape = shape;
     this.pattern = pattern;
-    this.submitPattern = this.pattern;
-    this.submitNumber = n;
-    this.submitShape = shape;
   };
 }
 
