@@ -12,29 +12,9 @@ export default class MainPage extends React.Component {
   patternNames = this.keys.map(k => Patterns[k as any]);
   patterns: any[] = [];
 
-  generatePattern = () => {
-    const { patternStore }: any = this.props;
-    let patterns;
-    if (
-      patternStore.firstSubmit &&
-      patternStore.submitNumber &&
-      patternStore.gameState === "during"
-    ) {
-      patterns = generatePattern(
-        patternStore.submitNumber,
-        patternStore.submitShape,
-        patternStore.submitPattern
-      );
-      this.patterns = this.patterns.slice(0, 1);
-      this.patterns.unshift(patterns);
-    } else if (patternStore.firstSubmit && patternStore.gameState !== "after") {
-      this.patterns = [];
-    }
-  };
-
   render() {
     const { patternStore }: any = this.props;
-    this.generatePattern();
+    // this.generatePattern();
     return (
       <div className={patternStore.time}>
         <h1>Pattern Stamp</h1>
@@ -45,9 +25,7 @@ export default class MainPage extends React.Component {
               ? (patternStore.gameState = "during")
               : patternStore.gameState === "during"
               ? (patternStore.gameState = "after")
-              : (patternStore.reset(),
-                (patternStore.gameState = "during"),
-                (this.patterns = []));
+              : (patternStore.reset(), (patternStore.gameState = "during"));
           }}
         >
           {patternStore.gameState === "before"
@@ -69,7 +47,7 @@ export default class MainPage extends React.Component {
         )}
         <div>
           <div className="printed">
-            {this.patterns.map((patterns, index) => (
+            {patternStore.resultPatterns.map((patterns: any, index: number) => (
               <div key={index} className="pattern">
                 <div className="result-title">
                   {index === 0 ? "출력 결과" : "이전 패턴"}

@@ -1,5 +1,6 @@
 import { observable, action } from "mobx";
 import { isValid } from "../utils/validation";
+import generatePattern from "../utils/generatePattern";
 
 interface formerInputState {
   number: number | string;
@@ -21,6 +22,7 @@ class PatternStore {
   @observable submitShape: string;
   @observable gameState: string = "before";
   @observable time: number = 0;
+  @observable resultPatterns: any = [];
 
   @action reset = () => {
     this.pattern = "triangle";
@@ -38,6 +40,7 @@ class PatternStore {
     };
     this.submitPattern = "";
     this.submitShape = "";
+    this.resultPatterns = [];
   };
 
   @action onChangePattern = (pattern: string) => {
@@ -63,6 +66,17 @@ class PatternStore {
   @action onSubmit = (): void => {
     const { shape, pattern } = this;
     let { valid, message } = isValid(this.numberInputValue, pattern);
+    if (valid) {
+      const patterns = generatePattern(
+        Number(this.numberInputValue),
+        shape,
+        pattern
+      );
+      this.resultPatterns.unshift(patterns);
+      if (this.resultPatterns.length >= 3) {
+        this.resultPatterns = this.resultPatterns.slice(0, 2);
+      }
+    }
     message = message === "" ? "숫자를 입력해주세요." : message;
     message = shape === "" ? `모양이 없습니다. \n ${message} ` : message;
     const messageTemplate = `${message} \n 다시 입력해주세요.`;
