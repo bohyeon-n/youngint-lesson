@@ -4,7 +4,6 @@ import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
 import { Pattern } from "../components/Pattern";
-import generatePattern from "../utils/generatePattern";
 @inject("patternStore")
 @observer
 export default class MainPage extends React.Component {
