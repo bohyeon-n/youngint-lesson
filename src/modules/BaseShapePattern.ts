@@ -32,11 +32,7 @@ abstract class BaseShapePattern {
     return shapesInLine + blankInLine;
   };
 
-  protected drawPatternLine = (
-    shapeCount: number,
-    pattern: string,
-    index: number
-  ) => {
+  protected drawPatternLine = (shapeCount: number, index: number) => {
     const { shape, totalNumber } = this;
     const shapeInLine = this.repeatCharacterNumberTimes(shape, shapeCount);
     const blankInLine = this.repeatCharacterNumberTimes(
@@ -55,7 +51,7 @@ abstract class BaseShapePattern {
     const patterns: Array<string> = [];
 
     shapeArray.map((shapeCount, index) =>
-      patterns.push(this.drawPatternLine(shapeCount + 1, pattern, index))
+      patterns.push(this.drawPatternLine(shapeCount + 1, index))
     );
 
     return patterns;

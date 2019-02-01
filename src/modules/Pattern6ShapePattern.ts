@@ -29,7 +29,7 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
 
     shapeArray.map((section: number[], index: number) => {
       section.map((shapeCount: number, index: number) => {
-        patterns.push(this.drawPatternLine(shapeCount + 1, pattern, index));
+        patterns.push(this.drawPatternLine(shapeCount + 1, index));
       });
       patterns.push(this.repeatCharacterNumberTimes(" ", number));
     });

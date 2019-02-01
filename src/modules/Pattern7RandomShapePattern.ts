@@ -13,7 +13,7 @@ export default class Pattern7RandomShapePattern extends BaseShapePattern {
     const blankLine = this.repeatCharacterNumberTimes(" ", number);
     shapeArray.map((content, index) => {
       const line = new Array(index + 1).fill("").map((content, index) => {
-        return this.drawPatternLine(index + 1, Patterns.Pattern7Random, index);
+        return this.drawPatternLine(index + 1, index);
       });
 
       patterns.push(line);
