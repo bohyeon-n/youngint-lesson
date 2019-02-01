@@ -46,14 +46,19 @@ export default class MainPage extends React.Component {
         )}
         <div>
           <div className="printed">
-            {patternStore.resultPatterns.map((patterns: any, index: number) => (
-              <div key={index} className="pattern">
-                <div className="result-title">
-                  {index === 0 ? "출력 결과" : "이전 패턴"}
+            {patternStore.resultPatterns.map(
+              (resultPattern: any, index: number) => (
+                <div key={index} className="pattern">
+                  <div className="result-title">
+                    {index === 0 ? "출력 결과" : "이전 패턴"}
+                  </div>
+                  <Pattern
+                    patterns={resultPattern.patterns}
+                    patternName={resultPattern.patternName}
+                  />
                 </div>
-                <Pattern patterns={patterns} />
-              </div>
-            ))}
+              )
+            )}
             {patternStore.gameState === "after" &&
               patternStore.resultPatterns.length === 0 &&
               "출력된 패턴이 없습니다."}
