@@ -45,8 +45,6 @@ abstract class BaseShapePattern {
   };
 
   protected createPattern = () => {
-    const number = this.totalNumber;
-    const shape = this.shape;
     const shapeArray = this.countShapesInLines();
     const patterns: Array<string> = [];
 
