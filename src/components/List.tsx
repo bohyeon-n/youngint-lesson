@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PatternContainer } from "../containers/PatternContainer";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";

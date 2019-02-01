@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FormContainer } from "../containers/FormContainer";
-import { PatternContainer } from "../containers/PatternContainer";
 import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
