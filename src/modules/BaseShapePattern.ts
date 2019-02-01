@@ -44,7 +44,7 @@ abstract class BaseShapePattern {
     return patternLine;
   };
 
-  protected createPattern = (pattern: string) => {
+  protected createPattern = () => {
     const number = this.totalNumber;
     const shape = this.shape;
     const shapeArray = this.countShapesInLines();

@@ -7,6 +7,6 @@ export default class TriangleShapePattern extends BaseShapePattern {
   }
 
   draw = () => {
-    return this.createPattern(Patterns.Triangle);
+    return this.createPattern();
   };
 }

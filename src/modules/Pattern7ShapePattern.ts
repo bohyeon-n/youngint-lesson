@@ -6,7 +6,7 @@ export default class Pattern7ShapePattern extends BaseShapePattern {
     super(totalNumber, shape);
   }
 
-  protected createPattern = (pattern: string) => {
+  protected createPattern = () => {
     const number = this.totalNumber;
     const shapeArray = new Array(number).fill("");
     const patterns: Array<string> = [];
@@ -30,6 +30,6 @@ export default class Pattern7ShapePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(Patterns.Pattern7);
+    return this.createPattern();
   };
 }

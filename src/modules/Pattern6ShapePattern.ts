@@ -21,7 +21,7 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
     return array;
   };
 
-  protected createPattern = (pattern: string) => {
+  protected createPattern = () => {
     const number = this.totalNumber;
     const shape = this.shape;
     const shapeArray = this.countShapesInLines();
@@ -38,6 +38,6 @@ export default class Pattern6ShapePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(Patterns.Pattern6);
+    return this.createPattern();
   };
 }

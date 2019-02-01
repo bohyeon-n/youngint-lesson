@@ -21,7 +21,7 @@ export default class Pattern6RandomShapePattern extends BaseShapePattern {
     return shuffleArray(array);
   };
 
-  protected createPattern = (pattern: string) => {
+  protected createPattern = () => {
     const number = this.totalNumber;
     const shapeArray = this.countShapesInLines();
     const patterns: Array<string> = [];
@@ -37,6 +37,6 @@ export default class Pattern6RandomShapePattern extends BaseShapePattern {
   };
 
   draw = () => {
-    return this.createPattern(Patterns.Pattern6);
+    return this.createPattern();
   };
 }
