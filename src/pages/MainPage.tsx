@@ -13,7 +13,7 @@ export default class MainPage extends React.Component {
 
   render() {
     const { patternStore }: any = this.props;
-    // this.generatePattern();
+
     return (
       <div className={patternStore.time}>
         <h1>Pattern Stamp</h1>
