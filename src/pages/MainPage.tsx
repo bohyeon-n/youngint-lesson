@@ -4,18 +4,40 @@ import { PatternContainer } from "../containers/PatternContainer";
 import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
-
+import { Pattern } from "../components/Pattern";
+import generatePattern from "../utils/generatePattern";
 @inject("patternStore")
 @observer
 export default class MainPage extends React.Component {
   keys = Object.keys(Patterns).map(k => k);
-  patterns = this.keys.map(k => Patterns[k as any]);
+  patternNames = this.keys.map(k => Patterns[k as any]);
+  patterns: any[] = [];
+
+  generatePattern = () => {
+    const { patternStore }: any = this.props;
+    let patterns;
+    if (
+      patternStore.firstSubmit &&
+      patternStore.submitNumber &&
+      patternStore.gameState === "during"
+    ) {
+      patterns = generatePattern(
+        patternStore.submitNumber,
+        patternStore.submitShape,
+        patternStore.submitPattern
+      );
+      this.patterns = this.patterns.slice(0, 1);
+      this.patterns.unshift(patterns);
+    } else if (patternStore.firstSubmit) {
+      this.patterns = [];
+    }
+  };
 
   render() {
     const { patternStore }: any = this.props;
-
+    this.generatePattern();
     return (
-      <div>
+      <div className={patternStore.time}>
         <h1>Pattern Stamp</h1>
         <button
           className={patternStore.gameState}
@@ -40,33 +62,20 @@ export default class MainPage extends React.Component {
               입력 후 패턴 출력하기 버튼을 누르면 원하는 패턴이 출력됩니다.
             </p>
             <div>패턴을 선택해주세요.</div>
-            <List list={this.patterns} />
+            <List PatternNames={this.patternNames} />
             <FormContainer />
           </div>
         )}
         <div>
           <div className="printed">
-            {patternStore.firstSubmit && (
-              <div className="pattern">
-                <div className="result-title">출력 결과</div>
-                <PatternContainer
-                  number={Number(patternStore.submitNumber)}
-                  shape={patternStore.submitShape}
-                  pattern={patternStore.submitPattern}
-                />
+            {this.patterns.map((patterns, index) => (
+              <div key={index} className="pattern">
+                <div className="result-title">
+                  {index === 0 ? "출력 결과" : "이전 패턴"}
+                </div>
+                <Pattern patterns={patterns} />
               </div>
-            )}
-            {patternStore.formerSubmit ? (
-              <div className="pattern">
-                <div className="result-title">이전 패턴</div>
-                <PatternContainer
-                  number={Number(patternStore.formerInputState.number)}
-                  shape={patternStore.formerInputState.shape}
-                  pattern={patternStore.formerInputState.pattern}
-                />
-              </div>
-            ) : null}
-
+            ))}
             {patternStore.gameState === "after" &&
               !patternStore.firstSubmit &&
               "출력된 패턴이 없습니다."}

@@ -8,31 +8,31 @@ import { Pattern } from "../components/Pattern";
 import Patterns from "../utils/Patterns";
 
 export interface ListProps {
-  readonly list: string[];
+  readonly PatternNames: string[];
 }
 
 @inject("patternStore")
 @observer
 class List extends React.Component<ListProps, {}> {
   patternList: any;
-  patterns: any;
+  patternNames: any;
   createPatterns() {
     const keys = Object.keys(Patterns).map(k => k);
-    const patterns = keys.map(k => Patterns[k as any]);
-    const patternList = patterns.map(pattern =>
+    const patternNames = keys.map(k => Patterns[k as any]);
+    const patternList = patternNames.map(pattern =>
       generatePattern(5, "*", pattern)
     );
 
     this.patternList = patternList;
-    this.patterns = patterns;
+    this.patternNames = patternNames;
   }
   render() {
     const { patternStore }: any = this.props;
-    !this.patterns && this.createPatterns();
+    !this.patternNames && this.createPatterns();
 
     return (
       <div className="list">
-        {this.patterns.map((item: any, index: number) => (
+        {this.patternNames.map((item: any, index: number) => (
           <div
             className={classnames("item", {
               active: patternStore.pattern === item

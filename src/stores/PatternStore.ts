@@ -20,6 +20,7 @@ class PatternStore {
   @observable submitPattern: string;
   @observable submitShape: string;
   @observable gameState: string = "before";
+  @observable time: number = 0;
 
   @action reset = () => {
     this.pattern = "triangle";
@@ -72,6 +73,7 @@ class PatternStore {
     this.message = "";
     this.shape = shape;
     this.valid = false;
+    this.time = this.time + 1;
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
