@@ -56,7 +56,11 @@ class PatternStore {
         shape,
         pattern
       );
-      this.resultPatterns.unshift(patterns);
+      this.resultPatterns.unshift({
+        patternName: pattern,
+        patterns: patterns
+      });
+
       if (this.resultPatterns.length >= 3) {
         this.resultPatterns = this.resultPatterns.slice(0, 2);
       }
