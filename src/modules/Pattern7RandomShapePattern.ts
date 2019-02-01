@@ -37,8 +37,4 @@ export default class Pattern7RandomShapePattern extends BaseShapePattern {
       return joinedLine;
     });
   };
-
-  draw = () => {
-    return this.createPattern();
-  };
 }

@@ -29,8 +29,4 @@ export default class DiamondShapePattern extends BaseShapePattern {
       blankInLine.slice(centerIndex, blankInLine.length)
     );
   };
-
-  draw = () => {
-    return this.createPattern();
-  };
 }

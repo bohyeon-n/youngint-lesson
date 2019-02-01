@@ -27,8 +27,4 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
       (index !== 0 ? blankInLine.slice(-index) : "")
     );
   };
-
-  draw = () => {
-    return this.createPattern();
-  };
 }

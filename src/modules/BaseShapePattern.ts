@@ -54,6 +54,10 @@ abstract class BaseShapePattern {
 
     return patterns;
   };
+
+  draw = () => {
+    return this.createPattern();
+  };
 }
 
 export default BaseShapePattern;

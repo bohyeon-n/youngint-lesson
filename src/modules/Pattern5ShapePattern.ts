@@ -30,8 +30,4 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
       (index !== 0 ? blankInLine.slice(-2 * index) : "")
     );
   };
-
-  draw = () => {
-    return this.createPattern();
-  };
 }

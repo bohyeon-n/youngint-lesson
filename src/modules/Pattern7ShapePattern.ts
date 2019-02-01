@@ -28,8 +28,4 @@ export default class Pattern7ShapePattern extends BaseShapePattern {
 
     return patterns;
   };
-
-  draw = () => {
-    return this.createPattern();
-  };
 }
