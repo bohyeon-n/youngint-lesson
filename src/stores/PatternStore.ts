@@ -60,11 +60,11 @@ class PatternStore {
   @action onSubmit = (): void => {
     const { shape, pattern, recordedPatterns } = this;
     let { valid, message } = isValid(this.numberInputValue, pattern);
-    const validationAllInput =
+    const allInputsValidity =
       valid &&
       shape !== "" &&
       !(recordedPatterns <= 0 || recordedPatterns > 100);
-    if (validationAllInput) {
+    if (allInputsValidity) {
       const patternObj = generatePattern(
         Number(this.numberInputValue),
         shape,
@@ -90,7 +90,7 @@ class PatternStore {
         ? `패턴 기록은 1부터 100까지 설정할 수 있습니다\n ${message}`
         : message;
     const messageTemplate = `${message} \n 다시 입력해주세요.`;
-    validationAllInput
+    allInputsValidity
       ? this.drawPattern(Number(this.numberInputValue), shape, pattern)
       : alert(messageTemplate);
 
