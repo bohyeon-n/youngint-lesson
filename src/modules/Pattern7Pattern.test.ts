@@ -1,14 +1,17 @@
-import Pattern7ShapePattern from "./Pattern7ShapePattern";
+import generatePattern from "../utils/generatePattern";
+import Patterns from "../utils/Patterns";
 
 test("pattern7", () => {
-  //arrange
-  let pattern = new Pattern7ShapePattern(3, "*");
+  // arrange
+  let { patterns } = generatePattern(3, "*", Patterns.Pattern7);
 
-  //act
-  let result = pattern.draw();
+  // act
+  let result = patterns.patterns;
+  let expected = [["*  "], ["*  ", "** "], ["*  ", "** ", "***"]];
   // assert
-
-  expect(result[0]).toBe("*  *  *  ");
-  expect(result[1]).toBe("   ** ** ");
-  expect(result[2]).toBe("      ***");
+  result.map((line: any, index: number) =>
+    line.pattern.map((charac: string, i: number) =>
+      expect(expected[index][i]).toBe(charac)
+    )
+  );
 });

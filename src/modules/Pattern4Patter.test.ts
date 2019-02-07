@@ -1,14 +1,17 @@
-import Pattern4ShapePattern from "../modules/Pattern4ShapePattern";
+import generatePattern from "../utils/generatePattern";
+import Patterns from "../utils/Patterns";
 
 test("pattern4", () => {
   // arrange
-  let pattern = new Pattern4ShapePattern(3, "*");
+  let { patterns } = generatePattern(3, "*", Patterns.Pattern4);
 
   // act
-  let result = pattern.draw();
-
+  let result = patterns.patterns;
+  let expected = [["  ***", " *** ", "***  "]];
   // assert
-  expect(result[0]).toBe("  ***");
-  expect(result[1]).toBe(" *** ");
-  expect(result[2]).toBe("***  ");
+  result.map((line: any, index: number) =>
+    line.pattern.map((charac: string, i: number) =>
+      expect(expected[index][i]).toBe(charac)
+    )
+  );
 });

@@ -66,6 +66,7 @@ abstract class BaseShapePattern {
 
   draw = () => {
     this.createPattern();
+
     return this.patternSetModel;
   };
 }

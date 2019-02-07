@@ -1,14 +1,17 @@
-import DiamondShapePattern from "../modules/DiamondShapePattern";
+import generatePattern from "../utils/generatePattern";
+import Patterns from "../utils/Patterns";
 
 test("diamond", () => {
   // arrange
-  let pattern = new DiamondShapePattern(3, "*");
+  let { patterns } = generatePattern(3, "*", Patterns.Diamond);
 
   // act
-  let result = pattern.draw();
-
+  let result = patterns.patterns;
+  let expected = [[" * ", "***", " * "]];
   // assert
-  expect(result[0]).toBe(" * ");
-  expect(result[1]).toBe("***");
-  expect(result[2]).toBe(" * ");
+  result.map((line: any, index: number) =>
+    line.pattern.map((charac: string, i: number) =>
+      expect(expected[index][i]).toBe(charac)
+    )
+  );
 });

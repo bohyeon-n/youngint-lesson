@@ -5,7 +5,7 @@ test("triangle", () => {
   let pattern = new TriangleShapePattern(3, "*");
 
   // act
-  let result = pattern.draw();
+  let result = pattern.draw().patterns[0].pattern;
 
   // assert
   expect(result[0]).toBe("*  ");
