@@ -2,11 +2,6 @@ import { observable, action } from "mobx";
 import { isValid } from "../utils/validation";
 import generatePattern from "../utils/generatePattern";
 
-interface formerInputState {
-  number: number | string;
-  shape: string;
-  pattern: string;
-}
 class PatternStore {
   @observable pattern: string = "triangle";
   @observable shape: string = "";

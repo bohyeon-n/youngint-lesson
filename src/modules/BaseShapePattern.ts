@@ -42,7 +42,7 @@ abstract class BaseShapePattern {
   };
 
   protected drawPatternLine = (shapeCount: number, index: number) => {
-    const { shape, totalNumber } = this;
+    const { shape } = this;
     const shapeInLine = this.repeatCharacterNumberTimes(shape, shapeCount);
     const blankInLine = this.repeatCharacterNumberTimes(
       " ",
