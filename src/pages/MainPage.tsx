@@ -55,6 +55,7 @@ export default class MainPage extends React.Component {
                   <Pattern
                     patterns={resultPattern.patterns}
                     patternName={resultPattern.patternName}
+                    patternDirection={resultPattern.patternDirection}
                   />
                 </div>
               )

@@ -1,5 +1,4 @@
 import BaseShapePattern from "./BaseShapePattern";
-import Patterns from "../utils/Patterns";
 
 export default class Pattern4ShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {

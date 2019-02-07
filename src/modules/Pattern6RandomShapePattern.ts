@@ -1,5 +1,3 @@
-import BaseShapePattern from "./BaseShapePattern";
-import Patterns from "../utils/Patterns";
 import { shuffleArray } from "../utils/shuffleArray";
 import Pattern6ShapePattern from "../modules/Pattern6ShapePattern";
 export default class Pattern6RandomShapePattern extends Pattern6ShapePattern {

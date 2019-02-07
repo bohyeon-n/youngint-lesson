@@ -3,15 +3,16 @@ import * as React from "react";
 export interface PatternProps {
   readonly patterns: any;
   readonly patternName: any;
+  readonly patternDirection: string;
 }
 
 export class Pattern extends React.Component<PatternProps, {}> {
   render() {
-    const { patterns, patternName } = this.props;
+    const { patterns, patternName, patternDirection } = this.props;
 
     return (
-      <div style={{ whiteSpace: "pre" }} className={`pattern`}>
-        <div className={`pattern-content ${patternName}`}>
+      <div style={{ whiteSpace: "pre" }} className={`pattern `}>
+        <div className={`pattern-content ${patternDirection}`}>
           {patterns.patterns.map((patternLine: any, index: number) => (
             <div key={index} className={`section ${patternName}`}>
               {patternLine.pattern.map((line: any, index: number) => (

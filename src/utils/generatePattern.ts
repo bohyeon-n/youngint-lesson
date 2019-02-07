@@ -9,38 +9,40 @@ import Pattern7ShapePattern from "../modules/Pattern7ShapePattern";
 import Pattern6RandomShapePattern from "../modules/Pattern6RandomShapePattern";
 import Pattern7RandomShapePattern from "../modules/Pattern7RandomShapePattern";
 const generatePattern = (number: number, shape: string, pattern: string) => {
-  let patterns: Array<string> = [];
+  let patternObj: any;
 
   switch (pattern) {
     case Patterns.Triangle:
-      patterns = new TriangleShapePattern(number, shape).draw();
+      patternObj = new TriangleShapePattern(number, shape);
       break;
     case Patterns.ReverseTriangle:
-      patterns = new ReverseTrianglePattern(number, shape).draw();
+      patternObj = new ReverseTrianglePattern(number, shape);
       break;
     case Patterns.Diamond:
-      patterns = new DiamondShapePattern(number, shape).draw();
+      patternObj = new DiamondShapePattern(number, shape);
       break;
     case Patterns.Pattern4:
-      patterns = new Pattern4ShapePattern(number, shape).draw();
+      patternObj = new Pattern4ShapePattern(number, shape);
       break;
     case Patterns.Pattern5:
-      patterns = new Pattern5ShapePattern(number, shape).draw();
+      patternObj = new Pattern5ShapePattern(number, shape);
       break;
     case Patterns.Pattern6:
-      patterns = new Pattern6ShapePattern(number, shape).draw();
+      patternObj = new Pattern6ShapePattern(number, shape);
       break;
     case Patterns.Pattern7:
-      patterns = new Pattern7ShapePattern(number, shape).draw();
+      patternObj = new Pattern7ShapePattern(number, shape);
       break;
     case Patterns.Pattern6Random:
-      patterns = new Pattern6RandomShapePattern(number, shape).draw();
+      patternObj = new Pattern6RandomShapePattern(number, shape);
       break;
     case Patterns.Pattern7Random:
-      patterns = new Pattern7RandomShapePattern(number, shape).draw();
+      patternObj = new Pattern7RandomShapePattern(number, shape);
       break;
   }
-  return patterns;
+  const patterns = patternObj.draw();
+  const patternDirection = patternObj.direction;
+  return { patterns, patternDirection };
 };
 
 export default generatePattern;

@@ -1,5 +1,4 @@
 import BaseShapePattern from "./BaseShapePattern";
-import Patterns from "../utils/Patterns";
 import { PatternModel } from "../PatternModel/PatternViewModel";
 
 export default class Pattern6ShapePattern extends BaseShapePattern {

@@ -7,11 +7,13 @@ abstract class BaseShapePattern {
   protected totalNumber: number;
   protected shape: string;
   protected patternSetModel: any;
+  direction: string;
 
   protected constructor(totalNumber: number, shape: string) {
     this.totalNumber = totalNumber;
     this.shape = shape;
     this.patternSetModel = new PatternSetModel();
+    this.direction = "vertical";
   }
 
   protected countBlanksInLine = (shapeCount: number, index: number): number => {

@@ -51,14 +51,16 @@ class PatternStore {
     const { shape, pattern } = this;
     let { valid, message } = isValid(this.numberInputValue, pattern);
     if (valid) {
-      const patterns = generatePattern(
+      const patternObj = generatePattern(
         Number(this.numberInputValue),
         shape,
         pattern
       );
+
       this.resultPatterns.unshift({
         patternName: pattern,
-        patterns: patterns
+        patterns: patternObj.patterns,
+        patternDirection: patternObj.patternDirection
       });
 
       if (this.resultPatterns.length >= 3) {
