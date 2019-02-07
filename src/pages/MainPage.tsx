@@ -42,26 +42,10 @@ export default class MainPage extends React.Component {
             </p>
             <div>패턴을 선택해주세요.</div>
             <List PatternNames={this.patternNames} />
-            <div>이전 패턴 개수 설정 / 1부터 100까지 설정할 수 있습니다.</div>
-            <input
-              type="number"
-              name=""
-              id=""
-              value={patternStore.recordedPatterns}
-              min="1"
-              max="100"
-              onChange={e =>
-                patternStore.onChangeRecordedPattern(e.currentTarget.value)
-              }
-            />
-            <Message
-              alert={false}
-              message={patternStore.recordedPatternsAlertMessage}
-            />
+
             <FormContainer />
           </div>
         )}
-
         <div>
           <div className="printed">
             {patternStore.resultPatterns.map(
