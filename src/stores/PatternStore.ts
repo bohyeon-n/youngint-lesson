@@ -12,6 +12,7 @@ class PatternStore {
   @observable gameState: string = "before";
   @observable resultPatterns: any = [];
   @observable recordedPatterns: number = 1;
+  @observable recordedPatternsAlertMessage: string = "";
 
   @action reset = () => {
     this.pattern = "triangle";
@@ -22,6 +23,7 @@ class PatternStore {
     this.valid = false;
     this.resultPatterns = [];
     this.recordedPatterns = 1;
+    this.recordedPatternsAlertMessage = "";
   };
 
   @action onChangePattern = (pattern: string) => {
@@ -34,6 +36,12 @@ class PatternStore {
 
   @action onChangeRecordedPattern = (number: number) => {
     this.recordedPatterns = number;
+    if (number < 1 || number > 100) {
+      this.recordedPatternsAlertMessage =
+        "패턴 기록은 1부터 100까지 설정할 수 있습니다.";
+    } else {
+      this.recordedPatternsAlertMessage = "";
+    }
   };
 
   @action onChangeNumber = (value: string): void => {
@@ -49,9 +57,13 @@ class PatternStore {
   };
 
   @action onSubmit = (): void => {
-    const { shape, pattern } = this;
+    const { shape, pattern, recordedPatterns } = this;
     let { valid, message } = isValid(this.numberInputValue, pattern);
-    if (valid) {
+    const validationAllInput =
+      valid &&
+      shape !== "" &&
+      !(recordedPatterns <= 0 || recordedPatterns > 100);
+    if (validationAllInput) {
       const patternObj = generatePattern(
         Number(this.numberInputValue),
         shape,
@@ -72,14 +84,24 @@ class PatternStore {
     }
     message = message === "" ? "숫자를 입력해주세요." : message;
     message = shape === "" ? `모양이 없습니다. \n ${message} ` : message;
+    message =
+      recordedPatterns <= 0 || recordedPatterns > 100
+        ? `패턴 기록은 1부터 100까지 설정할 수 있습니다\n ${message}`
+        : message;
     const messageTemplate = `${message} \n 다시 입력해주세요.`;
-    valid && shape !== ""
+    validationAllInput
       ? this.drawPattern(Number(this.numberInputValue), shape, pattern)
       : alert(messageTemplate);
+
     this.numberInputValue = "";
     this.message = "";
     this.shape = shape;
     this.valid = false;
+    this.recordedPatterns =
+      recordedPatterns <= 0 || recordedPatterns > 100
+        ? 1
+        : this.recordedPatterns;
+    this.recordedPatternsAlertMessage = "";
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {
