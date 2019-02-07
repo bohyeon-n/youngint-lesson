@@ -1,5 +1,4 @@
 import BaseShapePattern from "./BaseShapePattern";
-import Patterns from "../utils/Patterns";
 
 export default class DiamondShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
@@ -28,9 +27,5 @@ export default class DiamondShapePattern extends BaseShapePattern {
       shapesInLine +
       blankInLine.slice(centerIndex, blankInLine.length)
     );
-  };
-
-  draw = () => {
-    return this.createPattern(Patterns.Diamond);
   };
 }

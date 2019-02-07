@@ -1,5 +1,4 @@
 import BaseShapePattern from "../modules/BaseShapePattern";
-import Patterns from "../utils/Patterns";
 
 export default class ReverseTrianglePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
@@ -20,9 +19,5 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
     blankInLine: string
   ): string => {
     return blankInLine + shapesInLine;
-  };
-
-  draw = () => {
-    return this.createPattern(Patterns.ReverseTriangle);
   };
 }

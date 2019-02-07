@@ -1,23 +1,42 @@
 import * as React from "react";
-import { PatternContainer } from "../containers/PatternContainer";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";
+import generatePattern from "../utils/generatePattern";
+import { Pattern } from "../components/Pattern";
+import Patterns from "../utils/Patterns";
 
 export interface ListProps {
-  readonly list: string[];
+  readonly PatternNames: string[];
 }
 
 @inject("patternStore")
 @observer
 class List extends React.Component<ListProps, {}> {
+  patternList: any;
+  patternNames: any;
+  createPatterns() {
+    const keys = Object.keys(Patterns).map(k => k);
+    const patternNames = keys.map(k => Patterns[k as any]);
+    const patternList = patternNames.map(pattern => {
+      const patternObj = generatePattern(5, "*", pattern);
+      return {
+        patterns: patternObj.patterns,
+        patternName: pattern,
+        patternDirection: patternObj.patternDirection
+      };
+    });
+
+    this.patternList = patternList;
+    this.patternNames = patternNames;
+  }
   render() {
-    const { list } = this.props;
     const { patternStore }: any = this.props;
+    !this.patternNames && this.createPatterns();
 
     return (
       <div className="list">
-        {list.map((item, index) => (
+        {this.patternNames.map((item: any, index: number) => (
           <div
             className={classnames("item", {
               active: patternStore.pattern === item
@@ -27,7 +46,11 @@ class List extends React.Component<ListProps, {}> {
           >
             <div>{item}</div>
 
-            <PatternContainer number={5} shape="*" pattern={item} />
+            <Pattern
+              patterns={this.patternList[index].patterns}
+              patternName={this.patternList[index].patternName}
+              patternDirection={this.patternList[index].patternDirection}
+            />
 
             <div className="check">
               <FontAwesomeIcon icon="check-circle" size="3x" />

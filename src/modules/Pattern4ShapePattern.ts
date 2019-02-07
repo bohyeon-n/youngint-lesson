@@ -1,5 +1,4 @@
 import BaseShapePattern from "./BaseShapePattern";
-import Patterns from "../utils/Patterns";
 
 export default class Pattern4ShapePattern extends BaseShapePattern {
   constructor(totalNumber: number, shape: string) {
@@ -26,9 +25,5 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
       shapesInLine +
       (index !== 0 ? blankInLine.slice(-index) : "")
     );
-  };
-
-  draw = () => {
-    return this.createPattern(Patterns.Pattern4);
   };
 }
