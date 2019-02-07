@@ -11,6 +11,7 @@ class PatternStore {
   @observable valid: boolean = false;
   @observable gameState: string = "before";
   @observable resultPatterns: any = [];
+  @observable recordedPatterns: number = 1;
 
   @action reset = () => {
     this.pattern = "triangle";
@@ -20,6 +21,7 @@ class PatternStore {
     this.message = "";
     this.valid = false;
     this.resultPatterns = [];
+    this.recordedPatterns = 1;
   };
 
   @action onChangePattern = (pattern: string) => {
@@ -28,6 +30,10 @@ class PatternStore {
     this.valid = valid;
     this.message = message;
     this.step = this.shape === "" ? 1 : 2;
+  };
+
+  @action onChangeRecordedPattern = (number: number) => {
+    this.recordedPatterns = number;
   };
 
   @action onChangeNumber = (value: string): void => {
@@ -52,15 +58,17 @@ class PatternStore {
         pattern
       );
 
+      if (this.resultPatterns.length > Number(this.recordedPatterns)) {
+        this.resultPatterns = this.resultPatterns.slice(
+          0,
+          Number(this.recordedPatterns)
+        );
+      }
       this.resultPatterns.unshift({
         patternName: pattern,
         patterns: patternObj.patterns,
         patternDirection: patternObj.patternDirection
       });
-
-      if (this.resultPatterns.length >= 3) {
-        this.resultPatterns = this.resultPatterns.slice(0, 2);
-      }
     }
     message = message === "" ? "숫자를 입력해주세요." : message;
     message = shape === "" ? `모양이 없습니다. \n ${message} ` : message;
