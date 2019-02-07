@@ -53,6 +53,7 @@ class PatternStore {
   };
 
   @action onChangeShape = (value: string): void => {
+    this.step = 1;
     this.shape = value;
   };
 
