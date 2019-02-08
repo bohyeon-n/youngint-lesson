@@ -8,7 +8,7 @@ test("패턴 클릭 시 step 이동 / shape가 없을 시", () => {
   pattern.onChangePattern("");
 
   // assert
-  expect(1).toBe(pattern.step);
+  expect(2).toBe(pattern.step);
 });
 
 test("패턴 클릭 시 step 이동/shape가 있을 시", () => {
@@ -19,5 +19,5 @@ test("패턴 클릭 시 step 이동/shape가 있을 시", () => {
   pattern.onChangePattern("");
 
   // assert
-  expect(2).toBe(pattern.step);
+  expect(3).toBe(pattern.step);
 });

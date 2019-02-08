@@ -31,10 +31,12 @@ class PatternStore {
     const { valid, message } = isValid(this.numberInputValue, this.pattern);
     this.valid = valid;
     this.message = message;
-    this.step = this.shape === "" ? 1 : 2;
+    this.step =
+      this.patternNumberRecordMessage !== "" ? 1 : this.shape === "" ? 2 : 3;
   };
 
   @action onChangePatternNumberRecord = (number: number) => {
+    this.step = 1;
     this.patternNumberRecord = number;
     if (number < 1 || number > 100) {
       this.patternNumberRecordMessage =
@@ -45,7 +47,7 @@ class PatternStore {
   };
 
   @action onChangeNumber = (value: string): void => {
-    this.step = 2;
+    this.step = 3;
     this.numberInputValue = value;
     const { valid, message } = isValid(value, this.pattern);
     this.valid = valid;
@@ -53,7 +55,7 @@ class PatternStore {
   };
 
   @action onChangeShape = (value: string): void => {
-    this.step = 1;
+    this.step = 2;
     this.shape = value;
   };
 

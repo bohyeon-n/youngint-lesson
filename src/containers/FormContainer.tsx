@@ -33,14 +33,14 @@ export class FormContainer extends React.Component {
           value={patternStore.shape}
           handleInputChange={patternStore.onChangeShape}
           labelName="모양"
-          focus={patternStore.step === 1}
+          focus={patternStore.step === 2}
           onSubmit={patternStore.onSubmit}
           name={"shape"}
         />
         <div>숫자를 입력해주세요.*</div>
         <div>숫자는 1부터 100까지의 정수만을 입력할 수 있습니다.</div>
         <Form
-          focus={patternStore.step === 2}
+          focus={patternStore.step === 3}
           value={patternStore.numberInputValue}
           handleInputChange={patternStore.onChangeNumber}
           labelName="숫자"
