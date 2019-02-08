@@ -4,7 +4,6 @@ import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
 import { Pattern } from "../components/Pattern";
-import { Message } from "../components/Message";
 @inject("patternStore")
 @observer
 export default class MainPage extends React.Component {
@@ -56,7 +55,6 @@ export default class MainPage extends React.Component {
                   </div>
                   <Pattern
                     patterns={resultPattern.patterns}
-                    patternName={resultPattern.patternName}
                     patternDirection={resultPattern.patternDirection}
                   />
                 </div>

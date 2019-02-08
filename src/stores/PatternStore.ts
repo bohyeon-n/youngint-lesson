@@ -80,7 +80,6 @@ class PatternStore {
         );
       }
       this.resultPatterns.unshift({
-        patternName: pattern,
         patterns: patternObj.patterns,
         patternDirection: patternObj.patternDirection
       });
