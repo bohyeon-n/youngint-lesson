@@ -9,17 +9,32 @@ export interface FormProps {
   readonly onSubmit: Function;
   readonly pattern?: any;
   readonly name?: string;
+  readonly min?: string;
+  readonly max?: string;
+  readonly type?: string;
 }
 
 export class Form extends React.Component<FormProps, {}> {
   render() {
-    const { value, handleInputChange, labelName, focus, onSubmit } = this.props;
+    const {
+      value,
+      handleInputChange,
+      labelName,
+      focus,
+      onSubmit,
+      type,
+      min,
+      max
+    } = this.props;
     return (
       <div className="form">
         <form onSubmit={e => e.preventDefault()}>
           <label>
             {`${labelName}:`}
             <Input
+              type={type}
+              min={min}
+              max={max}
               onSubmit={onSubmit}
               value={value}
               onInputChange={handleInputChange}

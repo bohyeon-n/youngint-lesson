@@ -11,6 +11,8 @@ class PatternStore {
   @observable valid: boolean = false;
   @observable gameState: string = "before";
   @observable resultPatterns: any = [];
+  @observable patternNumberRecord: number = 1;
+  @observable patternNumberRecordMessage: string = "";
 
   @action reset = () => {
     this.pattern = "triangle";
@@ -20,6 +22,8 @@ class PatternStore {
     this.message = "";
     this.valid = false;
     this.resultPatterns = [];
+    this.patternNumberRecord = 1;
+    this.patternNumberRecordMessage = "";
   };
 
   @action onChangePattern = (pattern: string) => {
@@ -27,11 +31,23 @@ class PatternStore {
     const { valid, message } = isValid(this.numberInputValue, this.pattern);
     this.valid = valid;
     this.message = message;
-    this.step = this.shape === "" ? 1 : 2;
+    this.step =
+      this.patternNumberRecordMessage !== "" ? 1 : this.shape === "" ? 2 : 3;
+  };
+
+  @action onChangePatternNumberRecord = (number: number) => {
+    this.step = 1;
+    this.patternNumberRecord = number;
+    if (number < 1 || number > 100) {
+      this.patternNumberRecordMessage =
+        "패턴 기록은 1부터 100까지 설정할 수 있습니다.";
+    } else {
+      this.patternNumberRecordMessage = "";
+    }
   };
 
   @action onChangeNumber = (value: string): void => {
-    this.step = 2;
+    this.step = 3;
     this.numberInputValue = value;
     const { valid, message } = isValid(value, this.pattern);
     this.valid = valid;
@@ -39,39 +55,56 @@ class PatternStore {
   };
 
   @action onChangeShape = (value: string): void => {
+    this.step = 2;
     this.shape = value;
   };
 
   @action onSubmit = (): void => {
-    const { shape, pattern } = this;
+    const { shape, pattern, patternNumberRecord } = this;
     let { valid, message } = isValid(this.numberInputValue, pattern);
-    if (valid) {
+    const allInputsValidity =
+      valid &&
+      shape !== "" &&
+      !(patternNumberRecord <= 0 || patternNumberRecord > 100);
+    if (allInputsValidity) {
       const patternObj = generatePattern(
         Number(this.numberInputValue),
         shape,
         pattern
       );
 
+      if (this.resultPatterns.length > Number(this.patternNumberRecord)) {
+        this.resultPatterns = this.resultPatterns.slice(
+          0,
+          Number(this.patternNumberRecord)
+        );
+      }
       this.resultPatterns.unshift({
         patternName: pattern,
         patterns: patternObj.patterns,
         patternDirection: patternObj.patternDirection
       });
-
-      if (this.resultPatterns.length >= 3) {
-        this.resultPatterns = this.resultPatterns.slice(0, 2);
-      }
     }
     message = message === "" ? "숫자를 입력해주세요." : message;
     message = shape === "" ? `모양이 없습니다. \n ${message} ` : message;
+    message =
+      patternNumberRecord <= 0 || patternNumberRecord > 100
+        ? `패턴 기록은 1부터 100까지 설정할 수 있습니다\n ${message}`
+        : message;
     const messageTemplate = `${message} \n 다시 입력해주세요.`;
-    valid && shape !== ""
+    allInputsValidity
       ? this.drawPattern(Number(this.numberInputValue), shape, pattern)
       : alert(messageTemplate);
+
     this.numberInputValue = "";
     this.message = "";
     this.shape = shape;
     this.valid = false;
+    this.patternNumberRecord =
+      patternNumberRecord <= 0 || patternNumberRecord > 100
+        ? 1
+        : this.patternNumberRecord;
+    this.patternNumberRecordMessage = "";
   };
 
   @action drawPattern = (n: number, shape: string, pattern: string): void => {

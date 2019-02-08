@@ -4,6 +4,7 @@ import List from "../components/List";
 import { observer, inject } from "mobx-react";
 import Patterns from "../utils/Patterns";
 import { Pattern } from "../components/Pattern";
+import { Message } from "../components/Message";
 @inject("patternStore")
 @observer
 export default class MainPage extends React.Component {
@@ -41,6 +42,7 @@ export default class MainPage extends React.Component {
             </p>
             <div>패턴을 선택해주세요.</div>
             <List PatternNames={this.patternNames} />
+
             <FormContainer />
           </div>
         )}
@@ -50,7 +52,7 @@ export default class MainPage extends React.Component {
               (resultPattern: any, index: number) => (
                 <div key={index} className="pattern">
                   <div className="result-title">
-                    {index === 0 ? "출력 결과" : "이전 패턴"}
+                    {index === 0 ? "출력 결과" : `${index}번 째 전 패턴`}
                   </div>
                   <Pattern
                     patterns={resultPattern.patterns}
