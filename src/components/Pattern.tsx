@@ -16,7 +16,7 @@ export class Pattern extends React.Component<PatternProps, {}> {
             <div key={index} className={`section`}>
               {patternLine.pattern.map((line: any, index: number) => (
                 <div key={index} className="line">
-                  {line.split("").map((character: any, index: number) => (
+                  {Array.from(line).map((character: any, index: number) => (
                     <span key={index} className="character">
                       {character}
                     </span>
