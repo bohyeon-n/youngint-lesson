@@ -36,7 +36,7 @@ export class Form extends React.Component<FormProps, {}> {
               max={max}
               onSubmit={onSubmit}
               value={value}
-              onInputChange={handleInputChange}
+              handleInputChange={handleInputChange}
               name={name}
               active={focus}
             />
