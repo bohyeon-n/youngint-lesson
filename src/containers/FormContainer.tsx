@@ -23,10 +23,7 @@ export class FormContainer extends React.Component {
           max={"100"}
         />
         <div className="message">
-          <Message
-            alert={false}
-            message={patternStore.patternNumberRecordMessage}
-          />
+          <Message message={patternStore.patternNumberRecordMessage} />
         </div>
         <div>모양을 입력해주세요 *</div>
         <Form
@@ -49,7 +46,7 @@ export class FormContainer extends React.Component {
           pattern={patternStore.pattern}
         />
         <div className="message">
-          <Message message={patternStore.message} alert={patternStore.valid} />
+          <Message message={patternStore.message} />
         </div>
 
         <button onClick={patternStore.onSubmit}>패턴 출력하기</button>
