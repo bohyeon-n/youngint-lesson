@@ -11,6 +11,7 @@ export interface FormProps {
   readonly min?: string;
   readonly max?: string;
   readonly type?: string;
+  readonly pattern?: string;
 }
 
 export class Form extends React.Component<FormProps, {}> {
