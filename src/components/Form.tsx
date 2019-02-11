@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Input } from "../components/Input";
 
 export interface FormProps {
   readonly handleInputChange: Function;
@@ -31,15 +30,15 @@ export class Form extends React.Component<FormProps, {}> {
         <form onSubmit={e => e.preventDefault()}>
           <label>
             {`${labelName}:`}
-            <Input
-              type={type}
+            <input
+              type={type || "text"}
               min={min}
               max={max}
-              onSubmit={onSubmit}
-              value={value}
-              handleInputChange={handleInputChange}
               name={name}
-              active={focus}
+              value={value}
+              onChange={e => handleInputChange(e.target.value)}
+              onKeyPress={e => e.key == "Enter" && onSubmit()}
+              ref={input => input && focus && input.focus()}
             />
           </label>
         </form>
