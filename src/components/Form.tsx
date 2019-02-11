@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface FormProps {
-  readonly handleInputChange: Function;
+  readonly onChange: Function;
   readonly value: string;
   readonly focus: boolean;
   readonly labelName: string;
@@ -17,7 +17,7 @@ export class Form extends React.Component<FormProps, {}> {
   render() {
     const {
       value,
-      handleInputChange,
+      onChange,
       labelName,
       focus,
       onSubmit,
@@ -36,7 +36,7 @@ export class Form extends React.Component<FormProps, {}> {
               max={max}
               name={name}
               value={value}
-              onChange={e => handleInputChange(e.target.value)}
+              onChange={e => onChange(e.target.value)}
               onKeyPress={e => e.key == "Enter" && onSubmit()}
               ref={input => input && focus && input.focus()}
             />

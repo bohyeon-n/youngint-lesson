@@ -14,7 +14,7 @@ export class FormContainer extends React.Component {
         <div>이전 패턴 개수 설정 / 1부터 100까지 설정할 수 있습니다.</div>
         <Form
           value={patternStore.patternNumberRecord}
-          handleInputChange={patternStore.onChangePatternNumberRecord}
+          onChange={patternStore.onChangePatternNumberRecord}
           labelName="이전 패턴 개수"
           focus={patternStore.step === 1}
           onSubmit={patternStore.onSubmit}
@@ -28,7 +28,7 @@ export class FormContainer extends React.Component {
         <div>모양을 입력해주세요 *</div>
         <Form
           value={patternStore.shape}
-          handleInputChange={patternStore.onChangeShape}
+          onChange={patternStore.onChangeShape}
           labelName="모양"
           focus={patternStore.step === 2}
           onSubmit={patternStore.onSubmit}
@@ -39,7 +39,7 @@ export class FormContainer extends React.Component {
         <Form
           focus={patternStore.step === 3}
           value={patternStore.numberInputValue}
-          handleInputChange={patternStore.onChangeNumber}
+          onChange={patternStore.onChangeNumber}
           labelName="숫자"
           onSubmit={patternStore.onSubmit}
           name={"number"}
