@@ -2,16 +2,19 @@ import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export interface ErrorProps {
   readonly message: string;
+  readonly alert: boolean;
 }
 
 export class Message extends React.Component<ErrorProps, {}> {
   render() {
-    const { message } = this.props;
+    const { message, alert } = this.props;
     return (
       <div className="message">
         {message !== "" && (
           <div>
-            <FontAwesomeIcon icon="exclamation-triangle" className="icon" />
+            {alert ? (
+              <FontAwesomeIcon icon="exclamation-triangle" className="icon" />
+            ) : null}
             {message}
           </div>
         )}
