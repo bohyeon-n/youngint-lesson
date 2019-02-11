@@ -54,7 +54,7 @@ export default class MainPage extends React.Component {
                     {index === 0 ? "출력 결과" : `${index}번 째 전 패턴`}
                   </div>
                   <Pattern
-                    patterns={resultPattern.patterns}
+                    patterns={resultPattern.patterns.patterns}
                     patternDirection={resultPattern.patternDirection}
                   />
                 </div>
