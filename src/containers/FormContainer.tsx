@@ -45,7 +45,6 @@ export class FormContainer extends React.Component {
           handleInputChange={patternStore.onChangeNumber}
           labelName="숫자"
           onSubmit={patternStore.onSubmit}
-          pattern={patternStore.pattern}
           name={"number"}
         />
         <div className="message">

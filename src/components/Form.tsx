@@ -7,7 +7,6 @@ export interface FormProps {
   readonly focus: boolean;
   readonly labelName: string;
   readonly onSubmit: Function;
-  readonly pattern?: any;
   readonly name?: string;
   readonly min?: string;
   readonly max?: string;
