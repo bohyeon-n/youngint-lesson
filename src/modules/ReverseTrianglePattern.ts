@@ -1,3 +1,8 @@
+// 출력 예시
+// ***
+//  **
+//   *
+
 import BaseShapePattern from "../modules/BaseShapePattern";
 
 export default class ReverseTrianglePattern extends BaseShapePattern {

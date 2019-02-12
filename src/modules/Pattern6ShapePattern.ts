@@ -1,3 +1,13 @@
+// 출력 예시
+// *
+
+// *
+// **
+
+// *
+// **
+// ***
+
 import BaseShapePattern from "./BaseShapePattern";
 import { PatternModel } from "../PatternModel/PatternViewModel";
 

@@ -1,3 +1,9 @@
+// 출력 예시
+//    ****
+//   ****
+//  ****
+// ****
+
 import BaseShapePattern from "./BaseShapePattern";
 
 export default class Pattern4ShapePattern extends BaseShapePattern {
