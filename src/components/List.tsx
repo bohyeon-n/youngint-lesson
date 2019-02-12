@@ -47,7 +47,7 @@ class List extends React.Component<ListProps, {}> {
             <div>{item}</div>
 
             <Pattern
-              patterns={this.patternList[index].patterns.patterns}
+              patterns={this.patternList[index].patterns}
               patternDirection={this.patternList[index].patternDirection}
             />
 

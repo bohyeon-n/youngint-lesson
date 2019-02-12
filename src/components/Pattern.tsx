@@ -8,7 +8,6 @@ export interface PatternProps {
 export class Pattern extends React.Component<PatternProps, {}> {
   render() {
     const { patterns, patternDirection } = this.props;
-
     return (
       <div style={{ whiteSpace: "pre" }} className={`pattern `}>
         <div className={`pattern-content ${patternDirection}`}>

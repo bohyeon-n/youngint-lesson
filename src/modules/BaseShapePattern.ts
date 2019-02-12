@@ -72,7 +72,7 @@ abstract class BaseShapePattern {
   draw = () => {
     this.createPattern();
 
-    return this.patternSetModel;
+    return this.patternSetModel.patterns;
   };
 }
 
