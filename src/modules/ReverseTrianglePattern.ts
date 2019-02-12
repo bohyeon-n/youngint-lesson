@@ -13,7 +13,7 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
       .reverse();
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

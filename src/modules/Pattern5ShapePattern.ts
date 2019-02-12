@@ -18,7 +18,7 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
     return totalNumber - 1 + index;
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

@@ -14,7 +14,7 @@ export default class Pattern4ShapePattern extends BaseShapePattern {
     return shapeCount - 1;
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

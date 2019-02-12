@@ -33,7 +33,7 @@ abstract class BaseShapePattern {
     return new Array(totalNumber).fill("").map((i, index) => index);
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string
@@ -41,14 +41,18 @@ abstract class BaseShapePattern {
     return shapesInLine + blankInLine;
   };
 
-  protected drawPatternLine = (shapeCount: number, index: number) => {
+  protected createLine = (shapeCount: number, index: number) => {
     const { shape } = this;
     const shapeInLine = this.repeatCharacterNumberTimes(shape, shapeCount);
     const blankInLine = this.repeatCharacterNumberTimes(
       " ",
       this.countBlanksInLine(shapeCount, index)
     );
-    const patternLine = this.createPatternLine(index, shapeInLine, blankInLine);
+    const patternLine = this.combineShapesBlanks(
+      index,
+      shapeInLine,
+      blankInLine
+    );
 
     return patternLine;
   };
@@ -58,7 +62,7 @@ abstract class BaseShapePattern {
     const patterns: Array<string> = [];
 
     shapeArray.map((shapeCount, index) =>
-      patterns.push(this.drawPatternLine(shapeCount + 1, index))
+      patterns.push(this.createLine(shapeCount + 1, index))
     );
     const patternModel = new PatternModel(patterns);
     this.patternSetModel.addModel(patternModel);
