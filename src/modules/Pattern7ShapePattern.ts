@@ -1,3 +1,8 @@
+// 출력 예시
+// * *  *
+//   ** **
+//      ***
+
 import Pattern6ShapePattern from "./Pattern6ShapePattern";
 
 export default class Pattern7ShapePattern extends Pattern6ShapePattern {

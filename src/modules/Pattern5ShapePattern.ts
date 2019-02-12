@@ -1,3 +1,10 @@
+// 출력 예시
+//     *****
+//    ****
+//   ***
+//  **
+// *
+
 import BaseShapePattern from "./BaseShapePattern";
 
 export default class Pattern5ShapePattern extends BaseShapePattern {
@@ -18,7 +25,7 @@ export default class Pattern5ShapePattern extends BaseShapePattern {
     return totalNumber - 1 + index;
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

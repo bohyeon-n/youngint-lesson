@@ -8,7 +8,16 @@ import Pattern6ShapePattern from "../modules/Pattern6ShapePattern";
 import Pattern7ShapePattern from "../modules/Pattern7ShapePattern";
 import Pattern6RandomShapePattern from "../modules/Pattern6RandomShapePattern";
 import Pattern7RandomShapePattern from "../modules/Pattern7RandomShapePattern";
-const generatePattern = (number: number, shape: string, pattern: string) => {
+
+interface generatePatternReturnObj {
+  patterns: any;
+  patternDirection: string;
+}
+const generatePattern = (
+  number: number,
+  shape: string,
+  pattern: string
+): generatePatternReturnObj => {
   let patternObj: any;
 
   switch (pattern) {

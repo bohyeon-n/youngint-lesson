@@ -10,9 +10,11 @@ export class Message extends React.Component<ErrorProps, {}> {
     const { message, alert } = this.props;
     return (
       <div className="message">
-        {!alert && message !== "" && (
+        {message !== "" && (
           <div>
-            <FontAwesomeIcon icon="exclamation-triangle" className="icon" />
+            {alert ? (
+              <FontAwesomeIcon icon="exclamation-triangle" className="icon" />
+            ) : null}
             {message}
           </div>
         )}

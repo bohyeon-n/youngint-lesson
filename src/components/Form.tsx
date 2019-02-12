@@ -1,24 +1,23 @@
 import * as React from "react";
-import { Input } from "../components/Input";
 
 export interface FormProps {
-  readonly handleInputChange: Function;
+  readonly onChange: Function;
   readonly value: string;
   readonly focus: boolean;
   readonly labelName: string;
   readonly onSubmit: Function;
-  readonly pattern?: any;
   readonly name?: string;
   readonly min?: string;
   readonly max?: string;
   readonly type?: string;
+  readonly pattern?: string;
 }
 
 export class Form extends React.Component<FormProps, {}> {
   render() {
     const {
       value,
-      handleInputChange,
+      onChange,
       labelName,
       focus,
       onSubmit,
@@ -31,15 +30,15 @@ export class Form extends React.Component<FormProps, {}> {
         <form onSubmit={e => e.preventDefault()}>
           <label>
             {`${labelName}:`}
-            <Input
-              type={type}
+            <input
+              type={type || "text"}
               min={min}
               max={max}
-              onSubmit={onSubmit}
-              value={value}
-              onInputChange={handleInputChange}
               name={name}
-              active={focus}
+              value={value}
+              onChange={e => onChange(e.target.value)}
+              onKeyPress={e => e.key == "Enter" && onSubmit()}
+              ref={input => input && focus && input.focus()}
             />
           </label>
         </form>

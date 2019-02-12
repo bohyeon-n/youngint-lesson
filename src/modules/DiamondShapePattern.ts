@@ -1,3 +1,10 @@
+//  출력 예시
+//   *
+//  ***
+// *****
+//  ***
+//   *
+
 import BaseShapePattern from "./BaseShapePattern";
 
 export default class DiamondShapePattern extends BaseShapePattern {
@@ -16,7 +23,7 @@ export default class DiamondShapePattern extends BaseShapePattern {
     return [...array, ...[...array.slice(0, -1)].reverse()];
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

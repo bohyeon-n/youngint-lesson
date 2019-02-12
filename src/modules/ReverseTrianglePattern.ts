@@ -1,3 +1,8 @@
+// 출력 예시
+// ***
+//  **
+//   *
+
 import BaseShapePattern from "../modules/BaseShapePattern";
 
 export default class ReverseTrianglePattern extends BaseShapePattern {
@@ -13,7 +18,7 @@ export default class ReverseTrianglePattern extends BaseShapePattern {
       .reverse();
   };
 
-  protected createPatternLine = (
+  protected combineShapesBlanks = (
     index: number,
     shapesInLine: string,
     blankInLine: string

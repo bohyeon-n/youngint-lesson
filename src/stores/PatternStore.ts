@@ -14,7 +14,7 @@ class PatternStore {
   @observable patternNumberRecord: number = 1;
   @observable patternNumberRecordMessage: string = "";
 
-  @action reset = () => {
+  @action reset = (): void => {
     this.pattern = "triangle";
     this.shape = "";
     this.numberInputValue = "";
@@ -26,7 +26,7 @@ class PatternStore {
     this.patternNumberRecordMessage = "";
   };
 
-  @action onChangePattern = (pattern: string) => {
+  @action onChangePattern = (pattern: string): void => {
     this.pattern = pattern;
     const { valid, message } = isValid(this.numberInputValue, this.pattern);
     this.valid = valid;
@@ -35,7 +35,7 @@ class PatternStore {
       this.patternNumberRecordMessage !== "" ? 1 : this.shape === "" ? 2 : 3;
   };
 
-  @action onChangePatternNumberRecord = (number: number) => {
+  @action onChangePatternNumberRecord = (number: number): void => {
     this.step = 1;
     this.patternNumberRecord = number;
     if (number < 1 || number > 100) {
@@ -80,7 +80,6 @@ class PatternStore {
         );
       }
       this.resultPatterns.unshift({
-        patternName: pattern,
         patterns: patternObj.patterns,
         patternDirection: patternObj.patternDirection
       });
