@@ -59,11 +59,11 @@ abstract class BaseShapePattern {
 
   protected createPattern = () => {
     const shapeArray = this.countShapesInLines();
-    const patterns: Array<string> = [];
 
-    shapeArray.map((shapeCount, index) =>
-      patterns.push(this.createLine(shapeCount + 1, index))
+    const patterns = shapeArray.map((shapeCount, index) =>
+      this.createLine(shapeCount + 1, index)
     );
+
     const patternModel = new PatternModel(patterns);
     this.patternSetModel.addModel(patternModel);
   };
